@@ -81,12 +81,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (raycaster.collisions.above || raycaster.collisions.below)
+        {
+            movementVector.y = 0;
+        }
+
         InputUpdate();
         JumpUpdate();
         MovementUpdate();
         PostMovementJumpUpdate();
         DebugUpdate();
-       // AnimationUpdate();
+        // AnimationUpdate();
+
+        Debug.Log(movementVector.y);
+        
     }
 
     void InputUpdate()
@@ -187,8 +195,11 @@ public class PlayerController : MonoBehaviour
               if (movement.y < 0) raycaster.flags.above = false;
 
           */
-      
-            character.Move(movement);
+        if (Mathf.Abs(movement.y) < movementThreshold)
+            movement.y = 0;
+
+
+        character.Move(movement);
         
     }
 }

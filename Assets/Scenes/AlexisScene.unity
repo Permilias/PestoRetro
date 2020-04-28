@@ -246,6 +246,36 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971576, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: movementThreshold
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[6].value
+      value: -0.005554199
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[6].time
+      value: 0.9970703
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[5].time
+      value: 0.62857145
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: jumpCurve.m_Curve.Array.data[5].value
+      value: -0.260006
+      objectReference: {fileID: 0}
     - target: {fileID: 9074726314816971578, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: triggerMask.m_Bits
