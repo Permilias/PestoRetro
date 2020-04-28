@@ -163,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.09, y: 1.09}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &335382591
 SpriteRenderer:
@@ -241,6 +241,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971576, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971576, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971576, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971576, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: jumpReleaseMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971578, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: collisionMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 9074726314816971580, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -249,7 +279,7 @@ PrefabInstance:
     - target: {fileID: 9074726314816971580, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 1.33
       objectReference: {fileID: 0}
     - target: {fileID: 9074726314816971580, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}

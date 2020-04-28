@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     [System.NonSerialized] public Vector2 movementVector;
 
-    public bool isGrounded { get { return raycaster.flags.below; } }
+   public bool isGrounded { get { return raycaster.collisions.below; } }
 
     bool isJumping;
 
@@ -73,8 +73,11 @@ public class PlayerController : MonoBehaviour
     //TEMPORARY
     public bool hasBag;
 
+    CharacterRaycaster character;
+
     void Start()
     {
+        character = GetComponent<CharacterRaycaster>();
         timeSinceJumped = 10f;
         jumpsAllowedLeft = maxJumpsAllowed;
     }
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
         }
+        
     }
 
     void MovementUpdate()
@@ -180,21 +184,15 @@ public class PlayerController : MonoBehaviour
 
     void Move(Vector3 movement)
     {
-        if (movement.x != 0)
-            movement.x = raycaster.CastBoxHorizontal(movement.x);
-        if (Mathf.Abs(movement.x) < movementThreshold)
-            movement.x = 0;
 
-        if (movement.y != 0)
-            movement.y = raycaster.CastBoxVertical(movement.y);
-        if (Mathf.Abs(movement.y) < movementThreshold)
-            movement.y = 0;
+        /*      if (movement.x > 0) raycaster.flags.left = false;
+              if (movement.x < 0) raycaster.flags.right = false;
+              if (movement.y > 0) raycaster.flags.below = false;
+              if (movement.y < 0) raycaster.flags.above = false;
 
-        if (movement.x > 0) raycaster.flags.left = false;
-        if (movement.x < 0) raycaster.flags.right = false;
-        if (movement.y > 0) raycaster.flags.below = false;
-        if (movement.y < 0) raycaster.flags.above = false;
-
-        self.Translate(movement);
+          */
+      
+            character.Move(movement);
+        
     }
 }
