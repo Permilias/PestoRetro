@@ -13,8 +13,10 @@ public class SoldadoBrain : MonoBehaviour
 
 
     private float timer;
+
     private AICharacter soldado;
     private Transform transform;
+    private CharacterRaycaster raycaster;
     private SpriteRenderer spriteRenderer;
 
 
@@ -46,6 +48,12 @@ public class SoldadoBrain : MonoBehaviour
             Shoot();
             timer = soldado.Cooldown;
         }
+
+        if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
+        {
+            Debug.Log("Soldado - Take Damage");
+            //TakeDamage();
+        }
     }
 
     private void Look()
@@ -65,12 +73,15 @@ public class SoldadoBrain : MonoBehaviour
         Debug.LogWarning("Soldado - Shoot");
         //PlayerController.Shoot(PlayerController._instance.coord, soldado.PastaToShoot);
     }
-    
-    
 
-    public void TakeDamage(Pasta pasta)
+    private void TakeDamage(Pasta pasta)
     {
         soldado.Life -= pasta.degats;
+
+        if (soldado.Life <= 0)
+        {
+            Dead();
+        }
     }
 
     private void Dead()
