@@ -18,12 +18,10 @@ public class BruteBrain : MonoBehaviour
 
 
     private float timer;
-    private float movementThreshold = 0.0015f;
     private float gravity = -9.81f;
     private ChargeTo chargeTo;
 
     private AICharacter brute;
-    private Transform transform;
     private CharacterRaycaster raycaster;
     private SpriteRenderer spriteRenderer;
 
@@ -45,7 +43,6 @@ public class BruteBrain : MonoBehaviour
         timer = -1;
 
         brute = new AICharacter(life, pastaToLoot, cacPower, chargePower, hitForCharge, 0, walkSpeed, chargeSpeed);
-        transform = GetComponent<Transform>();
         raycaster = GetComponent<CharacterRaycaster>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
@@ -86,7 +83,7 @@ public class BruteBrain : MonoBehaviour
 
     private void Look()
     {
-        if (PlayerUtils.PlayerTransform.position.x < transform.position.x)
+        if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
             spriteRenderer.sprite = spriteLeft;
         }
@@ -105,7 +102,7 @@ public class BruteBrain : MonoBehaviour
         else
         {
             Vector3 movement;
-            if (PlayerUtils.PlayerTransform.position.x < transform.position.x)
+            if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
             {
                 movement = new Vector3(-walkSpeed, gravity);
             }
@@ -131,7 +128,7 @@ public class BruteBrain : MonoBehaviour
         // Init charge
         if (chargeTo.Equals(ChargeTo.None))
         {
-            if (PlayerUtils.PlayerTransform.position.x < transform.position.x)
+            if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
             {
                 chargeTo = ChargeTo.Left;
             }
@@ -143,11 +140,11 @@ public class BruteBrain : MonoBehaviour
 
 
         // Update info charge
-        if (chargeTo.Equals(ChargeTo.Left) && PlayerUtils.PlayerTransform.position.x < transform.position.x)
+        if (chargeTo.Equals(ChargeTo.Left) && PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
             movement = new Vector3(-chargeSpeed, gravity);
         }
-        else if (chargeTo.Equals(ChargeTo.Right) && PlayerUtils.PlayerTransform.position.x > transform.position.x)
+        else if (chargeTo.Equals(ChargeTo.Right) && PlayerUtils.PlayerTransform.position.x > this.transform.position.x)
         {
             movement = new Vector3(chargeSpeed, gravity);
         }

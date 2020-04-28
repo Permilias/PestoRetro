@@ -13,9 +13,9 @@ public class SoldadoBrain : MonoBehaviour
 
 
     private float timer;
+    private float gravity = -9.81f;
 
     private AICharacter soldado;
-    private Transform transform;
     private CharacterRaycaster raycaster;
     private SpriteRenderer spriteRenderer;
 
@@ -29,14 +29,19 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Start()
     {
-        soldado = new AICharacter(life, pastaToLoot, cooldown, pastaToShoot);
-        transform = GetComponent<Transform>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         timer = cooldown;
+
+        soldado = new AICharacter(life, pastaToLoot, cooldown, pastaToShoot);
+        raycaster = GetComponent<CharacterRaycaster>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
     {
+        Vector3 movement = new Vector3(0, gravity);
+        movement *= Time.deltaTime;
+        raycaster.Move(movement);
+
         Look();
 
         if (timer >= 0)
@@ -58,7 +63,7 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Look()
     {
-        if (PlayerUtils.PlayerTransform.position.x < transform.position.x)
+        if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
             spriteRenderer.sprite = spriteLeft;
         }
