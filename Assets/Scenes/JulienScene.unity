@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd28d0dfe92a3c4e99e37b9acfde835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceApparition: 15
+  distanceApparition: 10
   chuncks:
   - {fileID: 2495451903282304711, guid: 928a0c6955b3a6a499cf2e6b23e3ed35, type: 3}
   - {fileID: 2495451903282304711, guid: 40137459791197f4ba71df5802cfc00c, type: 3}
@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 1536811243}
   - component: {fileID: 1536811242}
   - component: {fileID: 1536811241}
+  - component: {fileID: 1536811244}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -325,3 +326,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536811244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536811240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092e1caa84081dc43bf5348d4cc6be68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 1536811243}
+  cameraSpeed: 0.3
+  cameraBackSpeed: 0.3
+  maxDelta: 1
