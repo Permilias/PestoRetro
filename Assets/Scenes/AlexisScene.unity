@@ -163,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.12, y: 1}
+  m_Size: {x: 1.09, y: 1.09}
   m_EdgeRadius: 0
 --- !u!212 &335382591
 SpriteRenderer:
@@ -426,7 +426,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0006592274, y: -0.0057578087}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -437,7 +437,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.264703, y: 1.0806055}
   m_EdgeRadius: 0
 --- !u!114 &1982178217
 MonoBehaviour:
@@ -555,15 +555,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpReleaseMultiplier: 3
-  maxJumpsAllowed: 1
+  jumpReleaseMultiplier: 1
+  maxJumpsAllowed: 2
   movementThreshold: 0.0015
   self: {fileID: 1982178220}
   raycaster: {fileID: 1982178218}
   graphicTransform: {fileID: 1332049283}
-  animator: {fileID: 0}
   debugMode: 1
   fakeGroundLevel: {fileID: 335382593}
+  coord: {x: 0, y: 0}
+  life: 0
   hasBag: 0
 --- !u!114 &1982178218
 MonoBehaviour:
@@ -577,13 +578,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ca923a5e5ca874c8366e0a849a7278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: {fileID: 1982178220}
   skinWidthMultiplier: 0.98
+  self: {fileID: 1982178220}
   box: {fileID: 1982178216}
   collisionEmitter: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 51
 --- !u!4 &1982178220
 Transform:
   m_ObjectHideFlags: 0

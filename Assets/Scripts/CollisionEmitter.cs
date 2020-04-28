@@ -5,5 +5,5 @@ using UnityEngine.Events;
 
 public class CollisionEmitter : MonoBehaviour
 {
-    public UnityEvent OnCollidedLeft, OnCollidedRight, OnCollidedUp, OnCollidedDown;
+    public UnityEvent OnCollidedLeft, OnCollidedRight, OnCollidedAbove, OnCollidedBelow;
 }

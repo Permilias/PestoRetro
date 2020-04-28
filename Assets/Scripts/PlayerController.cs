@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public CharacterRaycaster raycaster;
     public Transform graphicTransform;
-    public Animator animator;
+ //   public Animator animator;
 
     [System.NonSerialized]
     public bool leftKeyDown, leftKeyUp, leftKey,
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     [System.NonSerialized] public Vector2 movementVector;
 
-    public bool isGrounded { get { return raycaster.collisionFlags.down; } }
+    public bool isGrounded { get { return raycaster.flags.below; } }
 
     bool isJumping;
 
@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
         jumpsAllowedLeft = maxJumpsAllowed;
     }
 
-    
     void Update()
     {
         InputUpdate();
@@ -87,8 +86,7 @@ public class PlayerController : MonoBehaviour
         MovementUpdate();
         PostMovementJumpUpdate();
         DebugUpdate();
-
-        Debug.Log(PlayerUtils.PlayerTransform.position);
+       // AnimationUpdate();
     }
 
     void InputUpdate()
@@ -114,7 +112,6 @@ public class PlayerController : MonoBehaviour
 
         if (timeSinceJumped > jumpCurve.keys[jumpCurve.keys.Length - 1].time)
             isJumping = false;
-
     }
 
     void PostMovementJumpUpdate()
@@ -131,27 +128,23 @@ public class PlayerController : MonoBehaviour
         if (movementVector.x == 0) timeSinceAccelerated = 0;
         else timeSinceAccelerated += Time.deltaTime;
 
-        float accelerationMultiplier = 1f;
-        
-        float usedSpeed;
+        float accelerationMultiplier = 1;
+
         switch (hasBag)
         {
             case true:
-                if (accelerationTime > 0) accelerationMultiplier = accelerationCurveBag.Evaluate(timeSinceAccelerated / accelerationTimeBag);
-                usedSpeed = speedBag * accelerationMultiplier;
+                if (accelerationTime > 0) accelerationMultiplier = accelerationCurveBag.Evaluate(timeSinceAccelerated / accelerationTime);
+                float usedSpeed = speedBag * accelerationMultiplier;
+                movementVector.x *= usedSpeed;
                 break;
             case false:
-                if (accelerationTime > 0) accelerationMultiplier = accelerationCurve.Evaluate(timeSinceAccelerated / accelerationTime);
-                usedSpeed = speed * accelerationMultiplier;
+                if (accelerationTime > 0) accelerationMultiplier = accelerationCurve.Evaluate(timeSinceAccelerated / accelerationTimeBag);
+                float usedSpeedBag = speed * accelerationMultiplier;
+                movementVector.x *= usedSpeedBag;
                 break;
             default:
-                if (accelerationTime > 0) accelerationMultiplier = accelerationCurveBag.Evaluate(timeSinceAccelerated / accelerationTimeBag);
-                usedSpeed = speedBag * accelerationMultiplier;
                 break;
         }
-
-        
-        movementVector.x *= usedSpeed;
 
         Vector3 finalVector = Time.deltaTime * movementVector;
 
@@ -171,7 +164,6 @@ public class PlayerController : MonoBehaviour
 
     void TryJump()
     {
-        if (!isGrounded) return;
         if (jumpsAllowedLeft == 0) return;
         jumpsAllowedLeft--;
         StartJump();
@@ -179,6 +171,7 @@ public class PlayerController : MonoBehaviour
 
     void StartJump()
     {
+        Debug.Log("hello");
         isJumping = true;
         timeSinceJumped = 0f;
     }
@@ -195,10 +188,10 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(movement.y) < movementThreshold)
             movement.y = 0;
 
-        if (movement.x > 0) raycaster.collisionFlags.left = false;
-        if (movement.x < 0) raycaster.collisionFlags.right = false;
-        if (movement.y > 0) raycaster.collisionFlags.down = false;
-        if (movement.y < 0) raycaster.collisionFlags.up = false;
+        if (movement.x > 0) raycaster.flags.left = false;
+        if (movement.x < 0) raycaster.flags.right = false;
+        if (movement.y > 0) raycaster.flags.below = false;
+        if (movement.y < 0) raycaster.flags.above = false;
 
         self.Translate(movement);
     }
