@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36883719}
   - component: {fileID: 36883720}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: SoldadoGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 335382589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.41, z: 0}
-  m_LocalScale: {x: 10.825, y: 1, z: 1}
+  m_LocalScale: {x: 36.94031, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 623955541}
   - component: {fileID: 623955543}
   - component: {fileID: 623955540}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Brute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,6 +405,9 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1335
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 0
   horizontalRayCount: 4
   verticalRayCount: 4
 --- !u!1001 &670325545
@@ -491,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 936449019}
   - component: {fileID: 936449020}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: BruteGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +576,7 @@ GameObject:
   - component: {fileID: 1177319834}
   - component: {fileID: 1177319832}
   - component: {fileID: 1177319831}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Soldado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1639578340}
   - component: {fileID: 1639578341}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: BruteGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +816,7 @@ GameObject:
   - component: {fileID: 1945553958}
   - component: {fileID: 1945553957}
   - component: {fileID: 1945553956}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Brute (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,6 +864,9 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1335
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 0
   horizontalRayCount: 4
   verticalRayCount: 4
 --- !u!114 &1945553958
@@ -891,7 +897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945553955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.39, y: 0, z: 0}
+  m_LocalPosition: {x: 15.57, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1639578340}
