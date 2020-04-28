@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
     void DebugUpdate()
     {
+        /*
         if (!debugMode) return;
 
         if (self.position.y <= fakeGroundLevel.position.y)
@@ -160,6 +161,7 @@ public class PlayerController : MonoBehaviour
             jumpsAllowedLeft = maxJumpsAllowed;
             self.position = new Vector3(self.position.x, fakeGroundLevel.position.y, self.position.z);
         }
+        */
     }
 
     void TryJump()
