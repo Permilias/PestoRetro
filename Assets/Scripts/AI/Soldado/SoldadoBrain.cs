@@ -12,10 +12,11 @@ public class SoldadoBrain : MonoBehaviour
     public Pasta pastaToShoot;
 
 
-    private float timer;
+    private float timerCharge;
+    private float timerImmobile;
+    private float gravity = -9.81f;
 
     private AICharacter soldado;
-    private Transform transform;
     private CharacterRaycaster raycaster;
     private SpriteRenderer spriteRenderer;
 
@@ -29,36 +30,54 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Start()
     {
+        timerCharge = cooldown;
+        timerImmobile = -1;
+
         soldado = new AICharacter(life, pastaToLoot, cooldown, pastaToShoot);
-        transform = GetComponent<Transform>();
+        raycaster = GetComponent<CharacterRaycaster>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        timer = cooldown;
     }
 
     private void Update()
     {
-        Look();
+        Vector3 movement = new Vector3(0, gravity);
+        movement *= Time.deltaTime;
+        raycaster.Move(movement);
 
-        if (timer >= 0)
+        if (timerImmobile >= 0)
         {
-            timer -= Time.deltaTime;
+            timerImmobile -= Time.deltaTime;
         }
         else
         {
-            Shoot();
-            timer = soldado.Cooldown;
-        }
+            Look();
 
-        if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
-        {
-            Debug.Log("Soldado - Take Damage");
-            //TakeDamage();
+            if (timerCharge >= 0)
+            {
+                timerCharge -= Time.deltaTime;
+            }
+            else
+            {
+                Shoot();
+                timerCharge = soldado.Cooldown;
+            }
+
+            if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
+            {
+                Debug.Log("Soldado - Take Damage");
+
+                // if spageti cuite
+                    // timerImmobile = tmpImobile (dans la pate)
+
+                // else
+                    // TakeDamage();
+            }
         }
     }
 
     private void Look()
     {
-        if (PlayerUtils.PlayerTransform.position.x < transform.position.x)
+        if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
             spriteRenderer.sprite = spriteLeft;
         }
