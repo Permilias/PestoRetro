@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class CharacterRaycaster : MonoBehaviour
 {
     public LayerMask collisionMask;
+    public LayerMask triggerMask;
 
     const float skinWidth = .015f;
     public int horizontalRayCount = 4;
@@ -47,14 +48,15 @@ public class CharacterRaycaster : MonoBehaviour
     void HorizontalCollisions(ref Vector3 velocity)
     {
         float directionX = Mathf.Sign(velocity.x);
-        float rayLength = Mathf.Abs(velocity.x) + skinWidth;
+        float rayLength = Mathf.Abs(velocity.x) + skinWidth * 2;
+        
 
         for (int i = 0; i < horizontalRayCount; i++)
         {
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
-
+            RaycastHit2D hitTrigger = Physics2D.Raycast(rayOrigin, Vector2.up * directionX, rayLength, triggerMask);
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
             if (hit)
@@ -65,19 +67,31 @@ public class CharacterRaycaster : MonoBehaviour
                 collisions.left = directionX == -1;
                 collisions.right = directionX == 1;
             }
+
+            if (hitTrigger)
+            {
+                CollisionReceiver cr = hitTrigger.collider.GetComponent<CollisionReceiver>();
+
+                if(cr != null)
+                {
+                    cr.OnTriggerEnter?.Invoke();
+                }
+                
+            }
         }
     }
 
     void VerticalCollisions(ref Vector3 velocity)
     {
         float directionY = Mathf.Sign(velocity.y);
-        float rayLength = Mathf.Abs(velocity.y) + skinWidth;
+        float rayLength = Mathf.Abs(velocity.y) + skinWidth * 2;
 
         for (int i = 0; i < verticalRayCount; i++)
         {
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
             rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
+            RaycastHit2D hitTrigger = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, triggerMask);
 
             Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
@@ -88,7 +102,21 @@ public class CharacterRaycaster : MonoBehaviour
 
                 collisions.below = directionY == -1;
                 collisions.above = directionY == 1;
+
+               
             }
+
+            if (hitTrigger)
+            {
+                CollisionReceiver cr = hitTrigger.collider.GetComponent<CollisionReceiver>();
+
+                if (cr != null)
+                {
+                    cr.OnTriggerEnter?.Invoke();
+                }
+            }
+
+
         }
     }
 

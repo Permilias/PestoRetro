@@ -16,6 +16,11 @@ public class PactoleScript : MonoBehaviour
         pickUpText.gameObject.SetActive(false);
     }
 
+    public void Test()
+    {
+        Debug.Log("hello");
+    }
+
     private void Update()
     {
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.E))
