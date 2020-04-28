@@ -6,4 +6,6 @@ using UnityEngine.Events;
 public class CollisionReceiver : MonoBehaviour
 {
     public UnityEvent OnTriggerEnter;
+    public UnityEvent OnTriggerExit;
+    public UnityEvent OnTriggerStay;
 }
