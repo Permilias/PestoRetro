@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     public Transform self;
     public CharacterRaycaster raycaster;
-    public Transform graphicTransform;
+    public Transform graphicsTransform;
  //   public Animator animator;
 
     [System.NonSerialized]
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         MovementUpdate();
         PostMovementJumpUpdate();
         DebugUpdate();
-        // AnimationUpdate();
+        AnimationUpdate();
 
    
     }
@@ -200,5 +200,15 @@ public class PlayerController : MonoBehaviour
 
         character.Move(movement);
         
+    }
+
+    void AnimationUpdate()
+    {
+        if (movementVector.x != 0)
+            graphicsTransform.localScale = new Vector3(
+                Mathf.Abs(graphicsTransform.transform.localScale.x) * Mathf.Sign(movementVector.x),
+                graphicsTransform.transform.localScale.y,
+                graphicsTransform.transform.localScale.z
+            );
     }
 }
