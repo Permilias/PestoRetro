@@ -15,9 +15,9 @@ public class BruteBrain : MonoBehaviour
     public int cacPower;
     public int chargePower;
     public int hitForCharge;
-
-
-    private float timer;
+    
+    private float timerCharge;
+    private float timerImmobile;
     private float gravity = -9.81f;
     private ChargeTo chargeTo;
 
@@ -40,7 +40,8 @@ public class BruteBrain : MonoBehaviour
     private void Start()
     {
         chargeTo = ChargeTo.None;
-        timer = -1;
+        timerCharge = -1;
+        timerImmobile = -1;
 
         brute = new AICharacter(life, pastaToLoot, cacPower, chargePower, hitForCharge, 0, walkSpeed, chargeSpeed);
         raycaster = GetComponent<CharacterRaycaster>();
@@ -49,14 +50,18 @@ public class BruteBrain : MonoBehaviour
 
     private void Update()
     {
-        if (timer >= 0)
+        if (timerCharge >= 0)
         {
-            timer -= Time.deltaTime;
+            timerCharge -= Time.deltaTime;
+        }
+        else if (timerImmobile >= 0)
+        {
+            timerImmobile -= Time.deltaTime;
         }
         else
         {
             Look();
-
+            
             if (brute.HitRemaningForCharge <= 0)
             {
                 if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Player")))
@@ -76,7 +81,12 @@ public class BruteBrain : MonoBehaviour
             if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
             {
                 Debug.Log("Brute - Take Damage");
-                //TakeDamage();
+
+                // if spageti cuite
+                    // timerImmobile = tmpImobile (dans la pate)
+
+                // else
+                    // TakeDamage();
             }
         }
     }
@@ -155,7 +165,7 @@ public class BruteBrain : MonoBehaviour
         {
             brute.HitRemaningForCharge = brute.HitForCharge;
             chargeTo = ChargeTo.None;
-            timer = 1;
+            timerCharge = 1;
         }
         else
         {
