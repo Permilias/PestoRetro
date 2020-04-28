@@ -322,6 +322,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2010893402}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: graphicsTransform
+      value: 
+      objectReference: {fileID: 2010893401}
     - target: {fileID: 9074726314816971580, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -377,7 +387,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 611688781, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
 --- !u!114 &960514852 stripped
 MonoBehaviour:
@@ -408,6 +419,7 @@ GameObject:
   - component: {fileID: 1536811243}
   - component: {fileID: 1536811242}
   - component: {fileID: 1536811241}
+  - component: {fileID: 1536811244}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -480,6 +492,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536811244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536811240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092e1caa84081dc43bf5348d4cc6be68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 1536811243}
+  cameraSpeed: 0.3
+  cameraBackSpeed: 0.3
+  maxDelta: 1
 --- !u!1 &1778161388
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +574,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2010893401 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9074726314972214547, guid: bf834a39465ad8a48ad3a61a3492d559,
+    type: 3}
+  m_PrefabInstance: {fileID: 483546735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2010893402 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1542578422, guid: bf834a39465ad8a48ad3a61a3492d559,
+    type: 3}
+  m_PrefabInstance: {fileID: 483546735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1012693863848412476
 PrefabInstance:
   m_ObjectHideFlags: 0

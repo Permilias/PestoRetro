@@ -276,6 +276,16 @@ PrefabInstance:
       propertyPath: jumpCurve.m_Curve.Array.data[5].value
       value: -0.260006
       objectReference: {fileID: 0}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: graphicsTransform
+      value: 
+      objectReference: {fileID: 991043455}
+    - target: {fileID: 9074726314816971577, guid: bf834a39465ad8a48ad3a61a3492d559,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 991043454}
     - target: {fileID: 9074726314816971578, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: triggerMask.m_Bits
@@ -338,6 +348,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
+--- !u!95 &991043454 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1542578422, guid: bf834a39465ad8a48ad3a61a3492d559,
+    type: 3}
+  m_PrefabInstance: {fileID: 991043453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &991043455 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9074726314972214547, guid: bf834a39465ad8a48ad3a61a3492d559,
+    type: 3}
+  m_PrefabInstance: {fileID: 991043453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1361790532
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +495,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1536811240
 GameObject:
   m_ObjectHideFlags: 0

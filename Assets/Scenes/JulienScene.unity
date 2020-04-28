@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1335
+    m_Bits: 1079
   triggerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1335
+    m_Bits: 1079
   triggerMask:
     serializedVersion: 2
     m_Bits: 0
