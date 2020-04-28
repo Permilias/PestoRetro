@@ -379,12 +379,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
---- !u!1 &960514851 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4064981391346799229, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
+--- !u!114 &960514852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8434714400362712525, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
     type: 3}
   m_PrefabInstance: {fileID: 1012693863848412476}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1101126670
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,9 +402,8 @@ GameObject:
   - component: {fileID: 1101126674}
   - component: {fileID: 1101126673}
   - component: {fileID: 1101126672}
-  - component: {fileID: 1101126675}
   - component: {fileID: 1101126671}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pactole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,11 +443,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101126670}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bf11b623df0df44095e2e08d1b29235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpText: {fileID: 960514852}
 --- !u!212 &1101126673
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -507,60 +513,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1101126675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101126670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf3ad05484225c418903fe0aa89d279, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggerEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 960514851}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1101126672}
-        m_MethodName: PickUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnTriggerExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 960514851}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnTriggerStay:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1536811240
 GameObject:
   m_ObjectHideFlags: 0
