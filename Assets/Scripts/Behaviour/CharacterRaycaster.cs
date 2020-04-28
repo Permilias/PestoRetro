@@ -46,6 +46,8 @@ public class CharacterRaycaster : MonoBehaviour
         }
 
         transform.Translate(velocity);
+
+        
     }
 
     void HorizontalCollisions(ref Vector3 velocity)

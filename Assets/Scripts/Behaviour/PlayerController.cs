@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public CharacterRaycaster raycaster;
     public Transform graphicsTransform;
- //   public Animator animator;
+    public Animator animator;
 
     [System.NonSerialized]
     public bool leftKeyDown, leftKeyUp, leftKey,
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         character = GetComponent<CharacterRaycaster>();
         timeSinceJumped = 10f;
         jumpsAllowedLeft = maxJumpsAllowed;
+        AnimatorBehaviour.GetAnimator(animator);
     }
 
     void Update()
@@ -175,6 +176,7 @@ public class PlayerController : MonoBehaviour
     void TryJump()
     {
         if (jumpsAllowedLeft == 0) return;
+        if (hasBag) return;
         jumpsAllowedLeft--;
         StartJump();
     }
@@ -199,6 +201,8 @@ public class PlayerController : MonoBehaviour
 
 
         character.Move(movement);
+
+        AnimatorBehaviour.MovementAnimations(movement);
         
     }
 
