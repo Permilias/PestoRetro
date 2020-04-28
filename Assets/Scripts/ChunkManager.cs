@@ -10,7 +10,6 @@ public class ChunkManager : MonoBehaviour
     public List<GameObject> chuncks;
 
     private GameObject[] chuncksObject;
-    private List<bool> chuncksIsInstantiate;
 
     void Awake()
     {
@@ -28,12 +27,11 @@ public class ChunkManager : MonoBehaviour
 
     private void Start()
     {
-        chuncksIsInstantiate = new List<bool>();
         chuncksObject = new GameObject[chuncks.Count];
         for (int i = 0; i < chuncks.Count; i++)
         {
-            chuncksIsInstantiate.Add(false);
-            chuncksObject[i] = null;
+            chuncksObject[i] = Instantiate(chuncks[i], this.transform) as GameObject;
+            chuncksObject[i].SetActive(false);
         }
     }
 
@@ -41,20 +39,16 @@ public class ChunkManager : MonoBehaviour
     {
         for (int i = 0; i < chuncks.Count; i++)
         {
-            Debug.Log(Mathf.Abs(PlayerUtils.PlayerTransform.position.x - chuncks[i].transform.position.x) < distanceApparition);
-
             if (Mathf.Abs(PlayerUtils.PlayerTransform.position.x - chuncks[i].transform.position.x) < distanceApparition)
             {
-                if (!chuncksIsInstantiate[i])
+                if (!chuncksObject[i].activeSelf)
                 {
-                    chuncksIsInstantiate[i] = true;
-
-                    chuncksObject[i] = Instantiate(chuncks[i], this.transform) as GameObject;
+                    chuncksObject[i].SetActive(true);
                 }
             }
             else
             {
-                if (chuncksIsInstantiate[i])
+                if (chuncksObject[i].activeSelf)
                 {
                     chuncksObject[i].SetActive(false);
                 }
