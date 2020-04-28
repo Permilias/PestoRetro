@@ -23,6 +23,8 @@ public class CharacterRaycaster : MonoBehaviour
 
     public CollisionInfo collisions;
 
+    bool inTrigger;
+
     void Start()
     {
         collider = GetComponent<BoxCollider2D>();
@@ -61,6 +63,7 @@ public class CharacterRaycaster : MonoBehaviour
 
             if (hit)
             {
+                PlayerUtils.GetLayer(hit.collider.gameObject.layer);
                 velocity.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
 
@@ -74,9 +77,9 @@ public class CharacterRaycaster : MonoBehaviour
 
                 if(cr != null)
                 {
+                    inTrigger = true;
                     cr.OnTriggerEnter?.Invoke();
                 }
-                
             }
         }
     }
@@ -112,6 +115,7 @@ public class CharacterRaycaster : MonoBehaviour
 
                 if (cr != null)
                 {
+                    inTrigger = true;
                     cr.OnTriggerEnter?.Invoke();
                 }
             }

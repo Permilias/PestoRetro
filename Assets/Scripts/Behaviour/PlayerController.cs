@@ -93,8 +93,7 @@ public class PlayerController : MonoBehaviour
         DebugUpdate();
         // AnimationUpdate();
 
-        Debug.Log(movementVector.y);
-        
+   
     }
 
     void InputUpdate()

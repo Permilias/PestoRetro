@@ -11,4 +11,9 @@ public static class PlayerUtils
             return PlayerController._instance.self;
         }
     }
+
+    public static int GetLayer(int layerInt)
+    {
+        return layerInt;
+    }
 }

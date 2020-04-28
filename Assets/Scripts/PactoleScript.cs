@@ -6,9 +6,28 @@ using TMPro;
 
 public class PactoleScript : MonoBehaviour
 {
-    public void PickUp ()
+    bool canPickUp = false;
+
+    public void EnterInTrigger ()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            Debug.Log("Pactole is picked up!");
+        canPickUp = true;
+    }
+
+    private void Update()
+    {
+        if (canPickUp && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("is pick up");
+        }
+    }
+
+    public void ExitInTrigger()
+    {
+        Debug.Log("you can't pick up");
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("hello");
     }
 }
