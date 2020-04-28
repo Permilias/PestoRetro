@@ -64,7 +64,7 @@ public class BruteBrain : MonoBehaviour
             
             if (brute.HitRemaningForCharge <= 0)
             {
-                if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Player")))
+                if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
                 {
                     Debug.Log("Impact Charge");
                 }

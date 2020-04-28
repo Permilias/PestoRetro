@@ -42,7 +42,7 @@ public class SoldadoBrain : MonoBehaviour
     {
         Vector3 movement = new Vector3(0, gravity);
         movement *= Time.deltaTime;
-        raycaster.Move(movement);
+        //raycaster.Move(movement);
 
         if (timerImmobile >= 0)
         {
