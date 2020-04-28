@@ -40,7 +40,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Look()
     {
-        if (PlayerController.player.coord.x < brute.Coord.x)
+        if (PlayerController._instance.coord.x < brute.Coord.x)
         {
             brute.Sprite = spriteLeft;
         }
@@ -62,7 +62,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Attack()
     {
-        PlayerController.player.life -= brute.CacPower;
+        PlayerController._instance.life -= brute.CacPower;
     }
 
     private void Charge()
@@ -72,10 +72,10 @@ public class NewBehaviourScript : MonoBehaviour
         // collision --> degat + projeter ?
 
         // if mvt stop ou degat
-        if ()
+        /*if ()
         {
             brute.HitRemaningForCharge = brute.HitForCharge;
-        }
+        }*/
     }
 
     private void Dead()

@@ -41,7 +41,7 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Look()
     {
-        if (PlayerController.player.coord.x < soldado.Coord.x)
+        if (PlayerController._instance.coord.x < soldado.Coord.x)
         {
             soldado.Sprite = spriteLeft;
         }
@@ -53,7 +53,7 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Shoot()
     {
-        PlayerController.Shoot(PlayerController.player.coord, soldado.PastaToShoot);
+        //PlayerController.Shoot(PlayerController._instance.coord, soldado.PastaToShoot);
     }
 
     private void Dead()
