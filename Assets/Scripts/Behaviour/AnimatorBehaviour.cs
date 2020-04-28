@@ -18,10 +18,15 @@ public static class AnimatorBehaviour
         if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
         {
             currentAnimator.SetBool("IsMoving", true);
+            if (PlayerController._instance.hasBag)
+            {
+                currentAnimator.speed = 0.8f;
+            }
         }
         else
         {
             currentAnimator.SetBool("IsMoving", false);
+            currentAnimator.speed = 1f;
         }
     }
 }
