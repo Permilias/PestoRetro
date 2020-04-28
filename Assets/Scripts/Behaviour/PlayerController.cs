@@ -57,9 +57,6 @@ public class PlayerController : MonoBehaviour
     public bool debugMode;
     public Transform fakeGroundLevel;
 
-    public Vector2 coord;
-    public int life;
-
     [System.NonSerialized] public Vector2 movementVector;
 
    public bool isGrounded { get { return raycaster.collisions.below; } }

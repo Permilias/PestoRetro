@@ -4,7 +4,6 @@ public class SoldadoBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
-    public Vector2 coord;
     public Pasta pastaToLoot;
     public Sprite spriteLeft;
     public Sprite spriteRight;
@@ -15,12 +14,22 @@ public class SoldadoBrain : MonoBehaviour
 
     private float timer;
     private AICharacter soldado;
+    private Transform transform;
+    private SpriteRenderer spriteRenderer;
 
 
     // ############### FUNCTIONS ###############
+    private void Reset()
+    {
+        life = 20;
+        cooldown = 5;
+    }
+
     private void Start()
     {
-        soldado = new AICharacter(life, coord, pastaToLoot, spriteLeft, cooldown, pastaToShoot);
+        soldado = new AICharacter(life, pastaToLoot, cooldown, pastaToShoot);
+        transform = GetComponent<Transform>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         timer = cooldown;
     }
 
@@ -41,28 +50,31 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Look()
     {
-        if (PlayerController._instance.coord.x < soldado.Coord.x)
+        if (PlayerUtils.PlayerTransform.position.x < transform.position.x)
         {
-            soldado.Sprite = spriteLeft;
+            spriteRenderer.sprite = spriteLeft;
         }
         else
         {
-            soldado.Sprite = spriteRight;
+            spriteRenderer.sprite = spriteRight;
         }
     }
 
     private void Shoot()
     {
+        Debug.LogWarning("Soldado - Shoot");
         //PlayerController.Shoot(PlayerController._instance.coord, soldado.PastaToShoot);
+    }
+    
+    
+
+    public void TakeDamage(Pasta pasta)
+    {
+        soldado.Life -= pasta.degats;
     }
 
     private void Dead()
     {
         Destroy(this);
-    }
-
-    public void TakeDamage(Pasta pasta)
-    {
-        soldado.Life -= pasta.degats;
     }
 }

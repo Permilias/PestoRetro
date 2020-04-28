@@ -132,6 +132,11 @@ public class CharacterRaycaster : MonoBehaviour
             above = below = false;
             left = right = false;
         }
+
+        public bool HaveCollision()
+        {
+            return above || below || right || left;
+        }
     }
 }
 
