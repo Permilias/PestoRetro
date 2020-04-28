@@ -17,6 +17,7 @@ public class BruteBrain : MonoBehaviour
     public int hitForCharge;
 
 
+    private float timer;
     private float movementThreshold = 0.0015f;
     private float gravity = -9.81f;
     private ChargeTo chargeTo;
@@ -41,6 +42,7 @@ public class BruteBrain : MonoBehaviour
     private void Start()
     {
         chargeTo = ChargeTo.None;
+        timer = -1;
 
         brute = new AICharacter(life, pastaToLoot, cacPower, chargePower, hitForCharge, 0, walkSpeed, chargeSpeed);
         transform = GetComponent<Transform>();
@@ -50,17 +52,36 @@ public class BruteBrain : MonoBehaviour
 
     private void Update()
     {
-        Look();
-
-        if (brute.HitRemaningForCharge <= 0)
+        if (timer >= 0)
         {
-            Charge();
+            timer -= Time.deltaTime;
         }
         else
         {
-            Reach();
-        }
+            Look();
 
+            if (brute.HitRemaningForCharge <= 0)
+            {
+                if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Player")))
+                {
+                    Debug.Log("Impact Charge");
+                }
+                else
+                {
+                    Charge();
+                }
+            }
+            else
+            {
+                Reach();
+            }
+
+            if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
+            {
+                Debug.Log("Brute - Take Damage");
+                //TakeDamage();
+            }
+        }
     }
 
     private void Look()
@@ -120,8 +141,9 @@ public class BruteBrain : MonoBehaviour
             }
         }
 
+
         // Update info charge
-        else if (chargeTo.Equals(ChargeTo.Left) && PlayerUtils.PlayerTransform.position.x < transform.position.x)
+        if (chargeTo.Equals(ChargeTo.Left) && PlayerUtils.PlayerTransform.position.x < transform.position.x)
         {
             movement = new Vector3(-chargeSpeed, gravity);
         }
@@ -130,11 +152,13 @@ public class BruteBrain : MonoBehaviour
             movement = new Vector3(chargeSpeed, gravity);
         }
 
+
         // Play or stop charge
         if (movement.Equals(Vector3.zero))
         {
             brute.HitRemaningForCharge = brute.HitForCharge;
             chargeTo = ChargeTo.None;
+            timer = 1;
         }
         else
         {
@@ -143,11 +167,15 @@ public class BruteBrain : MonoBehaviour
         }
     }
 
-
-    public void TakeDamage(Pasta pasta)
+    private void TakeDamage(Pasta pasta)
     {
         brute.Life -= pasta.degats;
         brute.HitRemaningForCharge--;
+
+        if (brute.Life <= 0)
+        {
+            Dead();
+        }
     }
 
     private void Dead()
