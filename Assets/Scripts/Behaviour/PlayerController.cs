@@ -177,7 +177,6 @@ public class PlayerController : MonoBehaviour
 
     void StartJump()
     {
-        Debug.Log("hello");
         isJumping = true;
         timeSinceJumped = 0f;
     }
