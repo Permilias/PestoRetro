@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    public Sound enemyBruteDies, enemyBruteCharge, enemyBrutePunch;
+    public Sound enemyBruteDies, enemyBruteCharge, enemyBrutePunch, enemyBruteHit, enemyBruteFootSteps, enemySimpleDies, enemySimpleShoot, enemySimpleHit, enemySimpleFootsteps;
 
     public Queue<GameObject> receptaclePool;
 
