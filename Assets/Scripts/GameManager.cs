@@ -44,9 +44,18 @@ public class GameManager : MonoBehaviour
     {
         spriteLifes[spriteLifes.Length - 1].SetActive(false);
         
-        for (int i = 0; i < healthSystem.GetHealth(); i++)
+        for (int i = 0; i < healthSystem.healthMax; i++)
         {
-            spriteLifes[i].SetActive(true);
+            if (i >= healthSystem.GetHealth())
+            {
+                spriteLifes[i].SetActive(false);
+            }
+            else
+            {
+                spriteLifes[i].SetActive(true);
+            }
         }
+
+        Debug.Log(healthSystem.GetHealth());
     }
 }

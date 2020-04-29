@@ -8,7 +8,7 @@ public class HealthSystem
     public event EventHandler OnHealthChanged;
 
     private int health;
-    private int healthMax;
+    public int healthMax;
 
     public HealthSystem(int healthMax)
     {
