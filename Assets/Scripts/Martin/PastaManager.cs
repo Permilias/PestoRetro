@@ -59,16 +59,18 @@ public class PastaManager : MonoBehaviour
         }
     }
 
-    public PastaProjectile CreateProjectileAtPosition(PastaShotConfig shotConfig, Vector2 _position)
+    public PastaProjectile CreateProjectileAtPosition(PastaShotConfig shotConfig, Vector2 _position, string shooter, Pasta pasta)
     {
         if(projectilePool.Count < 1)
         {
             FillProjectilePool();
         }
         PastaProjectile createdProjectile = projectilePool.Dequeue();
+        createdProjectile.shooter = shooter;
         createdProjectile.gameObject.SetActive(true);
         createdProjectile.transform.position = new Vector3(_position.x, _position.y, 0f);
         createdProjectile.Initialize(shotConfig);
+        createdProjectile.pasta = pasta;
         return createdProjectile;
 
     }

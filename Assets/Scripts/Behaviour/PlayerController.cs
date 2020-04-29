@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            GameManager._instance.healthSystem.Damage(1);
+            
             Debug.Log(GameManager._instance.healthSystem.GetHealth());
         }
 
@@ -141,14 +141,11 @@ public class PlayerController : MonoBehaviour
 
     void PostMovementJumpUpdate()
     {
-        
         if (isGrounded)
         {
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
-            
         }
-        
     }
 
     void MovementUpdate()
@@ -236,5 +233,15 @@ public class PlayerController : MonoBehaviour
                 graphicsTransform.transform.localScale.y,
                 graphicsTransform.transform.localScale.z
             );
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
+        {
+            PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
+
+            GameManager._instance.healthSystem.Damage(pastaProjectile.pasta.degats);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    public Sound caca, prout, leSonDeTristan;
+    public Sound enemyBruteDies, enemyBruteCharge, enemyBrutePunch, enemyBruteHit, enemyBruteFootSteps, enemySimpleDies, enemySimpleShoot, enemySimpleHit, enemySimpleFootsteps, grazDies, grazhurt, grazFootSteps, grazJump, grazHitBullet, grazHitCharge, grazHitPunch, uiButtonGlass, uiButtonPlastic, uiButtonWood;
 
     public Queue<GameObject> receptaclePool;
 

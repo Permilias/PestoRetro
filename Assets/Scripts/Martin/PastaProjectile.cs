@@ -10,10 +10,13 @@ public class PastaProjectile : MonoBehaviour
     public PastaShotConfig shotConfig;
 
     public bool shotByPlayer;
+    public string shooter;
 
 
     public void Initialize(PastaShotConfig _shotConfig)
     {
+        gameObject.layer = LayerMask.NameToLayer("Projectiles");
+
         shotConfig = _shotConfig;
 
         sr.sprite = shotConfig.projectileSprite;

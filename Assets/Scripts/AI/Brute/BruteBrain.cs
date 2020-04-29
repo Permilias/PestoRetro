@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 enum ChargeTo { None, Left, Right }
 
@@ -6,10 +7,7 @@ public class BruteBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
-
-    public int pastaToLoot;
-    public Sprite spriteLeft;
-    public Sprite spriteRight;
+    public int lootedPasta;
 
     public float walkSpeed;
     public float chargeSpeed;
@@ -20,6 +18,8 @@ public class BruteBrain : MonoBehaviour
     public int chargePower;
     public float timeToStopAfterCharge;
     public int hitForCharge;
+
+    public int timeSpaghettiCookedStopIA;
 
 
     private float timerCharge;
@@ -36,17 +36,20 @@ public class BruteBrain : MonoBehaviour
     // ############### FUNCTIONS ###############
     private void Reset()
     {
-        life = 50;
+        life = 15;
+        lootedPasta = 0;
 
         walkSpeed = 2;
         chargeSpeed = 4;
 
-        cacPower = 2;
+        cacPower = 1;
         timeBetweenTwoCac = 1;
 
-        chargePower = 4;
+        chargePower = 2;
         timeToStopAfterCharge = 1;
-        hitForCharge = 5;
+        hitForCharge = 3;
+        
+        timeSpaghettiCookedStopIA = 5;
     }
 
     private void Start()
@@ -56,7 +59,7 @@ public class BruteBrain : MonoBehaviour
         timerImmobile = -1;
         timerAttack = -1;
 
-        brute = new AICharacter(life, pastaToLoot, cacPower, chargePower, hitForCharge, 0, walkSpeed, chargeSpeed);
+        brute = new AICharacter(life, lootedPasta, cacPower, chargePower, hitForCharge, hitForCharge, walkSpeed, chargeSpeed);
         raycaster = GetComponent<CharacterRaycaster>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
@@ -84,9 +87,7 @@ public class BruteBrain : MonoBehaviour
             {
                 if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
                 {
-                    GameManager._instance.healthSystem.Damage(chargePower);
-                    brute.HitRemaningForCharge = brute.HitForCharge;
-                    Debug.Log("Impact Charge");
+                    ImpactCharge();
                 }
                 else
                 {
@@ -97,34 +98,6 @@ public class BruteBrain : MonoBehaviour
             {
                 Reach();
             }
-
-            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-            {
-                Debug.Log("Brute - Take Damage");
-
-                /*
-                if (raycaster.objectCollisionHorizontal) //spag cuite
-                {
-                    timerImmobile = // tmpImobile --> pasta
-                }
-
-                TakeDamage(raycaster.objectCollisionHorizontal) //dega de la pasta
-                */
-            }
-
-            if (raycaster.collisions.HaveVerticalCollision() && raycaster.objectCollisionVertical.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-            {
-                Debug.Log("Brute - Take Damage");
-
-                /*
-                if (raycaster.objectCollisionVertical) //spag cuite
-                {
-                    timerImmobile = // tmpImobile --> pasta
-                }
-
-                TakeDamage(raycaster.objectCollisionVertical) //dega de la pasta
-                */
-            }
         }
     }
 
@@ -132,11 +105,11 @@ public class BruteBrain : MonoBehaviour
     {
         if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
-            spriteRenderer.sprite = spriteLeft;
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else
         {
-            spriteRenderer.sprite = spriteRight;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -145,6 +118,8 @@ public class BruteBrain : MonoBehaviour
         if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
         {
             Attack();
+            raycaster.collisions.Reset();
+            raycaster.objectCollisionHorizontal = null;
         }
         else
         {
@@ -214,21 +189,60 @@ public class BruteBrain : MonoBehaviour
         }
     }
 
-    private void TakeDamage(Pasta pasta)
+    private void ImpactCharge()
     {
-        brute.Life -= pasta.degats;
-        brute.HitRemaningForCharge--;
+        GameManager._instance.healthSystem.Damage(brute.ChargePower);
+        brute.HitRemaningForCharge = brute.HitForCharge;
+        timerAttack = timeBetweenTwoCac;
+        Debug.Log("Impact Charge");
+    }
 
-        if (brute.Life <= 0)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
-            Dead();
+            if (brute.HitRemaningForCharge > 0)
+            {
+                PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
+                if (pastaProjectile.shooter.Equals("Player"))
+                {
+                    if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti"))
+                    {
+                        timerImmobile = timeSpaghettiCookedStopIA;
+                    }
+
+                    brute.Life -= pastaProjectile.shotConfig.damage;
+                    brute.HitRemaningForCharge -= pastaProjectile.shotConfig.damage;
+
+                    PastaManager.Instance.Repool(pastaProjectile);
+
+                    if (brute.Life <= 0)
+                    {
+                        Dead();
+                    }
+                }
+            }
         }
     }
 
     private void Dead()
     {
-        Debug.Log("Loot de Pasta Soldado");
-        // Instantiate (pasta, this.transform);
-        Destroy(this);
+        Debug.Log("Loot de Pasta Brute");
+
+        //for (int i = -2; i < 3; i++)
+        //{
+        //    for (int j = 0; j < 2; j++)
+        //    {
+        //        PastaCollectible pastaCollectible = new PastaCollectible();
+        //        pastaCollectible.pastaIndex = lootedPasta;
+        //        pastaCollectible.Initialize();
+
+        //        Vector3 position = new Vector3(this.transform.position.x + i, this.transform.position.y + j);
+
+        //        Instantiate(pastaCollectible, position, Quaternion.identity);
+        //    }
+        //}
+        
+        Destroy(gameObject);
     }
 }
