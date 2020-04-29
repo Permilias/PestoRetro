@@ -130,7 +130,7 @@ public class PastaGun : MonoBehaviour
         for (int i = 0; i < shotConfig.missileAmount; i++)
         {
             PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(shotConfig, (Vector2)transform.position +
-                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition));
+                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition), "Player", shotPasta);
 
             projectile.transform.position += PlayerController._instance.transform.position;
 

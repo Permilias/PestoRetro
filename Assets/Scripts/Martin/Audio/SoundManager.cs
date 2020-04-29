@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    public Sound enemyBruteDies, enemyBruteCharge, enemyBrutePunch, enemyBruteHit, enemyBruteFootSteps, enemySimpleDies, enemySimpleShoot, enemySimpleHit, enemySimpleFootsteps;
+    public Sound enemyBruteDies, enemyBruteCharge, enemyBrutePunch, enemyBruteHit, enemyBruteFootSteps, enemySimpleDies, enemySimpleShoot, enemySimpleHit, enemySimpleFootsteps, grazDies, grazhurt, grazFootSteps, grazJump, grazHitBullet, grazHitCharge, grazHitPunch, uiButtonGlass, uiButtonPlastic, uiButtonWood;
 
     public Queue<GameObject> receptaclePool;
 
