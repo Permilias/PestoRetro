@@ -43,21 +43,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9860b4bd331f2e49a7d6062e165ed70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caca:
-    clips: []
-    minVolume: 1
-    maxVolume: 1
-    minPitch: 1
-    maxPitch: 1
-  prout:
-    clips: []
-    minVolume: 1
-    maxVolume: 1
-    minPitch: 1
-    maxPitch: 1
-  leSonDeTristan:
+  enemyBruteDies:
     clips:
-    - {fileID: 8300000, guid: b3558157419713b4da72640a769a3d43, type: 3}
+    - {fileID: 8300000, guid: f9bb52c6209974465852be035b1f2d8a, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemyBruteCharge:
+    clips:
+    - {fileID: 8300000, guid: 7032538dd82ba4beb91a2a7043cd47d9, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemyBrutePunch:
+    clips:
+    - {fileID: 8300000, guid: 89bce62e0efe6472789e0a29f613f20d, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemyBruteHit:
+    clips:
+    - {fileID: 8300000, guid: b9d5880d9d91e47c99b2365ff65d2ac4, type: 3}
+    - {fileID: 8300000, guid: 42c9e539a103941e5ba8045d78919570, type: 3}
+    - {fileID: 8300000, guid: 664407621f3dc45d99489a1edd21801b, type: 3}
+    - {fileID: 8300000, guid: 3b8511fd89a37429194163c9ecf6e61a, type: 3}
+    - {fileID: 8300000, guid: 4df619bb31a4d41ee86d36918ef2f373, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemyBruteFootSteps:
+    clips:
+    - {fileID: 8300000, guid: d748e69a5f5b8426c8c270ceb212ace0, type: 3}
+    - {fileID: 8300000, guid: 7c4df1f2b7d4c411d989f331886e45b6, type: 3}
+    - {fileID: 8300000, guid: cd084ad250f654202877770a49383a48, type: 3}
+    - {fileID: 8300000, guid: 59673eb9625f24555b7e660dd2ae63b4, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemySimpleDies:
+    clips:
+    - {fileID: 8300000, guid: 22e4002b92ce74a8189f700414aa59a1, type: 3}
+    - {fileID: 8300000, guid: f40c1b13f7f3c4d3a9666ad8b23e2102, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemySimpleShoot:
+    clips: []
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemySimpleHit:
+    clips:
+    - {fileID: 8300000, guid: d0c81486f73bb4ade8b22c5acfe658a9, type: 3}
+    - {fileID: 8300000, guid: be06f287a1074440688a2b5b32d2c1bb, type: 3}
+    - {fileID: 8300000, guid: 2f2d8cab096df46528b3f7d33fc68e3c, type: 3}
+    - {fileID: 8300000, guid: 311a1ffd38e3344a083353c4b9c86927, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemySimpleFootsteps:
+    clips:
+    - {fileID: 8300000, guid: d748e69a5f5b8426c8c270ceb212ace0, type: 3}
+    - {fileID: 8300000, guid: 7c4df1f2b7d4c411d989f331886e45b6, type: 3}
+    - {fileID: 8300000, guid: cd084ad250f654202877770a49383a48, type: 3}
+    - {fileID: 8300000, guid: 59673eb9625f24555b7e660dd2ae63b4, type: 3}
     minVolume: 1
     maxVolume: 1
     minPitch: 1
