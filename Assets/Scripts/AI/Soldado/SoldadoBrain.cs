@@ -4,46 +4,44 @@ public class SoldadoBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
-    public Sprite spriteLeft;
-    public Sprite spriteRight;
-
     public int cooldown;
-
-    private float timerCharge;
-    private float timerImmobile;
-    private float gravity = -9.81f;
+    public Vector2 shotOffset;
 
     public int shotPasta;
     public int lootedPasta;
 
+
+    private bool facingLeft;
+
+    private float timerReload;
+    private float timerImmobile;
+    private float gravity = -9.81f;
+    
     private AICharacter soldado;
     private CharacterRaycaster raycaster;
-    private SpriteRenderer spriteRenderer;
 
-
+    
     // ############### FUNCTIONS ###############
     private void Reset()
     {
         life = 20;
         cooldown = 5;
+
+        shotPasta = 1;
+        lootedPasta = 1;
     }
 
     private void Start()
     {
-        timerCharge = cooldown;
+        timerReload = cooldown;
         timerImmobile = -1;
 
         soldado = new AICharacter(life, lootedPasta, cooldown, shotPasta);
         raycaster = GetComponent<CharacterRaycaster>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
     {
-        Vector3 movement = new Vector3(0, gravity);
-        movement *= Time.deltaTime;
-        //raycaster.Move(movement);
-
         if (timerImmobile >= 0)
         {
             timerImmobile -= Time.deltaTime;
@@ -52,43 +50,14 @@ public class SoldadoBrain : MonoBehaviour
         {
             Look();
 
-            if (timerCharge >= 0)
+            if (timerReload >= 0)
             {
-                timerCharge -= Time.deltaTime;
+                timerReload -= Time.deltaTime;
             }
             else
             {
                 Shoot();
-                timerCharge = soldado.Cooldown;
-            }
-
-            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-            {
-                Debug.Log("Soldado - Take Damage");
-                
-                /*
-                if (raycaster.objectCollisionHorizontal) //spag cuite
-                {
-                    timerImmobile = // tmpImobile --> pasta
-                }
-
-                TakeDamage(raycaster.objectCollisionHorizontal) //dega de la pasta
-                */
-                
-            }
-
-            if (raycaster.collisions.HaveVerticalCollision() && raycaster.objectCollisionVertical.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-            {
-                Debug.Log("Soldado - Take Damage");
-
-                /*
-                if (raycaster.objectCollisionVertical) //spag cuite
-                {
-                    timerImmobile = // tmpImobile --> pasta
-                }
-
-                TakeDamage(raycaster.objectCollisionVertical) //dega de la pasta
-                */
+                timerReload = soldado.Cooldown;
             }
         }
     }
@@ -107,33 +76,52 @@ public class SoldadoBrain : MonoBehaviour
         }
     }
 
-    public Vector2 shotOffset;
-    bool facingLeft;
 
     private void Shoot()
     {
         Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
-        PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot, (Vector2)transform.position + shotOffset) ;
+
+        PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
+                                                                                    (Vector2)transform.position + offset, "IA");
         projectile.SetDirection(facingLeft);
         projectile.Shoot();
+
     }
 
-    private void TakeDamage(Pasta pasta)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        soldado.Life -= pasta.degats;
-
-        if (soldado.Life <= 0)
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
-            Dead();
+            PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
+            if (pastaProjectile.shooter.Equals("Player"))
+            {
+                if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti")) //spag cuite
+                {
+                    timerImmobile = 2;
+                }
+
+                soldado.Life -= pastaProjectile.pasta.degats;
+
+                PastaManager.Instance.Repool(pastaProjectile);
+
+                if (soldado.Life <= 0)
+                {
+                    Dead();
+                }
+            }
+
         }
     }
 
     private void Dead()
     {
         Debug.Log("Loot de Pasta Soldado");
-        // Instantiate (pasta, this.transform);
+
+        PastaCollectible pastaCollectible = new PastaCollectible();
+        pastaCollectible.pastaIndex = lootedPasta;
+        pastaCollectible.Initialize();
+
+        Instantiate (pastaCollectible, this.transform);
         Destroy(this);
     }
-
-
 }
