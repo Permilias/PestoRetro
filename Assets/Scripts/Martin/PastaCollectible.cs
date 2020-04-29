@@ -16,6 +16,16 @@ public class PastaCollectible : MonoBehaviour
 
     private void Update()
     {
+        if (collected) return;
+
+        if(Vector2.Distance(transform.position, PlayerController._instance.transform.position) < radius)
+        {
+            if(!collected)
+            {
+                Collect();
+            }
+        }
+
         if(movingUp)
         {
             if(!operating)
@@ -46,18 +56,12 @@ public class PastaCollectible : MonoBehaviour
 
     }
 
-
+    float radius;
     public void Initialize()
     {
         Pasta pasta = PastaManager.Instance.pastas[pastaIndex];
 
-
-        Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
-        rb.isKinematic = true;
-
-        CircleCollider2D col = gameObject.AddComponent<CircleCollider2D>();
-        col.isTrigger = true;
-        col.radius = pasta.config.collectibleColliderRadius;
+        radius = pasta.config.collectibleColliderRadius;
 
         sr = new GameObject("CollectibleSprite").AddComponent<SpriteRenderer>();
         sr.sprite = pasta.config.collectibleSprite;
@@ -72,18 +76,10 @@ public class PastaCollectible : MonoBehaviour
         movingUp = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Trigger Entered !");
-        if(!collected)
-        {
-            Collect();
-        }
-
-    }
 
     public void Collect()
     {
+        PastaManager.Instance.pastaAmounts[pastaIndex] += givenAmount;
         collected = true;
         sr.enabled = false;
     }

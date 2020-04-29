@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pastaName: Spaghetti
   iconSprite: {fileID: 21300000, guid: 8ae61f9ba71476647ae0829c61c58199, type: 3}
-  startingAmount: 0
+  startingAmount: 100
   collectibleGivenAmount: 0
   collectibleSprite: {fileID: 21300000, guid: 8ae61f9ba71476647ae0829c61c58199, type: 3}
   collectibleGraphicsScale: {x: 0.4, y: 0.4}

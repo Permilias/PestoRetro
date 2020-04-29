@@ -23,11 +23,11 @@ MonoBehaviour:
   crudeShot:
     damage: 1
     effects: []
-    reloadSpeed: 1.3
-    missileAmount: 5
-    missileSpreadAngle: 60
-    range: 2
-    travelDuration: 0.4
+    reloadSpeed: 0.4
+    missileAmount: 85
+    missileSpreadAngle: 40
+    range: 10
+    travelDuration: 0.9
     yTrajectory:
       serializedVersion: 2
       m_Curve:

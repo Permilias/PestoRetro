@@ -52,6 +52,12 @@ public class PastaGun : MonoBehaviour
     public bool cookedReady;
     private void Update()
     {
+        if (Mathf.Abs(PlayerController._instance.movementVector.x) > 0f)
+        {
+            shootingLeft = PlayerController._instance.movementVector.x < 0f ? true : false;
+        }
+
+
         if (Input.GetMouseButtonDown(1))
         {
             RollPastaSelection(true);
@@ -111,6 +117,8 @@ public class PastaGun : MonoBehaviour
 
     public void Shoot()
     {
+
+
         PastaManager.Instance.pastaAmounts[currentSelectedPasta] -= 1;
         Pasta shotPasta = PastaManager.Instance.pastas[currentSelectedPasta];
         PastaShotConfig shotConfig = cookedReady ? shotPasta.config.cookedShot : shotPasta.config.crudeShot;
@@ -125,6 +133,8 @@ public class PastaGun : MonoBehaviour
         {
             PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(shotConfig, (Vector2)transform.position +
                 (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition));
+
+            projectile.transform.position += PlayerController._instance.transform.position;
 
             if(shotConfig.missileAmount > 1)
             {
