@@ -15,7 +15,7 @@ public class PickUpAndDropPactol : MonoBehaviour
 
     private Transform pactolTransform;
     private SpriteRenderer pactolSprite;
-    private Rigidbody2D pactolRigidbody;
+    private GravityPactol pactolGravity;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class PickUpAndDropPactol : MonoBehaviour
 
         pactolTransform = pactol.GetComponent<Transform>();
         pactolSprite = pactol.GetComponent<SpriteRenderer>();
-        pactolRigidbody = pactol.GetComponent<Rigidbody2D>();
+        pactolGravity = pactol.GetComponent<GravityPactol>();
     }
 
     private void Update()
@@ -92,7 +92,8 @@ public class PickUpAndDropPactol : MonoBehaviour
 
         pactolTransform.position = targetPoint.transform.position;
         pactolTransform.parent = targetPoint.transform;
-        
+
+        pactolGravity.enabled = false;
         PlayerController._instance.hasBag = true;
     }
 
@@ -106,6 +107,7 @@ public class PickUpAndDropPactol : MonoBehaviour
 
         pactolTransform.parent = null;
 
+        pactolGravity.enabled = true;
         PlayerController._instance.hasBag = false;
     }
 }
