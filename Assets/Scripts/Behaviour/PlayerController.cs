@@ -141,14 +141,11 @@ public class PlayerController : MonoBehaviour
 
     void PostMovementJumpUpdate()
     {
-        
         if (isGrounded)
         {
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
-            
         }
-        
     }
 
     void MovementUpdate()
@@ -236,5 +233,13 @@ public class PlayerController : MonoBehaviour
                 graphicsTransform.transform.localScale.y,
                 graphicsTransform.transform.localScale.z
             );
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
+        {
+            Debug.Log("hello");
+        }
     }
 }
