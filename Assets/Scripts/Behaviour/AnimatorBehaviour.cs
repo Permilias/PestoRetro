@@ -32,7 +32,17 @@ public static class AnimatorBehaviour
         }
         else
         {
-            currentAnimator.SetBool("IsMoving", false);
+            if (PlayerController._instance.hasBag)
+            {
+                currentAnimator.SetBool("IsMoving", true);
+                currentAnimator.speed = 0.8f;
+            }
+            else
+            {
+                currentAnimator.SetBool("IsMoving", false);
+            }
+
+            
         }
     }
 

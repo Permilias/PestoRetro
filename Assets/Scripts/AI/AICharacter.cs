@@ -5,12 +5,12 @@ public class AICharacter
     // ############### VARIABLES ###############
     // Commun variable
     private int life;
-    private Pasta pastaToLoot;
+    private int pastaToLoot;
 
     // Soldado variable
     private Vector2 target;
     private int cooldown;
-    private Pasta pastaToShoot;
+    private int pastaToShoot;
 
     // Brute variable
     private float walkSpeed;
@@ -23,11 +23,11 @@ public class AICharacter
 
     // ############### GET-SET ###############
     public int Life { get => life; set => life = value; }
-    public Pasta PastaToLoot { get => pastaToLoot; set => pastaToLoot = value; }
+    public int PastaToLoot { get => pastaToLoot; set => pastaToLoot = value; }
 
     public Vector2 Target { get => target; set => target = value; }
     public int Cooldown { get => cooldown; set => cooldown = value; }
-    public Pasta PastaToShoot { get => pastaToShoot; set => pastaToShoot = value; }
+    public int PastaToShoot { get => pastaToShoot; set => pastaToShoot = value; }
 
     public float WalkSpeed { get => walkSpeed; set => walkSpeed = value; }
     public float ChargeSpeed { get => chargeSpeed; set => chargeSpeed = value; }
@@ -38,7 +38,7 @@ public class AICharacter
 
 
     // ############### CONSTRUCTEURS ###############
-    public AICharacter(int life, Pasta pastaToLoot, int cooldown, Pasta pastaToShoot)
+    public AICharacter(int life, int pastaToLoot, int cooldown, int pastaToShoot)
     {
         Life = life;
         PastaToLoot = pastaToLoot;
@@ -53,14 +53,14 @@ public class AICharacter
         HitRemaningForCharge = -1;
     }
 
-    public AICharacter(int life, Pasta pastaToLoot, int cacPower, int chargePower, int hitForCharge, int hitRemainingForCharge, float walkSpeed, float chargeSpeed)
+    public AICharacter(int life, int pastaToLoot, int cacPower, int chargePower, int hitForCharge, int hitRemainingForCharge, float walkSpeed, float chargeSpeed)
     {
         Life = life;
         PastaToLoot = pastaToLoot;
 
         Target = Vector2.zero;
         Cooldown = -1;
-        PastaToShoot = null;
+        PastaToShoot = 0;
 
         WalkSpeed = walkSpeed;
         ChargeSpeed = chargeSpeed;

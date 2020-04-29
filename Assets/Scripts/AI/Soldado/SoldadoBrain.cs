@@ -4,17 +4,17 @@ public class SoldadoBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
-    public Pasta pastaToLoot;
     public Sprite spriteLeft;
     public Sprite spriteRight;
 
     public int cooldown;
-    public Pasta pastaToShoot;
-
 
     private float timerCharge;
     private float timerImmobile;
     private float gravity = -9.81f;
+
+    public int shotPasta;
+    public int lootedPasta;
 
     private AICharacter soldado;
     private CharacterRaycaster raycaster;
@@ -33,7 +33,7 @@ public class SoldadoBrain : MonoBehaviour
         timerCharge = cooldown;
         timerImmobile = -1;
 
-        soldado = new AICharacter(life, pastaToLoot, cooldown, pastaToShoot);
+        soldado = new AICharacter(life, lootedPasta, cooldown, shotPasta);
         raycaster = GetComponent<CharacterRaycaster>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
@@ -97,18 +97,25 @@ public class SoldadoBrain : MonoBehaviour
     {
         if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
-            spriteRenderer.sprite = spriteLeft;
+            transform.localScale = new Vector3(-1, 1, 1);
+            facingLeft = true;
         }
         else
         {
-            spriteRenderer.sprite = spriteRight;
+            transform.localScale = new Vector3(1, 1, 1);
+            facingLeft = false;
         }
     }
 
+    public Vector2 shotOffset;
+    bool facingLeft;
+
     private void Shoot()
     {
-        Debug.LogWarning("Soldado - Shoot");
-        //PlayerController.Shoot(PlayerController._instance.coord, soldado.PastaToShoot);
+        Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
+        PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot, (Vector2)transform.position + shotOffset) ;
+        projectile.SetDirection(facingLeft);
+        projectile.Shoot();
     }
 
     private void TakeDamage(Pasta pasta)
@@ -127,4 +134,6 @@ public class SoldadoBrain : MonoBehaviour
         // Instantiate (pasta, this.transform);
         Destroy(this);
     }
+
+
 }
