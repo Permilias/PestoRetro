@@ -21,13 +21,13 @@ MonoBehaviour:
   collectibleColliderRadius: 0.7
   cookingSpeed: 0.9
   crudeShot:
+    cooked: 0
     damage: 1
-    effects: []
     reloadSpeed: 0.4
-    missileAmount: 85
-    missileSpreadAngle: 40
-    range: 10
-    travelDuration: 0.9
+    missileAmount: 5
+    missileSpreadAngle: 60
+    range: 3
+    travelDuration: 0.3
     yTrajectory:
       serializedVersion: 2
       m_Curve:
@@ -59,8 +59,8 @@ MonoBehaviour:
     spriteObjectOffset: {x: 0, y: 0}
     colliderSize: {x: 0.15, y: 0.15}
   cookedShot:
+    cooked: 1
     damage: 3
-    effects: []
     reloadSpeed: 0.8
     missileAmount: 1
     missileSpreadAngle: 0
