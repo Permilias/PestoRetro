@@ -24,7 +24,7 @@ MonoBehaviour:
     cooked: 0
     damage: 1
     reloadSpeed: 0.4
-    missileAmount: 8
+    missileAmount: 4
     missileSpreadAngle: 50
     range: 4.5
     travelDuration: 0.3
@@ -60,7 +60,7 @@ MonoBehaviour:
     colliderSize: {x: 0.15, y: 0.15}
   cookedShot:
     cooked: 1
-    damage: 3
+    damage: 5
     reloadSpeed: 0.8
     missileAmount: 1
     missileSpreadAngle: 0

@@ -22,7 +22,7 @@ MonoBehaviour:
   cookingSpeed: 1.3
   crudeShot:
     cooked: 0
-    damage: 1
+    damage: 2
     reloadSpeed: 0.3
     missileAmount: 1
     missileSpreadAngle: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     colliderSize: {x: 1, y: 1}
   cookedShot:
     cooked: 1
-    damage: 0
+    damage: 1
     reloadSpeed: 0.5
     missileAmount: 1
     missileSpreadAngle: 0

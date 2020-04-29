@@ -5,7 +5,6 @@ public class AICharacter
     // ############### VARIABLES ###############
     // Commun variable
     private int life;
-    private int pastaToLoot;
 
     // Soldado variable
     private Vector2 target;
@@ -23,7 +22,6 @@ public class AICharacter
 
     // ############### GET-SET ###############
     public int Life { get => life; set => life = value; }
-    public int PastaToLoot { get => pastaToLoot; set => pastaToLoot = value; }
 
     public Vector2 Target { get => target; set => target = value; }
     public int Cooldown { get => cooldown; set => cooldown = value; }
@@ -38,10 +36,9 @@ public class AICharacter
 
 
     // ############### CONSTRUCTEURS ###############
-    public AICharacter(int life, int pastaToLoot, int cooldown, int pastaToShoot)
+    public AICharacter(int life, int cooldown, int pastaToShoot)
     {
         Life = life;
-        PastaToLoot = pastaToLoot;
 
         Target = Vector2.zero;
         Cooldown = cooldown;
@@ -53,10 +50,9 @@ public class AICharacter
         HitRemaningForCharge = -1;
     }
 
-    public AICharacter(int life, int pastaToLoot, int cacPower, int chargePower, int hitForCharge, int hitRemainingForCharge, float walkSpeed, float chargeSpeed)
+    public AICharacter(int life, int cacPower, int chargePower, int hitForCharge, int hitRemainingForCharge, float walkSpeed, float chargeSpeed)
     {
         Life = life;
-        PastaToLoot = pastaToLoot;
 
         Target = Vector2.zero;
         Cooldown = -1;
