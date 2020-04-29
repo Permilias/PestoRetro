@@ -70,6 +70,8 @@ MonoBehaviour:
     m_Bits: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  objectCollisionHorizontal: {fileID: 0}
+  objectCollisionVertical: {fileID: 0}
 --- !u!61 &2479081439117197688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -329,7 +331,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6771478956967927996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.8, y: 0, z: 0}
+  m_LocalPosition: {x: 47.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2479081439117197685}
@@ -412,6 +414,8 @@ MonoBehaviour:
     m_Bits: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  objectCollisionHorizontal: {fileID: 0}
+  objectCollisionVertical: {fileID: 0}
 --- !u!61 &7970685063959064833
 BoxCollider2D:
   m_ObjectHideFlags: 0
