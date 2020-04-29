@@ -79,6 +79,8 @@ public class PastaCollectible : MonoBehaviour
 
     public void Collect()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.leSonDeTristan);
+
         PastaManager.Instance.pastaAmounts[pastaIndex] += givenAmount;
         collected = true;
         sr.enabled = false;

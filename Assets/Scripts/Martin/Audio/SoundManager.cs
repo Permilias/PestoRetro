@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
+    public Sound caca, prout, leSonDeTristan;
+
     public Queue<GameObject> receptaclePool;
 
     public float sfxVolume;
