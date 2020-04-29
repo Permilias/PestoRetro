@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db5dc8ee500fe24a9d9bc8060e88cc0, type: 3}
+  m_Name: PastaConfig_Gnocchi
+  m_EditorClassIdentifier: 
+  pastaName: Gnocchi
+  iconSprite: {fileID: 21300000, guid: 9ae9d5ecba9e98a49848d5729516e312, type: 3}
+  startingAmount: 50
+  collectibleGivenAmount: 50
+  collectibleSprite: {fileID: 21300000, guid: 9ae9d5ecba9e98a49848d5729516e312, type: 3}
+  collectibleGraphicsScale: {x: 0.7, y: 0.7}
+  collectibleColliderRadius: 0.7
+  cookingSpeed: 0.9
+  crudeShot:
+    damage: 1
+    effects: []
+    reloadSpeed: 1.3
+    missileAmount: 5
+    missileSpreadAngle: 60
+    range: 2
+    travelDuration: 0.4
+    yTrajectory:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    goesToGround: 0
+    straight: 0
+    projectileSprite: {fileID: 21300000, guid: 8dc046edfe57e894ebf7fc7d35238176, type: 3}
+    spriteObjectScale: {x: 0.15, y: 0.15}
+    spriteObjectOffset: {x: 0, y: 0}
+    colliderSize: {x: 0.15, y: 0.15}
+  cookedShot:
+    damage: 3
+    effects: []
+    reloadSpeed: 0.8
+    missileAmount: 1
+    missileSpreadAngle: 0
+    range: 5
+    travelDuration: 0.5
+    yTrajectory:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 2.2287767
+        outSlope: 2.2287767
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.11464968
+      - serializedVersion: 3
+        time: 0.4984127
+        value: 1.4
+        inSlope: 0.0025396645
+        outSlope: 0.0025396645
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: -2.2543752
+        outSlope: -2.2543752
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.09177304
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    goesToGround: 1
+    straight: 0
+    projectileSprite: {fileID: 21300000, guid: 5c826b85b8166c94584c6f08d52a2941, type: 3}
+    spriteObjectScale: {x: 0.7, y: 0.7}
+    spriteObjectOffset: {x: 0, y: 0}
+    colliderSize: {x: 1, y: 1}

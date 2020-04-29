@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db5dc8ee500fe24a9d9bc8060e88cc0, type: 3}
+  m_Name: PastaConfig_Spaghetti
+  m_EditorClassIdentifier: 
+  pastaName: Spaghetti
+  iconSprite: {fileID: 21300000, guid: 8ae61f9ba71476647ae0829c61c58199, type: 3}
+  startingAmount: 0
+  collectibleGivenAmount: 0
+  collectibleSprite: {fileID: 21300000, guid: 8ae61f9ba71476647ae0829c61c58199, type: 3}
+  collectibleGraphicsScale: {x: 0.4, y: 0.4}
+  collectibleColliderRadius: 1
+  cookingSpeed: 1.3
+  crudeShot:
+    damage: 1
+    effects: []
+    reloadSpeed: 0.3
+    missileAmount: 1
+    missileSpreadAngle: 0
+    range: 10
+    travelDuration: 1
+    yTrajectory:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    goesToGround: 0
+    straight: 1
+    projectileSprite: {fileID: 21300000, guid: 6c86789ab442d1b47b5d27ae233ffd91, type: 3}
+    spriteObjectScale: {x: 0.3, y: 0.3}
+    spriteObjectOffset: {x: 1, y: 0}
+    colliderSize: {x: 1, y: 1}
+  cookedShot:
+    damage: 0
+    effects: []
+    reloadSpeed: 0.5
+    missileAmount: 1
+    missileSpreadAngle: 0
+    range: 10
+    travelDuration: 1.2
+    yTrajectory:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    goesToGround: 0
+    straight: 1
+    projectileSprite: {fileID: 21300000, guid: 1ab939fa81adf7c46b8777f93f483a78, type: 3}
+    spriteObjectScale: {x: 0.3, y: 0.3}
+    spriteObjectOffset: {x: 1, y: 0}
+    colliderSize: {x: 1, y: 1}
