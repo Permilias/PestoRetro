@@ -79,6 +79,8 @@ public class PastaCollectible : MonoBehaviour
 
     public void Collect()
     {
+        //SFX
+
         PastaManager.Instance.pastaAmounts[pastaIndex] += givenAmount;
         collected = true;
         sr.enabled = false;
