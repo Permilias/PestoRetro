@@ -35,4 +35,17 @@ public static class AnimatorBehaviour
         {
         }
     }
+
+    public static void JumpAnimations()
+    {
+        if (PlayerController._instance.jumpKey)
+        {
+            currentAnimator.SetBool("isJumping", true);
+        }
+    }
+
+    public static void CancelJumpAnimations()
+    {
+        currentAnimator.SetBool("isJumping", false);
+    }
 }
