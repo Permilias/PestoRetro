@@ -5,6 +5,7 @@ using UnityEngine;
 public static class AnimatorBehaviour
 { 
     static Animator currentAnimator;
+    static bool shooting;
 
     public static Animator GetAnimator(Animator animator)
     {
@@ -14,7 +15,7 @@ public static class AnimatorBehaviour
 
    public static void MovementAnimations(Vector3 movement)
     {
-        if (!PlayerController._instance.jumpKey)
+        if (!PlayerController._instance.jumpKey && shooting == false)
         {
             if (PlayerController._instance.rightKey || PlayerController._instance.leftKey || movement.x != 0f)
             {
@@ -48,14 +49,34 @@ public static class AnimatorBehaviour
 
     public static void ShootingAnimations(Vector3 movement)
     {
-        currentAnimator.SetTrigger("IsShooting");
-
+        shooting = true;
         if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
         {
+          
+            currentAnimator.SetBool("IsShootingAndMoving", true);
+        }
+        else
+        {
+            currentAnimator.SetBool("IsShooting", true);
         }
     }
 
-   
+    public static void StopShootingAnimations(Vector3 movement)
+    {
+
+        if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
+        {
+            currentAnimator.SetBool("IsShootingAndMoving", false);
+        }
+        else
+        {
+            currentAnimator.SetBool("IsShooting", false);
+        }
+
+       shooting = false;
+    }
+
+
 
     public static void JumpAnimations(Vector3 movement)
     {

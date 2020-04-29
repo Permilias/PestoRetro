@@ -93,7 +93,9 @@ public class PastaGun : MonoBehaviour
                     AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
                     AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
                     Shoot();
+                    StartCoroutine("EndAnimations");
                 }
+                
             }
 
         }
@@ -152,6 +154,14 @@ public class PastaGun : MonoBehaviour
             projectile.shotByPlayer = true;
             projectile.SetDirection(shootingLeft);
             projectile.Shoot();
+           
         }       
+    }
+
+    IEnumerator EndAnimations()
+    {
+        yield return new WaitForSeconds(0.05f);
+        AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
+        AnimatorBehaviour.StopShootingAnimations(PlayerController._instance.movementVector);    
     }
 }
