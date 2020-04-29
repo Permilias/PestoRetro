@@ -773,6 +773,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pactol
       objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398516, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398516, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
       propertyPath: m_LocalPosition.x
