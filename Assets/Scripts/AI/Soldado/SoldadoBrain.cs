@@ -7,6 +7,7 @@ public class SoldadoBrain : MonoBehaviour
     public int cooldown;
     public Vector2 shotOffset;
 
+    public int timeSpaghettiCookedStopIA;
     public int shotPasta;
     public int lootedPasta;
 
@@ -24,9 +25,10 @@ public class SoldadoBrain : MonoBehaviour
     // ############### FUNCTIONS ###############
     private void Reset()
     {
-        life = 20;
+        life = 3;
         cooldown = 5;
 
+        timeSpaghettiCookedStopIA = 5;
         shotPasta = 1;
         lootedPasta = 1;
     }
@@ -34,7 +36,7 @@ public class SoldadoBrain : MonoBehaviour
     private void Start()
     {
         timerReload = cooldown;
-        timerImmobile = -1;
+        timerImmobile = Random.Range(0, 5);
 
         soldado = new AICharacter(life, lootedPasta, cooldown, shotPasta);
         raycaster = GetComponent<CharacterRaycaster>();
@@ -82,7 +84,7 @@ public class SoldadoBrain : MonoBehaviour
         Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
 
         PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
-                                                                                    (Vector2)transform.position + offset, "IA");
+                                                                                    (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
         projectile.SetDirection(facingLeft);
         projectile.Shoot();
 
@@ -97,10 +99,10 @@ public class SoldadoBrain : MonoBehaviour
             {
                 if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti")) //spag cuite
                 {
-                    timerImmobile = 2;
+                    timerImmobile = timeSpaghettiCookedStopIA;
                 }
 
-                soldado.Life -= pastaProjectile.pasta.degats;
+                soldado.Life -= pastaProjectile.shotConfig.damage;
 
                 PastaManager.Instance.Repool(pastaProjectile);
 
@@ -117,11 +119,11 @@ public class SoldadoBrain : MonoBehaviour
     {
         Debug.Log("Loot de Pasta Soldado");
 
-        PastaCollectible pastaCollectible = new PastaCollectible();
-        pastaCollectible.pastaIndex = lootedPasta;
-        pastaCollectible.Initialize();
+        //PastaCollectible pastaCollectible = new PastaCollectible();
+        //pastaCollectible.pastaIndex = lootedPasta;
+        //pastaCollectible.Initialize();
 
-        Instantiate (pastaCollectible, this.transform);
-        Destroy(this);
+        //Instantiate (pastaCollectible, this.transform);
+        Destroy(gameObject);
     }
 }

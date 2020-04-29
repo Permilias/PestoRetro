@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c7a79fed86d1a46a888185d921d58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 50
+  life: 15
   lootedPasta: 0
   walkSpeed: 2
   chargeSpeed: 4
@@ -55,7 +55,7 @@ MonoBehaviour:
   timeBetweenTwoCac: 1
   chargePower: 2
   timeToStopAfterCharge: 1
-  hitForCharge: 5
+  hitForCharge: 3
 --- !u!114 &1773693347199341209
 MonoBehaviour:
   m_ObjectHideFlags: 0
