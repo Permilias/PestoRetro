@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1539963938775398518}
   - component: {fileID: 1539963938775398517}
   - component: {fileID: 1539963938775398507}
-  - component: {fileID: 1539963938775398516}
+  - component: {fileID: 1845887775048229989}
+  - component: {fileID: 7729536491086067487}
   m_Layer: 9
   m_Name: Pactol
   m_TagString: Untagged
@@ -93,7 +94,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0065511465, y: 0}
@@ -109,24 +110,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0131013, y: 1}
   m_EdgeRadius: 0
---- !u!50 &1539963938775398516
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &1845887775048229989
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539963938775398506}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ca923a5e5ca874c8366e0a849a7278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 55
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  objectCollisionHorizontal: {fileID: 0}
+  objectCollisionVertical: {fileID: 0}
+--- !u!114 &7729536491086067487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539963938775398506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0999bf127650ece43bfd2f3300deb033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
