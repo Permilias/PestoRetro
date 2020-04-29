@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class AnimatorBehaviour
-{
-
+{ 
     static Animator currentAnimator;
 
     public static Animator GetAnimator(Animator animator)
@@ -15,7 +14,7 @@ public static class AnimatorBehaviour
 
    public static void MovementAnimations(Vector3 movement)
     {
-        if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
+        if (PlayerController._instance.rightKey || PlayerController._instance.leftKey || movement.x != 0f)
         {
             currentAnimator.SetBool("IsMoving", true);
             if (PlayerController._instance.hasBag)
@@ -27,6 +26,13 @@ public static class AnimatorBehaviour
         {
             currentAnimator.SetBool("IsMoving", false);
             currentAnimator.speed = 1f;
+        }
+    }
+
+    public static void ShootingAnimations(Vector3 movement)
+    {
+        if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
+        {
         }
     }
 }

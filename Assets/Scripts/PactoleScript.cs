@@ -40,8 +40,6 @@ public class PactoleScript : MonoBehaviour
             movement *= Time.deltaTime;
             raycast.Move(movement);
         }
-
-        Debug.Log(objectPickedUp);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,7 +62,6 @@ public class PactoleScript : MonoBehaviour
 
     private void PickUp ()
     {
-        Debug.Log("Pactole is picked up!");
         objectPickedUp = true;
 
         this.transform.position = targetPoint.transform.position;

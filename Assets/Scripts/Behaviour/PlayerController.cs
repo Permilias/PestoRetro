@@ -94,7 +94,11 @@ public class PlayerController : MonoBehaviour
         DebugUpdate();
         AnimationUpdate();
 
-   
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager._instance.healthSystem.Damage(1);
+            Debug.Log(GameManager._instance.healthSystem.GetHealth());
+        }
     }
 
     void InputUpdate()
