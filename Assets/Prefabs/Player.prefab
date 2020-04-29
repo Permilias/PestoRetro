@@ -114,7 +114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1124771, y: 2.3812537}
+  m_Size: {x: 1.2, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &9074726314816971581
 MonoBehaviour:
@@ -262,10 +262,11 @@ MonoBehaviour:
     m_RotationOrder: 4
   jumpReleaseMultiplier: 4
   maxJumpsAllowed: 2
-  movementThreshold: 0.0015
+  movementThreshold: 0.02
   self: {fileID: 9074726314816971580}
   raycaster: {fileID: 9074726314816971578}
-  graphicTransform: {fileID: 9074726314972214547}
+  graphicsTransform: {fileID: 9074726314972214547}
+  animator: {fileID: 1542578422}
   debugMode: 1
   fakeGroundLevel: {fileID: 0}
   hasBag: 0

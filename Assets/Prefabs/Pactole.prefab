@@ -144,3 +144,5 @@ MonoBehaviour:
     m_Bits: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  objectCollisionHorizontal: {fileID: 0}
+  objectCollisionVertical: {fileID: 0}

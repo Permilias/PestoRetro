@@ -42,7 +42,7 @@ public class SoldadoBrain : MonoBehaviour
     {
         Vector3 movement = new Vector3(0, gravity);
         movement *= Time.deltaTime;
-        raycaster.Move(movement);
+        //raycaster.Move(movement);
 
         if (timerImmobile >= 0)
         {
@@ -62,7 +62,8 @@ public class SoldadoBrain : MonoBehaviour
                 timerCharge = soldado.Cooldown;
             }
 
-            if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
+            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Projectiles")) ||
+                raycaster.collisions.HaveVerticalCollision() && raycaster.objectCollisionVertical.layer.Equals(LayerMask.NameToLayer("Projectiles")))
             {
                 Debug.Log("Soldado - Take Damage");
 

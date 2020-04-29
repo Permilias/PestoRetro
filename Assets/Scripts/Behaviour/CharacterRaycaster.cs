@@ -17,7 +17,8 @@ public class CharacterRaycaster : MonoBehaviour
     float verticalRaySpacing;
 
     BoxCollider2D collider;
-
+    public GameObject objectCollisionHorizontal;
+    public GameObject objectCollisionVertical;
 
     public RaycastOrigins raycastOrigins;
 
@@ -45,6 +46,8 @@ public class CharacterRaycaster : MonoBehaviour
         }
 
         transform.Translate(velocity);
+
+        
     }
 
     void HorizontalCollisions(ref Vector3 velocity)
@@ -60,10 +63,10 @@ public class CharacterRaycaster : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
             RaycastHit2D hitTrigger = Physics2D.Raycast(rayOrigin, Vector2.up * directionX, rayLength, triggerMask);
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
-
+            
             if (hit)
             {
-                PlayerUtils.GetLayer(hit.collider.gameObject.layer);
+                objectCollisionHorizontal = hit.collider.gameObject;
                 velocity.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
 
@@ -100,13 +103,12 @@ public class CharacterRaycaster : MonoBehaviour
 
             if (hit)
             {
+                objectCollisionVertical = hit.collider.gameObject;
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
                 collisions.below = directionY == -1;
-                collisions.above = directionY == 1;
-
-               
+                collisions.above = directionY == 1;               
             }
 
             if (hitTrigger)
@@ -168,6 +170,16 @@ public class CharacterRaycaster : MonoBehaviour
         public bool HaveCollision()
         {
             return above || below || right || left;
+        }
+
+        public bool HaveHorizontalCollision()
+        {
+            return right || left;
+        }
+
+        public bool HaveVerticalCollision()
+        {
+            return above || below;
         }
     }
 }
