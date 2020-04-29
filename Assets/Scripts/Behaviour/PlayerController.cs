@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            GameManager._instance.healthSystem.Damage(1);
+            
             Debug.Log(GameManager._instance.healthSystem.GetHealth());
         }
 
@@ -239,7 +239,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
-            Debug.Log("hello");
+            PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
+
+            GameManager._instance.healthSystem.Damage(pastaProjectile.pasta.degats);
         }
     }
 }
