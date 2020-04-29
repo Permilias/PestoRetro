@@ -7,7 +7,9 @@ public class PastaProjectile : MonoBehaviour
     public Pasta pasta;
     public SpriteRenderer sr;
     public BoxCollider2D col;
-    PastaShotConfig shotConfig;
+    public PastaShotConfig shotConfig;
+
+    public bool shotByPlayer;
 
 
     public void Initialize(PastaShotConfig _shotConfig)

@@ -117,8 +117,6 @@ public class PastaGun : MonoBehaviour
 
     public void Shoot()
     {
-
-
         PastaManager.Instance.pastaAmounts[currentSelectedPasta] -= 1;
         Pasta shotPasta = PastaManager.Instance.pastas[currentSelectedPasta];
         PastaShotConfig shotConfig = cookedReady ? shotPasta.config.cookedShot : shotPasta.config.crudeShot;
@@ -149,6 +147,7 @@ public class PastaGun : MonoBehaviour
                 projectile.transform.eulerAngles = Vector3.zero;
             }
 
+            projectile.shotByPlayer = true;
             projectile.SetDirection(shootingLeft);
             projectile.Shoot();
         }       

@@ -7,7 +7,7 @@ public class BruteBrain : MonoBehaviour
     // ############### VARIABLES ###############
     public int life;
 
-    public Pasta pastaToLoot;
+    public int pastaToLoot;
     public Sprite spriteLeft;
     public Sprite spriteRight;
 
