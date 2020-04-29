@@ -17,8 +17,8 @@ public class CharacterRaycaster : MonoBehaviour
     float verticalRaySpacing;
 
     BoxCollider2D collider;
-    public GameObject objectCollisionHorizontal;
-    public GameObject objectCollisionVertical;
+    [HideInInspector] public GameObject objectCollisionHorizontal;
+    [HideInInspector] public GameObject objectCollisionVertical;
 
     public RaycastOrigins raycastOrigins;
 
