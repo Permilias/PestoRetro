@@ -536,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: nbChunkToDisplay
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
