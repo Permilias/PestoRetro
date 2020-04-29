@@ -90,6 +90,8 @@ public class PastaGun : MonoBehaviour
             {
                 if (Input.GetMouseButtonUp(0))
                 {
+                    AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
+                    AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
                     Shoot();
                 }
             }

@@ -48,10 +48,14 @@ public static class AnimatorBehaviour
 
     public static void ShootingAnimations(Vector3 movement)
     {
+        currentAnimator.SetTrigger("IsShooting");
+
         if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
         {
         }
     }
+
+   
 
     public static void JumpAnimations(Vector3 movement)
     {

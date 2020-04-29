@@ -240,8 +240,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
             PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-
-            GameManager._instance.healthSystem.Damage(pastaProjectile.pasta.degats);
+            if (pastaProjectile.shooter.Equals("IA"))
+            {
+                GameManager._instance.healthSystem.Damage(pastaProjectile.shotConfig.damage);
+            }
         }
     }
 }
