@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class PastaUI : MonoBehaviour
 {
+    public int playerLife;
 
     public TextMeshProUGUI munitionsText;
     public Image[] munitionsImage;
     public Image cookingBar;
     public Image reloadImage;
     Color baseCookingColor;
+
+    public GameObject[] lives;
 
     private void Awake()
     {
@@ -44,5 +47,17 @@ public class PastaUI : MonoBehaviour
             reloadImage.fillAmount = 0f;
         }
 
+
+        for(int i = 0; i < lives.Length; i++)
+        {
+            if(i >= playerLife)
+            {
+                lives[i].SetActive(true);
+            }
+            else
+            {
+                lives[i].SetActive(false);
+            }
+        }
     }
 }
