@@ -21,33 +21,33 @@ MonoBehaviour:
   collectibleColliderRadius: 1
   cookingSpeed: 1.3
   crudeShot:
+    cooked: 0
     damage: 1
-    effects: []
     reloadSpeed: 0.3
     missileAmount: 1
     missileSpreadAngle: 0
-    range: 10
-    travelDuration: 1
+    range: 15
+    travelDuration: 0.5
     yTrajectory:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -0.029999696
+        outSlope: -0.029999696
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        time: 0.9999695
+        value: 0.9700012
+        inSlope: -0.029999696
+        outSlope: -0.029999696
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.33333334
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -59,13 +59,13 @@ MonoBehaviour:
     spriteObjectOffset: {x: 1, y: 0}
     colliderSize: {x: 1, y: 1}
   cookedShot:
+    cooked: 1
     damage: 0
-    effects: []
     reloadSpeed: 0.5
     missileAmount: 1
     missileSpreadAngle: 0
-    range: 10
-    travelDuration: 1.2
+    range: 15
+    travelDuration: 0.8
     yTrajectory:
       serializedVersion: 2
       m_Curve:

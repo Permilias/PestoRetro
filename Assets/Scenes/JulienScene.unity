@@ -633,7 +633,11 @@ PrefabInstance:
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: chuncks.Array.size
+<<<<<<< HEAD
       value: 4
+=======
+      value: 3
+>>>>>>> master
       objectReference: {fileID: 0}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
@@ -650,19 +654,31 @@ PrefabInstance:
         type: 3}
       propertyPath: chuncks.Array.data[0]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 2495451903282304711, guid: 928a0c6955b3a6a499cf2e6b23e3ed35,
+=======
+      objectReference: {fileID: 2495451903282304711, guid: 5024341fbd3e33e478885a4b5c587152,
+>>>>>>> master
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: chuncks.Array.data[1]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 2495451903282304711, guid: 40137459791197f4ba71df5802cfc00c,
+=======
+      objectReference: {fileID: 2495451903282304711, guid: a452bd440fc394a8594f520eee87fe87,
+>>>>>>> master
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: chuncks.Array.data[2]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 6771478956967927996, guid: 8245435d17f96f746b7a45b31713e402,
+=======
+      objectReference: {fileID: 2495451903282304711, guid: 0d427b7d0aff43a4ab6c4ac9170db04a,
+>>>>>>> master
         type: 3}
     - target: {fileID: 4501873451213393483, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}

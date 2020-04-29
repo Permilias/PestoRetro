@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class PastaUI : MonoBehaviour
 {
-    public TextMeshProUGUI[] pastaTexts;
+    public int playerLife;
+
     public TextMeshProUGUI munitionsText;
-    public Image munitionsImage;
+    public Image[] munitionsImage;
     public Image cookingBar;
     public Image reloadImage;
     Color baseCookingColor;
+
+    public GameObject[] lives;
 
     private void Awake()
     {
@@ -19,9 +22,14 @@ public class PastaUI : MonoBehaviour
     }
     private void Update()
     {
-        for(int i = 0;i  < pastaTexts.Length; i++)
+        for(int i = 0;i  < munitionsImage.Length; i++)
         {
-            pastaTexts[i].text = PastaManager.Instance.pastas[i].config.pastaName + "s: " + PastaManager.Instance.pastaAmounts[i].ToString();
+            munitionsImage[i].color = new Color(1, 1, 1, 0.2f);
+
+            if(i == PastaGun.Instance.currentSelectedPasta)
+            {
+                munitionsImage[i].color = new Color(1, 1, 1, 1f);
+            }
         }
 
         cookingBar.fillAmount = PastaGun.Instance.cookingCount / PastaManager.Instance.pastas[PastaGun.Instance.currentSelectedPasta].config.cookingSpeed;
@@ -29,8 +37,6 @@ public class PastaUI : MonoBehaviour
         else cookingBar.color = baseCookingColor;
 
         munitionsText.text = "x" + PastaManager.Instance.pastaAmounts[PastaGun.Instance.currentSelectedPasta].ToString();
-
-        munitionsImage.sprite = PastaManager.Instance.pastas[PastaGun.Instance.currentSelectedPasta].config.iconSprite;
 
         if(PastaGun.Instance.reloadCount > 0f)
         {
@@ -41,5 +47,17 @@ public class PastaUI : MonoBehaviour
             reloadImage.fillAmount = 0f;
         }
 
+
+        for(int i = 0; i < lives.Length; i++)
+        {
+            if(i >= playerLife)
+            {
+                lives[i].SetActive(true);
+            }
+            else
+            {
+                lives[i].SetActive(false);
+            }
+        }
     }
 }
