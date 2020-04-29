@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    public Sound caca, prout, leSonDeTristan;
+    public Sound enemyBruteDies, enemyBruteCharge, enemyBrutePunch;
 
     public Queue<GameObject> receptaclePool;
 
