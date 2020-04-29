@@ -4,7 +4,6 @@ using UnityEngine;
 
 public static class AnimatorBehaviour
 {
-
     static Animator currentAnimator;
 
     public static Animator GetAnimator(Animator animator)
@@ -28,5 +27,18 @@ public static class AnimatorBehaviour
             currentAnimator.SetBool("IsMoving", false);
             currentAnimator.speed = 1f;
         }
+    }
+
+    public static void JumpAnimations()
+    {
+        if (PlayerController._instance.jumpKey)
+        {
+            currentAnimator.SetBool("isJumping", true);      
+        }   
+    }
+
+    public static void CancelJumpAnimations()
+    {
+        currentAnimator.SetBool("isJumping", false);
     }
 }

@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
    public bool isGrounded { get { return raycaster.collisions.below; } }
 
-    bool isJumping;
+    [HideInInspector] public bool isJumping;
 
     int jumpsAllowedLeft;
 
@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
+            AnimatorBehaviour.CancelJumpAnimations();
         }
         
     }
@@ -185,6 +186,8 @@ public class PlayerController : MonoBehaviour
     {
         isJumping = true;
         timeSinceJumped = 0f;
+
+        AnimatorBehaviour.JumpAnimations();
     }
 
     void Move(Vector3 movement)
