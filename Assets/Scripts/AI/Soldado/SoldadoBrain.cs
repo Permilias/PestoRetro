@@ -42,7 +42,7 @@ public class SoldadoBrain : MonoBehaviour
     {
         Vector3 movement = new Vector3(0, gravity);
         movement *= Time.deltaTime;
-        raycaster.Move(movement);
+        //raycaster.Move(movement);
 
         if (timerImmobile >= 0)
         {
@@ -62,15 +62,33 @@ public class SoldadoBrain : MonoBehaviour
                 timerCharge = soldado.Cooldown;
             }
 
-            if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
+            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Projectiles")))
+            {
+                Debug.Log("Soldado - Take Damage");
+                
+                /*
+                if (raycaster.objectCollisionHorizontal) //spag cuite
+                {
+                    timerImmobile = // tmpImobile --> pasta
+                }
+
+                TakeDamage(raycaster.objectCollisionHorizontal) //dega de la pasta
+                */
+                
+            }
+
+            if (raycaster.collisions.HaveVerticalCollision() && raycaster.objectCollisionVertical.layer.Equals(LayerMask.NameToLayer("Projectiles")))
             {
                 Debug.Log("Soldado - Take Damage");
 
-                // if spageti cuite
-                    // timerImmobile = tmpImobile (dans la pate)
+                /*
+                if (raycaster.objectCollisionVertical) //spag cuite
+                {
+                    timerImmobile = // tmpImobile --> pasta
+                }
 
-                // else
-                    // TakeDamage();
+                TakeDamage(raycaster.objectCollisionVertical) //dega de la pasta
+                */
             }
         }
     }
@@ -105,6 +123,8 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Dead()
     {
+        Debug.Log("Loot de Pasta Soldado");
+        // Instantiate (pasta, this.transform);
         Destroy(this);
     }
 }

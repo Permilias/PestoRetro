@@ -6,18 +6,25 @@ public class BruteBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
+
     public Pasta pastaToLoot;
     public Sprite spriteLeft;
     public Sprite spriteRight;
 
     public float walkSpeed;
     public float chargeSpeed;
+
     public int cacPower;
+    public float timeBetweenTwoCac;
+
     public int chargePower;
+    public float timeToStopAfterCharge;
     public int hitForCharge;
-    
+
+
     private float timerCharge;
     private float timerImmobile;
+    private float timerAttack;
     private float gravity = -9.81f;
     private ChargeTo chargeTo;
 
@@ -30,10 +37,15 @@ public class BruteBrain : MonoBehaviour
     private void Reset()
     {
         life = 50;
+
         walkSpeed = 2;
         chargeSpeed = 4;
+
         cacPower = 2;
+        timeBetweenTwoCac = 1;
+
         chargePower = 4;
+        timeToStopAfterCharge = 1;
         hitForCharge = 5;
     }
 
@@ -42,6 +54,7 @@ public class BruteBrain : MonoBehaviour
         chargeTo = ChargeTo.None;
         timerCharge = -1;
         timerImmobile = -1;
+        timerAttack = -1;
 
         brute = new AICharacter(life, pastaToLoot, cacPower, chargePower, hitForCharge, 0, walkSpeed, chargeSpeed);
         raycaster = GetComponent<CharacterRaycaster>();
@@ -50,6 +63,11 @@ public class BruteBrain : MonoBehaviour
 
     private void Update()
     {
+        if (timerAttack >= 0)
+        {
+            timerAttack -= Time.deltaTime;
+        }
+
         if (timerCharge >= 0)
         {
             timerCharge -= Time.deltaTime;
@@ -64,8 +82,10 @@ public class BruteBrain : MonoBehaviour
             
             if (brute.HitRemaningForCharge <= 0)
             {
-                if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Player")))
+                if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
                 {
+                    GameManager._instance.healthSystem.Damage(chargePower);
+                    brute.HitRemaningForCharge = brute.HitForCharge;
                     Debug.Log("Impact Charge");
                 }
                 else
@@ -78,15 +98,32 @@ public class BruteBrain : MonoBehaviour
                 Reach();
             }
 
-            if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Projectiles")))
+            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Projectiles")))
             {
                 Debug.Log("Brute - Take Damage");
 
-                // if spageti cuite
-                    // timerImmobile = tmpImobile (dans la pate)
+                /*
+                if (raycaster.objectCollisionHorizontal) //spag cuite
+                {
+                    timerImmobile = // tmpImobile --> pasta
+                }
 
-                // else
-                    // TakeDamage();
+                TakeDamage(raycaster.objectCollisionHorizontal) //dega de la pasta
+                */
+            }
+
+            if (raycaster.collisions.HaveVerticalCollision() && raycaster.objectCollisionVertical.layer.Equals(LayerMask.NameToLayer("Projectiles")))
+            {
+                Debug.Log("Brute - Take Damage");
+
+                /*
+                if (raycaster.objectCollisionVertical) //spag cuite
+                {
+                    timerImmobile = // tmpImobile --> pasta
+                }
+
+                TakeDamage(raycaster.objectCollisionVertical) //dega de la pasta
+                */
             }
         }
     }
@@ -105,7 +142,7 @@ public class BruteBrain : MonoBehaviour
 
     private void Reach()
     {
-        if (raycaster.collisions.HaveCollision() && raycaster.collisionMask.value.Equals(LayerMask.NameToLayer("Player")))
+        if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
         {
             Attack();
         }
@@ -127,7 +164,10 @@ public class BruteBrain : MonoBehaviour
 
     private void Attack()
     {
-        // lose life
+        if (timerAttack >= 0) return;
+
+        GameManager._instance.healthSystem.Damage(cacPower);
+        timerAttack = timeBetweenTwoCac;
         Debug.Log("Attack Cac");
     }
 
@@ -165,7 +205,7 @@ public class BruteBrain : MonoBehaviour
         {
             brute.HitRemaningForCharge = brute.HitForCharge;
             chargeTo = ChargeTo.None;
-            timerCharge = 1;
+            timerCharge = timeToStopAfterCharge;
         }
         else
         {
@@ -187,6 +227,8 @@ public class BruteBrain : MonoBehaviour
 
     private void Dead()
     {
+        Debug.Log("Loot de Pasta Soldado");
+        // Instantiate (pasta, this.transform);
         Destroy(this);
     }
 }

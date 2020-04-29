@@ -307,6 +307,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: chuncks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: nbChunkToDisplay
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: chuncks.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: chuncks.Array.data[0]
+      value: 
+      objectReference: {fileID: 2495451903282304711, guid: cde3157382450e84dbf4ca086a0a7d39,
+        type: 3}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: chuncks.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: chuncks.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4501873451213393483, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: m_LocalPosition.x

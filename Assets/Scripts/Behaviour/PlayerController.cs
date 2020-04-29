@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public Transform self;
     public CharacterRaycaster raycaster;
     public Transform graphicsTransform;
- //   public Animator animator;
+    public Animator animator;
 
     [System.NonSerialized]
     public bool leftKeyDown, leftKeyUp, leftKey,
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
    public bool isGrounded { get { return raycaster.collisions.below; } }
 
-    bool isJumping;
+    [HideInInspector] public bool isJumping;
 
     int jumpsAllowedLeft;
 
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         character = GetComponent<CharacterRaycaster>();
         timeSinceJumped = 10f;
         jumpsAllowedLeft = maxJumpsAllowed;
+        AnimatorBehaviour.GetAnimator(animator);
     }
 
     void Update()
@@ -93,7 +94,17 @@ public class PlayerController : MonoBehaviour
         DebugUpdate();
         AnimationUpdate();
 
-   
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager._instance.healthSystem.Damage(1);
+            Debug.Log(GameManager._instance.healthSystem.GetHealth());
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameManager._instance.healthSystem.Heal(1);
+            Debug.Log(GameManager._instance.healthSystem.GetHealth());
+        }
     }
 
     void InputUpdate()
@@ -118,15 +129,24 @@ public class PlayerController : MonoBehaviour
         movementVector.y *= -1 * gravityMultiplier;
 
         if (timeSinceJumped > jumpCurve.keys[jumpCurve.keys.Length - 1].time)
+        {
             isJumping = false;
+            AnimatorBehaviour.CancelJumpAnimations();
+        }
+            
+
+
+        
     }
 
     void PostMovementJumpUpdate()
     {
+        
         if (isGrounded)
         {
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
+            
         }
         
     }
@@ -175,14 +195,18 @@ public class PlayerController : MonoBehaviour
     void TryJump()
     {
         if (jumpsAllowedLeft == 0) return;
+        if (hasBag) return;
         jumpsAllowedLeft--;
         StartJump();
+        AnimatorBehaviour.JumpAnimations(movementVector);
     }
 
     void StartJump()
     {
         isJumping = true;
         timeSinceJumped = 0f;
+
+        
     }
 
     void Move(Vector3 movement)
@@ -199,6 +223,8 @@ public class PlayerController : MonoBehaviour
 
 
         character.Move(movement);
+
+        AnimatorBehaviour.MovementAnimations(movement);
         
     }
 
