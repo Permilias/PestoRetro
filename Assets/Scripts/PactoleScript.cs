@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 
 public class PactoleScript : MonoBehaviour
@@ -14,12 +11,16 @@ public class PactoleScript : MonoBehaviour
 
     private CharacterRaycaster raycast;
 
+    private Transform pactol;
+
     private void Start()
     {
         pickUpText.gameObject.SetActive(false);
         objectPickedUp = false;
 
         raycast = GetComponent<CharacterRaycaster>();
+
+        pactol = GameObject.Find("Pactole").transform;
     }
 
     private void Update()
@@ -64,15 +65,15 @@ public class PactoleScript : MonoBehaviour
     {
         objectPickedUp = true;
 
-        this.transform.position = targetPoint.transform.position;
-        this.transform.parent = targetPoint.transform;
+        pactol.transform.position = targetPoint.transform.position;
+        pactol.transform.parent = targetPoint.transform;
 
         PlayerController._instance.hasBag = true;
     }
 
     private void Drop ()
     {
-        this.transform.parent = null;
+        pactol.transform.parent = null;
 
         objectPickedUp = false;
 
