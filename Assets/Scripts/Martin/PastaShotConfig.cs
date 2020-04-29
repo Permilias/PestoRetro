@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class PastaShotConfig
 {
+    public bool cooked;
     public int damage;
-    public PastaEffect[] effects;
 
     [Header("Firing")]
     public float reloadSpeed;
