@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
@@ -6,9 +7,11 @@ public class ChunkManager : MonoBehaviour
     #region Singleton
     public static ChunkManager _instance;
 
+    [Range(1, 7)] public int nbChunkToDisplay;
     public List<GameObject> chuncks;
 
     private int actualchunk;
+    private int nbChunkToDisplayOnEachPart;
     private GameObject[] chuncksObject;
 
     void Awake()
@@ -28,6 +31,8 @@ public class ChunkManager : MonoBehaviour
     private void Start()
     {
         actualchunk = -1;
+        if (nbChunkToDisplay % 2 == 0) nbChunkToDisplay++;
+        nbChunkToDisplayOnEachPart = (nbChunkToDisplay - 1) >> 1;
 
         chuncksObject = new GameObject[chuncks.Count];
         for (int i = 0; i < chuncks.Count; i++)
@@ -40,28 +45,7 @@ public class ChunkManager : MonoBehaviour
     private void Update()
     {
         OnWhichChunk();
-
-        chuncksObject[actualchunk].SetActive(true);
-
-        if (actualchunk - 2 >= 0)
-        {
-            chuncksObject[actualchunk - 2].SetActive(false);
-            chuncksObject[actualchunk - 1].SetActive(true);
-        }
-        else if (actualchunk - 1 >= 0)
-        {
-            chuncksObject[actualchunk - 1].SetActive(true);
-        }
-
-        if (actualchunk + 2 < chuncks.Count)
-        {
-            chuncksObject[actualchunk + 2].SetActive(false);
-            chuncksObject[actualchunk + 1].SetActive(true);
-        }
-        else if (actualchunk + 1 < chuncks.Count)
-        {
-            chuncksObject[actualchunk + 1].SetActive(true);
-        }
+        DisplayChunk();
     }
 
     private void OnWhichChunk()
@@ -80,4 +64,53 @@ public class ChunkManager : MonoBehaviour
             }
         }
     }
+
+    private void DisplayChunk()
+    {
+        chuncksObject[actualchunk].SetActive(true);
+
+        DisplayChunkPartLeft();
+        DisplayChunkPartRight();
+    }
+
+    private void DisplayChunkPartLeft()
+    {
+        if (actualchunk - (nbChunkToDisplayOnEachPart + 1) >= 0)
+        {
+            chuncksObject[actualchunk - (nbChunkToDisplayOnEachPart + 1)].SetActive(false);
+        }
+        for (int i = nbChunkToDisplayOnEachPart; i > 0; i--)
+        {
+            if (actualchunk - i >= 0)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    chuncksObject[actualchunk - j].SetActive(true);
+                }
+
+                break;
+            }
+        }
+    }
+
+    private void DisplayChunkPartRight()
+    {
+        if (actualchunk + (nbChunkToDisplayOnEachPart + 1) < chuncksObject.Length)
+        {
+            chuncksObject[actualchunk + (nbChunkToDisplayOnEachPart + 1)].SetActive(false);
+        }
+        for (int i = nbChunkToDisplayOnEachPart; i > 0; i--)
+        {
+            if (actualchunk + i < chuncksObject.Length)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    chuncksObject[actualchunk + j].SetActive(true);
+                }
+
+                break;
+            }
+        }
+    }
+    
 }

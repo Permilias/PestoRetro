@@ -188,6 +188,8 @@ public class BruteBrain : MonoBehaviour
 
     private void Dead()
     {
+        Debug.Log("Loot de Pasta Soldado");
+        // Instantiate (pasta, this.transform);
         Destroy(this);
     }
 }
