@@ -129,16 +129,24 @@ public class PlayerController : MonoBehaviour
         movementVector.y *= -1 * gravityMultiplier;
 
         if (timeSinceJumped > jumpCurve.keys[jumpCurve.keys.Length - 1].time)
+        {
             isJumping = false;
+            AnimatorBehaviour.CancelJumpAnimations();
+        }
+            
+
+
+        
     }
 
     void PostMovementJumpUpdate()
     {
+        
         if (isGrounded)
         {
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
-            AnimatorBehaviour.CancelJumpAnimations();
+            
         }
         
     }
@@ -190,6 +198,7 @@ public class PlayerController : MonoBehaviour
         if (hasBag) return;
         jumpsAllowedLeft--;
         StartJump();
+        AnimatorBehaviour.JumpAnimations(movementVector);
     }
 
     void StartJump()
@@ -197,7 +206,7 @@ public class PlayerController : MonoBehaviour
         isJumping = true;
         timeSinceJumped = 0f;
 
-        AnimatorBehaviour.JumpAnimations();
+        
     }
 
     void Move(Vector3 movement)

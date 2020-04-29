@@ -14,18 +14,35 @@ public static class AnimatorBehaviour
 
    public static void MovementAnimations(Vector3 movement)
     {
-        if (PlayerController._instance.rightKey || PlayerController._instance.leftKey || movement.x != 0f)
+        if (!PlayerController._instance.jumpKey)
         {
-            currentAnimator.SetBool("IsMoving", true);
-            if (PlayerController._instance.hasBag)
+            if (PlayerController._instance.rightKey || PlayerController._instance.leftKey || movement.x != 0f)
             {
-                currentAnimator.speed = 0.8f;
+                currentAnimator.SetBool("IsMoving", true);
+                if (PlayerController._instance.hasBag)
+                {
+                    currentAnimator.speed = 0.8f;
+                }
+            }
+            else
+            {
+                currentAnimator.SetBool("IsMoving", false);
+                currentAnimator.speed = 1f;
             }
         }
         else
         {
-            currentAnimator.SetBool("IsMoving", false);
-            currentAnimator.speed = 1f;
+            if (PlayerController._instance.hasBag)
+            {
+                currentAnimator.SetBool("IsMoving", true);
+                currentAnimator.speed = 0.8f;
+            }
+            else
+            {
+                currentAnimator.SetBool("IsMoving", false);
+            }
+
+            
         }
     }
 
@@ -36,12 +53,9 @@ public static class AnimatorBehaviour
         }
     }
 
-    public static void JumpAnimations()
+    public static void JumpAnimations(Vector3 movement)
     {
-        if (PlayerController._instance.jumpKey)
-        {
-            currentAnimator.SetBool("isJumping", true);
-        }
+        currentAnimator.SetBool("isJumping", true);
     }
 
     public static void CancelJumpAnimations()
