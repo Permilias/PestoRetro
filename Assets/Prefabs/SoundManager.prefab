@@ -119,4 +119,86 @@ MonoBehaviour:
     maxVolume: 1
     minPitch: 1
     maxPitch: 1
+  grazDies:
+    clips:
+    - {fileID: 8300000, guid: b63509aefe5ef4f7ba7fedf9a7238e47, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  grazhurt:
+    clips:
+    - {fileID: 8300000, guid: aef89ef3e62384690a421555a5f7bd44, type: 3}
+    - {fileID: 8300000, guid: 4fb309828de1c40bdab776a39278f906, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  grazFootSteps:
+    clips:
+    - {fileID: 8300000, guid: 6baf8d604ae4640d2890d4d9baea236c, type: 3}
+    - {fileID: 8300000, guid: 6020db156f5074da7a5f811015060f23, type: 3}
+    - {fileID: 8300000, guid: 73d434ae129b946b4b1e441b750312ea, type: 3}
+    - {fileID: 8300000, guid: 195eae1442548453db7e08526edcfdce, type: 3}
+    - {fileID: 8300000, guid: c951048ac56674e32994d0de5b796074, type: 3}
+    - {fileID: 8300000, guid: bcda91e4dfdc4490a89cf18f1b5ee822, type: 3}
+    - {fileID: 8300000, guid: c7cd23b3114424e2e85d93847486c10f, type: 3}
+    - {fileID: 8300000, guid: 6e43784b48bb54bfea8af1c87362b92d, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  grazJump:
+    clips:
+    - {fileID: 8300000, guid: d9e3183ebd04e4308b10124cd215c2dc, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  grazHitBullet:
+    clips:
+    - {fileID: 8300000, guid: a9592e0f056ed470a82a2457fb9e71c0, type: 3}
+    - {fileID: 8300000, guid: e51a66f9bd81043a9b33a734dae26d92, type: 3}
+    - {fileID: 8300000, guid: 5cfaebbc462134540bce6313604de3cc, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  grazHitCharge:
+    clips:
+    - {fileID: 8300000, guid: d76b4a5d705764cdc84991e59c6f20b7, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  grazHitPunch:
+    clips: []
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  uiButtonGlass:
+    clips:
+    - {fileID: 8300000, guid: 0ba007cadce804a68878c652d5ffae06, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  uiButtonPlastic:
+    clips:
+    - {fileID: 8300000, guid: ce94ea3e653b64572bf1bf9b1ba2747d, type: 3}
+    - {fileID: 8300000, guid: f4be74e1afbbf467ea9f3c1d69160e65, type: 3}
+    - {fileID: 8300000, guid: 23fd0ede835e34f39a45c1d5e4df750a, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  uiButtonWood:
+    clips:
+    - {fileID: 8300000, guid: af022153835894bcda326f04f9bccd0d, type: 3}
+    - {fileID: 8300000, guid: 3206ef52474e24862a26589c7ee33e3c, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
   sfxVolume: 1
