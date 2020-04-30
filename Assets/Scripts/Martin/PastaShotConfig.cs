@@ -8,6 +8,8 @@ public class PastaShotConfig
     public bool cooked;
     public int damage;
 
+    public Sound firingSound;
+
     [Header("Firing")]
     public float reloadSpeed;
 
