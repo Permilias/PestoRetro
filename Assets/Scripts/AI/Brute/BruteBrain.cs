@@ -68,35 +68,39 @@ public class BruteBrain : MonoBehaviour
 
     private void Update()
     {
-        if (timerCharge >= 0)
+        if (OpenDoor._instance.start)
         {
-            timerCharge -= Time.deltaTime;
-        }
-        else if (timerImmobile >= 0)
-        {
-            timerImmobile -= Time.deltaTime;
-        }
-        else
-        {
-            Look();
-
-            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
+            if (timerCharge >= 0)
             {
-                bruteAnimator.SetBool("HasImpact", true);
+                timerCharge -= Time.deltaTime;
+            }
+            else if (timerImmobile >= 0)
+            {
+                timerImmobile -= Time.deltaTime;
                 bruteAnimator.SetBool("IsCharging", false);
-
-                StartCoroutine("ImpactCharge");
-
-                raycaster.collisions.Reset();
-                raycaster.objectCollisionHorizontal = null;
-
-                timerCharge = timeToStopAfterCharge;
             }
             else
             {
-                bruteAnimator.SetBool("IsCharging", true);
+                Look();
 
-                Charge();
+                if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
+                {
+                    bruteAnimator.SetBool("HasImpact", true);
+                    bruteAnimator.SetBool("IsCharging", false);
+
+                    StartCoroutine("ImpactCharge");
+
+                    raycaster.collisions.Reset();
+                    raycaster.objectCollisionHorizontal = null;
+
+                    timerCharge = timeToStopAfterCharge;
+                }
+                else
+                {
+                    bruteAnimator.SetBool("IsCharging", true);
+
+                    Charge();
+                }
             }
         }
     }
