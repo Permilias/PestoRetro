@@ -60,6 +60,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     goesToGround: 0
+    groundTouchingSound:
+      clips: []
+      minVolume: 1
+      maxVolume: 1
+      minPitch: 1
+      maxPitch: 1
     straight: 0
     projectileSprite: {fileID: 21300000, guid: 8dc046edfe57e894ebf7fc7d35238176, type: 3}
     spriteObjectScale: {x: 0.15, y: 0.15}
@@ -114,6 +120,13 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     goesToGround: 1
+    groundTouchingSound:
+      clips:
+      - {fileID: 8300000, guid: 6ed62f964bbf7154ba185fbd136d84c4, type: 3}
+      minVolume: 0.4
+      maxVolume: 0.4
+      minPitch: 1
+      maxPitch: 1
     straight: 0
     projectileSprite: {fileID: 21300000, guid: 5c826b85b8166c94584c6f08d52a2941, type: 3}
     spriteObjectScale: {x: 0.7, y: 0.7}

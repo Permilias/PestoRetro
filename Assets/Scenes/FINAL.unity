@@ -259,7 +259,7 @@ PrefabInstance:
         type: 3}
       propertyPath: chuncks.Array.data[1]
       value: 
-      objectReference: {fileID: 2495451903282304711, guid: e6dc71cd07878f24992ddb4232e197fa,
+      objectReference: {fileID: 2495451903282304711, guid: 646cc46012d5dcf4cbbb0c7f2704ede7,
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
@@ -447,6 +447,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2495451903282304711, guid: cde3157382450e84dbf4ca086a0a7d39,
         type: 3}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: nbChunkToDisplay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4501873451213393483, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1072,6 +1077,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[0]
+      value: PassPasta2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[0]
+      value: Door1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[1]
+      value: PassPasta3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[1]
+      value: Door2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[2]
+      value: PassPasta4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[2]
+      value: Door3
       objectReference: {fileID: 0}
     - target: {fileID: 7776982320005607036, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
