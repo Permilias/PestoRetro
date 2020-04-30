@@ -734,11 +734,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
         type: 3}
-      propertyPath: spriteLifes.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
-        type: 3}
       propertyPath: spriteLifes.Array.data[0]
       value: 
       objectReference: {fileID: 2119185324}

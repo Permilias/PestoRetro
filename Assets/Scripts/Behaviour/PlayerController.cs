@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
+            AnimatorBehaviour.CancelJumpAnimations();
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
         }
