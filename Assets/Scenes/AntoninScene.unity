@@ -127,6 +127,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1580464756}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &79491796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4383844457701809454, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 377484630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &336803724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -639,6 +645,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1561965885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 731383560709512834, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 377484630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1580464756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -722,6 +734,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
         type: 3}
+      propertyPath: spriteLifes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
+        type: 3}
       propertyPath: spriteLifes.Array.data[0]
       value: 
       objectReference: {fileID: 2119185324}
@@ -735,6 +752,16 @@ PrefabInstance:
       propertyPath: spriteLifes.Array.data[2]
       value: 
       objectReference: {fileID: 516068219}
+    - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
+        type: 3}
+      propertyPath: spriteLifes.Array.data[3]
+      value: 
+      objectReference: {fileID: 79491796}
+    - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
+        type: 3}
+      propertyPath: spriteLifes.Array.data[4]
+      value: 
+      objectReference: {fileID: 1561965885}
     - target: {fileID: 6057396293705827478, guid: 4b0436dde0ead854485fae5929181da7,
         type: 3}
       propertyPath: m_LocalPosition.x
