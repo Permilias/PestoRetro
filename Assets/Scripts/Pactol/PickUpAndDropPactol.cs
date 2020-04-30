@@ -116,6 +116,11 @@ public class PickUpAndDropPactol : MonoBehaviour
 
             if (OpenDoor._instance.tags.Contains(savePassPasta))
             {
+                if (savePassPasta.Equals("PassPasta5"))
+                {
+                    OpenDoor._instance.start = true;
+                }
+
                 door = GameObject.FindGameObjectWithTag(OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)]);
                 door.SetActive(false);
             }
