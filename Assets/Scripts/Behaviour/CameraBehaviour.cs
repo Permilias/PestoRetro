@@ -7,35 +7,40 @@ public class CameraBehaviour : MonoBehaviour
 {
 
     public static Transform PlayerTransform   { get {   return PlayerController._instance.self; }   }
-    public float cameraSpeed = 0.3f;
-    public float cameraBackSpeed = 0.3f;
-    public float maxDelta = 1;
+    public float maxX = 1;
     Vector3 targetPosition;
-    float leftDelta;
+    float x;
     public float tweenSpeed;
+    public Vector3 offset;
 
     void Start()
     {
-        leftDelta = 0;
+
+        GetPosition();
+        transform.position = targetPosition;
+        x = 0;
     }
 
     void Update()
     {
         if (PlayerController._instance.movementVector.x > 0)
         {
-            leftDelta = -maxDelta;
+            x = maxX;
         }
 
         else if (PlayerController._instance.movementVector.x < 0)
         {
-            leftDelta = maxDelta;
+            x = -maxX;
         }
 
-
-        targetPosition = PlayerTransform.position + new Vector3(leftDelta, 0, 0);
-        targetPosition.y = transform.position.y;
-        targetPosition.z = 0;
-
+        GetPosition();
         transform.DOMove(targetPosition, tweenSpeed);
+    }
+
+    void GetPosition()
+    {
+        targetPosition = PlayerTransform.position + new Vector3(x, 0, 0);
+        targetPosition.z = -10;
+        targetPosition += offset;
     }
 }
