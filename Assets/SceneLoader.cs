@@ -8,6 +8,11 @@ public class SceneLoader : MonoBehaviour
     [Header("SceneManagement")]
     [SerializeField, Tooltip("Enter the scene name")] private string sceneName;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void LoadScene()
     {
         SceneManager.LoadScene(sceneName);

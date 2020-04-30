@@ -57,6 +57,8 @@ public class SoldadoBrain : MonoBehaviour
         else
         {
             //Anim Stop
+            soldadoAnimator.SetBool("isStunned", false);
+
             Look();
 
             if (timerReload >= 0)
@@ -119,6 +121,7 @@ public class SoldadoBrain : MonoBehaviour
                     timerImmobile = timeSpaghettiCookedStopIA;
 
                     //Anim Start
+                    soldadoAnimator.SetBool("isStunned", true);
                 }
 
                 SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);
