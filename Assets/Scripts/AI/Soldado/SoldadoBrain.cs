@@ -56,6 +56,9 @@ public class SoldadoBrain : MonoBehaviour
         }
         else
         {
+            //Anim Stop
+            soldadoAnimator.SetBool("isStunned", false);
+
             Look();
 
             if (timerReload >= 0)
@@ -116,6 +119,9 @@ public class SoldadoBrain : MonoBehaviour
                 if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti")) //spag cuite
                 {
                     timerImmobile = timeSpaghettiCookedStopIA;
+
+                    //Anim Start
+                    soldadoAnimator.SetBool("isStunned", true);
                 }
 
                 SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);
