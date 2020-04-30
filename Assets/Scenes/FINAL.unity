@@ -239,6 +239,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 488344249847484463, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door2
+      objectReference: {fileID: 0}
+    - target: {fileID: 831941218215705768, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414097180730041100, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687286966236553446, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door3
+      objectReference: {fileID: 0}
     - target: {fileID: 4501873451213393481, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: m_Name
@@ -298,6 +318,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232613141506490669, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce15e5c09a432b049b0efaeead030b43, type: 3}
@@ -878,12 +903,12 @@ PrefabInstance:
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: tags.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: doors.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
@@ -893,7 +918,7 @@ PrefabInstance:
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: doors.Array.data[0]
-      value: Door1
+      value: Door2
       objectReference: {fileID: 0}
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
@@ -903,7 +928,7 @@ PrefabInstance:
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: doors.Array.data[1]
-      value: Door2
+      value: Door3
       objectReference: {fileID: 0}
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
@@ -913,7 +938,17 @@ PrefabInstance:
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: doors.Array.data[2]
-      value: Door3
+      value: Door4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[3]
+      value: PassPasta5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[3]
+      value: Door5
       objectReference: {fileID: 0}
     - target: {fileID: 7776982320005607036, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
@@ -1035,6 +1070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832251082508370568, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7686061704004409779, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
         type: 3}

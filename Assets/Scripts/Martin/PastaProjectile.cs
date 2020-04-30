@@ -10,7 +10,6 @@ public class PastaProjectile : MonoBehaviour
     public PastaShotConfig shotConfig;
 
     public bool shotByPlayer;
-    public string shooter;
 
 
     public void Initialize(PastaShotConfig _shotConfig)
