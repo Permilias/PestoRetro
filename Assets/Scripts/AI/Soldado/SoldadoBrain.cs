@@ -4,46 +4,46 @@ public class SoldadoBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
-    public Sprite spriteLeft;
-    public Sprite spriteRight;
-
     public int cooldown;
+    public Vector2 shotOffset;
 
-    private float timerCharge;
+    public int timeSpaghettiCookedStopIA;
+    public int shotPasta;
+
+
+    private bool facingLeft;
+
+    private float timerReload;
     private float timerImmobile;
     private float gravity = -9.81f;
-
-    public int shotPasta;
-    public int lootedPasta;
-
+    
     private AICharacter soldado;
     private CharacterRaycaster raycaster;
-    private SpriteRenderer spriteRenderer;
+    private PastaCollectible pastaLoot;
 
-
+    
     // ############### FUNCTIONS ###############
     private void Reset()
     {
-        life = 20;
+        life = 5;
         cooldown = 5;
+
+        timeSpaghettiCookedStopIA = 4;
+        shotPasta = 1;
     }
 
     private void Start()
     {
-        timerCharge = cooldown;
-        timerImmobile = -1;
+        timerReload = cooldown;
+        timerImmobile = Random.Range(0, 5);
 
-        soldado = new AICharacter(life, lootedPasta, cooldown, shotPasta);
+        soldado = new AICharacter(life, cooldown, shotPasta);
         raycaster = GetComponent<CharacterRaycaster>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        pastaLoot = GetComponentInChildren<PastaCollectible>(true);
     }
 
     private void Update()
     {
-        Vector3 movement = new Vector3(0, gravity);
-        movement *= Time.deltaTime;
-        //raycaster.Move(movement);
-
         if (timerImmobile >= 0)
         {
             timerImmobile -= Time.deltaTime;
@@ -52,43 +52,14 @@ public class SoldadoBrain : MonoBehaviour
         {
             Look();
 
-            if (timerCharge >= 0)
+            if (timerReload >= 0)
             {
-                timerCharge -= Time.deltaTime;
+                timerReload -= Time.deltaTime;
             }
             else
             {
                 Shoot();
-                timerCharge = soldado.Cooldown;
-            }
-
-            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-            {
-                Debug.Log("Soldado - Take Damage");
-                
-                /*
-                if (raycaster.objectCollisionHorizontal) //spag cuite
-                {
-                    timerImmobile = // tmpImobile --> pasta
-                }
-
-                TakeDamage(raycaster.objectCollisionHorizontal) //dega de la pasta
-                */
-                
-            }
-
-            if (raycaster.collisions.HaveVerticalCollision() && raycaster.objectCollisionVertical.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-            {
-                Debug.Log("Soldado - Take Damage");
-
-                /*
-                if (raycaster.objectCollisionVertical) //spag cuite
-                {
-                    timerImmobile = // tmpImobile --> pasta
-                }
-
-                TakeDamage(raycaster.objectCollisionVertical) //dega de la pasta
-                */
+                timerReload = soldado.Cooldown;
             }
         }
     }
@@ -107,33 +78,52 @@ public class SoldadoBrain : MonoBehaviour
         }
     }
 
-    public Vector2 shotOffset;
-    bool facingLeft;
 
     private void Shoot()
     {
         Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
-        PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot, (Vector2)transform.position + shotOffset) ;
+
+        PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
+                                                                                    (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
         projectile.SetDirection(facingLeft);
         projectile.Shoot();
+
     }
 
-    private void TakeDamage(Pasta pasta)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        soldado.Life -= pasta.degats;
-
-        if (soldado.Life <= 0)
+        if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
-            Dead();
+            PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
+            if (pastaProjectile.shooter.Equals("Player"))
+            {
+                if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti")) //spag cuite
+                {
+                    timerImmobile = timeSpaghettiCookedStopIA;
+                }
+
+                soldado.Life -= pastaProjectile.shotConfig.damage;
+
+                PastaManager.Instance.Repool(pastaProjectile);
+
+                if (soldado.Life <= 0)
+                {
+                    Dead();
+                }
+            }
+
         }
     }
 
     private void Dead()
     {
         Debug.Log("Loot de Pasta Soldado");
-        // Instantiate (pasta, this.transform);
-        Destroy(this);
+
+        pastaLoot.gameObject.SetActive(true);
+        pastaLoot.gameObject.transform.parent = null;
+        pastaLoot.gameObject.transform.position = this.transform.position;
+        pastaLoot.Initialize();
+
+        Destroy(gameObject);
     }
-
-
 }

@@ -24,9 +24,9 @@ MonoBehaviour:
     cooked: 0
     damage: 1
     reloadSpeed: 0.4
-    missileAmount: 5
-    missileSpreadAngle: 60
-    range: 3
+    missileAmount: 4
+    missileSpreadAngle: 50
+    range: 4.5
     travelDuration: 0.3
     yTrajectory:
       serializedVersion: 2
@@ -60,41 +60,41 @@ MonoBehaviour:
     colliderSize: {x: 0.15, y: 0.15}
   cookedShot:
     cooked: 1
-    damage: 3
+    damage: 5
     reloadSpeed: 0.8
     missileAmount: 1
     missileSpreadAngle: 0
-    range: 5
-    travelDuration: 0.5
+    range: 10
+    travelDuration: 1
     yTrajectory:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: 2.2287767
-        outSlope: 2.2287767
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.11464968
-      - serializedVersion: 3
-        time: 0.4984127
-        value: 1.4
-        inSlope: 0.0025396645
-        outSlope: 0.0025396645
+        value: 1.16
+        inSlope: 13.156914
+        outSlope: 13.156914
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: -2.2543752
-        outSlope: -2.2543752
+        time: 0.21440583
+        value: 3.980919
+        inSlope: 0.03890909
+        outSlope: 0.03890909
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.09177304
+        inWeight: 1
+        outWeight: 0.3276585
+      - serializedVersion: 3
+        time: 0.38966018
+        value: 1.2431217
+        inSlope: -10.096706
+        outSlope: -10.096706
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.30715284
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
