@@ -108,18 +108,18 @@ public class PastaGun : MonoBehaviour
                     {
                         if (PlayerController._instance.movementVector.x != 0)
                         {
-                            Shoot(true);
+                            Shoot();
                             AnimatorBehaviour.MovingAndShootingAnimations(PlayerController._instance.movementVector);
                         }
                         else
                         {
-                            Shoot(true);
+                            Shoot();
                             AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
                         }
                     }
                     else
                     {
-                        Shoot(true);
+                        Shoot();
                     }
 
                     
@@ -151,7 +151,7 @@ public class PastaGun : MonoBehaviour
 
     }
 
-    public void Shoot(bool player)
+    public void Shoot()
     {
 
         PastaManager.Instance.pastaAmounts[currentSelectedPasta] -= 1;
@@ -174,7 +174,7 @@ public class PastaGun : MonoBehaviour
         {
 
             PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(shotConfig, (Vector2)transform.position +
-                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition), "Player", shotPasta);
+                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition), shotPasta);
 
             if(PlayerController._instance)
             {
@@ -200,7 +200,7 @@ public class PastaGun : MonoBehaviour
 
             }
 
-            projectile.shotByPlayer = player;
+            projectile.shotByPlayer = true;
             projectile.SetDirection(shootingLeft);
             projectile.Shoot();
            
