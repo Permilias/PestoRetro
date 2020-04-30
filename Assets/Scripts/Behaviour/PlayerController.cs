@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -243,7 +243,8 @@ public class PlayerController : MonoBehaviour
             PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
             if(!pastaProjectile.shotByPlayer)
             {
-                GameManager._instance.healthSystem.Damage(1); //pastaProjectile.shotConfig.damage
+                GameManager._instance.healthSystem.Damage(1); //pastaProjectile.shotConfig.damage 
+                FXPlayer.Instance.PlayFX("Blood", this.transform.position);
                 PastaManager.Instance.Repool(pastaProjectile);
             }
 

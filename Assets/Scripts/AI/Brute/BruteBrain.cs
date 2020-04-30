@@ -269,6 +269,7 @@ public class BruteBrain : MonoBehaviour
                     }
 
                     SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteHit);
+                    FXPlayer.Instance.PlayFX("Blood", this.transform.position);
                     brute.Life -= pastaProjectile.shotConfig.damage;
                     brute.HitRemaningForCharge -= pastaProjectile.shotConfig.damage;
 
