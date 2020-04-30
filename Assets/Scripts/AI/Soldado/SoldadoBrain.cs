@@ -67,9 +67,7 @@ public class SoldadoBrain : MonoBehaviour
                 if (Mathf.Abs(PlayerUtils.PlayerTransform.position.x - this.transform.position.x) <= (PastaManager.Instance.pastas[shotPasta].config.crudeShot.range))
                 {
                     soldadoAnimator.SetBool("IsShooting", true);
-
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleShot);
-
+                    
                     StartCoroutine("Shoot");
                     timerReload = soldado.Cooldown;
                 }
@@ -118,7 +116,7 @@ public class SoldadoBrain : MonoBehaviour
                     timerImmobile = timeSpaghettiCookedStopIA;
                 }
 
-                SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);  
+                //SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);  
                 soldado.Life -= pastaProjectile.shotConfig.damage;
 
                 PastaManager.Instance.Repool(pastaProjectile);
@@ -126,9 +124,7 @@ public class SoldadoBrain : MonoBehaviour
                 if (soldado.Life <= 0 && !soldadoAnimator.GetBool("IsDead"))
                 {
                     soldadoAnimator.SetBool("IsDead", true);
-
-                    SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleDies);
-
+                    
                     StartCoroutine("Dead");
                 }
             }
