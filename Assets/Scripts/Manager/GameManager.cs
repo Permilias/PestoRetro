@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1f;
         healthSystem = new HealthSystem(5);
 
         for (int i = 0; i < healthSystem.GetHealth(); i++)
@@ -69,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RespawnPlayer()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.6f);
 
         Time.timeScale = 0;
         endGame = true;
