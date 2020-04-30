@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
             if(!pastaProjectile.shotByPlayer)
             {
                 GameManager._instance.healthSystem.Damage(1); //pastaProjectile.shotConfig.damage 
-                FXPlayer.Instance.PlayFX("Blood",Vector3.zero);
+                FXPlayer.Instance.PlayFX("Blood", this.transform.position);
                 PastaManager.Instance.Repool(pastaProjectile);
             }
 
