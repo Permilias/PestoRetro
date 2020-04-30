@@ -23,6 +23,13 @@ MonoBehaviour:
   crudeShot:
     cooked: 0
     damage: 1
+    firingSound:
+      clips:
+      - {fileID: 8300000, guid: 7ea6122a06900d74b90eaf6e0186ac70, type: 3}
+      minVolume: 0.4
+      maxVolume: 0.4
+      minPitch: 1
+      maxPitch: 1
     reloadSpeed: 0.4
     missileAmount: 4
     missileSpreadAngle: 50
@@ -61,6 +68,13 @@ MonoBehaviour:
   cookedShot:
     cooked: 1
     damage: 5
+    firingSound:
+      clips:
+      - {fileID: 8300000, guid: 5e49ca657cdc2544e9ac3ddc5e41dfe2, type: 3}
+      minVolume: 0.4
+      maxVolume: 0.4
+      minPitch: 1
+      maxPitch: 1
     reloadSpeed: 0.8
     missileAmount: 1
     missileSpreadAngle: 0

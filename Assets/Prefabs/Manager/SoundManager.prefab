@@ -144,15 +144,15 @@ MonoBehaviour:
     - {fileID: 8300000, guid: bcda91e4dfdc4490a89cf18f1b5ee822, type: 3}
     - {fileID: 8300000, guid: c7cd23b3114424e2e85d93847486c10f, type: 3}
     - {fileID: 8300000, guid: 6e43784b48bb54bfea8af1c87362b92d, type: 3}
-    minVolume: 1
-    maxVolume: 1
+    minVolume: 0.2
+    maxVolume: 0.2
     minPitch: 1
     maxPitch: 1
   grazJump:
     clips:
     - {fileID: 8300000, guid: d9e3183ebd04e4308b10124cd215c2dc, type: 3}
-    minVolume: 1
-    maxVolume: 1
+    minVolume: 0.3
+    maxVolume: 0.3
     minPitch: 1
     maxPitch: 1
   grazHitBullet:
