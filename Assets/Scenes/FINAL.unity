@@ -448,6 +448,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1464346782, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464346782, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 6031934218395396026, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: pickUpText
