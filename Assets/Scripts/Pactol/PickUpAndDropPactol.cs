@@ -86,6 +86,11 @@ public class PickUpAndDropPactol : MonoBehaviour
     {
         if (savePassPasta != null && savePassPasta.Equals(currentPassPasta))
         {
+            if (OpenDoor._instance.tags.Contains(savePassPasta))
+            {
+                OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)].SetActive(true);
+            }
+
             savePassPasta = null;
             pactolSprite.enabled = true;
         }
@@ -103,6 +108,11 @@ public class PickUpAndDropPactol : MonoBehaviour
         {
             savePassPasta = currentPassPasta;
             pactolSprite.enabled = false;
+
+            if (OpenDoor._instance.tags.Contains(savePassPasta))
+            {
+                OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)].SetActive(false);
+            }
         }
 
         pactolTransform.parent = null;

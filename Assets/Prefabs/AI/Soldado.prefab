@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82278ae7b9be02a45a8fb8d0ef7195e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 3
+  life: 5
   cooldown: 5
   shotOffset: {x: 0, y: 0}
-  timeSpaghettiCookedStopIA: 0
+  timeSpaghettiCookedStopIA: 4
   shotPasta: 1
   soldadoGraphics: {fileID: 1512452186583209295}
 --- !u!114 &1512452187724227024
