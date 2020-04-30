@@ -20,6 +20,20 @@ MonoBehaviour:
     randomizeSize: 1
     minMaxSize: {x: 1, y: 1.5}
     randomizeRotation: 0
+  - fxName: Blood
+    fx: {fileID: 8648078134343223812, guid: 421b08feb0fb24414a6eed12f193df2d, type: 3}
+    poolingAmount: 5
+    duration: 3
+    randomizeSize: 1
+    minMaxSize: {x: 1, y: 1.5}
+    randomizeRotation: 0
+  - fxName: Shot
+    fx: {fileID: 6133698830158504520, guid: 2db46ccf8aa1248c58e45be3246781e7, type: 3}
+    poolingAmount: 5
+    duration: 3
+    randomizeSize: 1
+    minMaxSize: {x: 1, y: 1.5}
+    randomizeRotation: 0
   textMessageEnterSpeed: 0
   textMessageEnterEase: 0
   textMessageDuration: 0
