@@ -259,13 +259,13 @@ PrefabInstance:
         type: 3}
       propertyPath: chuncks.Array.data[1]
       value: 
-      objectReference: {fileID: 2495451903282304711, guid: e6dc71cd07878f24992ddb4232e197fa,
+      objectReference: {fileID: 2495451903282304711, guid: b9ebee190952e2b4fa014a63bdc8659d,
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: chuncks.Array.data[2]
       value: 
-      objectReference: {fileID: 2495451903282304711, guid: 5d4966465da391c41b8c9c5681a8126e,
+      objectReference: {fileID: 2495451903282304711, guid: 9f416063fbe55014787f1588cca6cde6,
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
@@ -754,6 +754,11 @@ PrefabInstance:
     - target: {fileID: 3239047836516020975, guid: 20382306c5ebf0447b6e131eda380a28,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075110340090116593, guid: 20382306c5ebf0447b6e131eda380a28,
+        type: 3}
+      propertyPath: fxPools.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7301357100238017521, guid: 20382306c5ebf0447b6e131eda380a28,
