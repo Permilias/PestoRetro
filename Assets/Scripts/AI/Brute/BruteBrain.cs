@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 enum ChargeTo { None, Left, Right }
 
@@ -88,12 +89,12 @@ public class BruteBrain : MonoBehaviour
             {
                 if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
                 {
-                    bruteAnimator.SetBool("", true);
-                    ImpactCharge();
+                    bruteAnimator.SetBool("HasImpact", true);
+                    StartCoroutine("ImpactCharge");
                 }
                 else
                 {
-                    bruteAnimator.SetBool("", true);
+                    bruteAnimator.SetBool("IsCharging", true);
                     Charge();
                 }
             }
@@ -120,14 +121,13 @@ public class BruteBrain : MonoBehaviour
     {
         if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
         {
-            bruteAnimator.SetBool("", true);
-            Attack();
+            StartCoroutine("Attack");
+
             raycaster.collisions.Reset();
             raycaster.objectCollisionHorizontal = null;
         }
         else
         {
-            bruteAnimator.SetBool("", true);
             Vector3 movement;
             if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
             {
@@ -142,13 +142,19 @@ public class BruteBrain : MonoBehaviour
         }
     }
 
-    private void Attack()
+    private IEnumerator Attack()
     {
-        if (timerAttack >= 0) return;
+        if (timerAttack < 0)
+        {
+            bruteAnimator.SetBool("IsPunching", true);
 
-        GameManager._instance.healthSystem.Damage(cacPower);
-        timerAttack = timeBetweenTwoCac;
-        Debug.Log("Attack Cac");
+            yield return new WaitForSeconds(1);
+
+            GameManager._instance.healthSystem.Damage(cacPower);
+            timerAttack = timeBetweenTwoCac;
+
+            bruteAnimator.SetBool("IsPunching", false);
+        }
     }
 
     private void Charge()
@@ -186,6 +192,8 @@ public class BruteBrain : MonoBehaviour
             brute.HitRemaningForCharge = brute.HitForCharge;
             chargeTo = ChargeTo.None;
             timerCharge = timeToStopAfterCharge;
+
+            bruteAnimator.SetBool("IsCharging", false);
         }
         else
         {
@@ -194,12 +202,15 @@ public class BruteBrain : MonoBehaviour
         }
     }
 
-    private void ImpactCharge()
+    private IEnumerator ImpactCharge()
     {
+        yield return new WaitForSeconds(1);
+
         GameManager._instance.healthSystem.Damage(brute.ChargePower);
         brute.HitRemaningForCharge = brute.HitForCharge;
         timerAttack = timeBetweenTwoCac;
-        Debug.Log("Impact Charge");
+
+        bruteAnimator.SetBool("HasImpact", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -223,17 +234,18 @@ public class BruteBrain : MonoBehaviour
 
                     if (brute.Life <= 0)
                     {
-                        bruteAnimator.SetBool("", true);
-                        Dead();
+                        bruteAnimator.SetBool("IsDead", true);
+                        StartCoroutine("Dead");
                     }
                 }
             }
         }
     }
 
-    private void Dead()
+    private IEnumerator Dead()
     {
-        Debug.Log("Loot de Pasta Brute");
+        timerImmobile = 3;
+        yield return new WaitForSeconds(2);
 
         for (int i = 0; i < 3; i++)
         {

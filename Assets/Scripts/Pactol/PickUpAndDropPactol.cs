@@ -13,6 +13,8 @@ public class PickUpAndDropPactol : MonoBehaviour
     private string currentPassPasta;
     private string savePassPasta;
 
+    private GameObject door;
+
     private Transform pactolTransform;
     private SpriteRenderer pactolSprite;
     private GravityPactol pactolGravity;
@@ -88,7 +90,7 @@ public class PickUpAndDropPactol : MonoBehaviour
         {
             if (OpenDoor._instance.tags.Contains(savePassPasta))
             {
-                OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)].SetActive(true);
+                door.SetActive(true);
             }
 
             savePassPasta = null;
@@ -111,7 +113,8 @@ public class PickUpAndDropPactol : MonoBehaviour
 
             if (OpenDoor._instance.tags.Contains(savePassPasta))
             {
-                OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)].SetActive(false);
+                door = GameObject.FindGameObjectWithTag(OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)]);
+                door.SetActive(false);
             }
         }
 
