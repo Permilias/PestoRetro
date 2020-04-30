@@ -22,7 +22,7 @@ public class PastaUI : MonoBehaviour
     }
     private void Update()
     {
-      /*  for(int i = 0;i  < munitionsImage.Length; i++)
+       for(int i = 0;i  < munitionsImage.Length; i++)
         {
             munitionsImage[i].color = new Color(1, 1, 1, 0.2f);
 
@@ -48,6 +48,6 @@ public class PastaUI : MonoBehaviour
         }
 
 
-       */
+       
     }
 }
