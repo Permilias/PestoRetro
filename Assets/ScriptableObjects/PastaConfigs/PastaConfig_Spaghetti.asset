@@ -34,32 +34,38 @@ MonoBehaviour:
     missileAmount: 1
     missileSpreadAngle: 0
     range: 8
-    travelDuration: 0.5
+    travelDuration: 0.8
     yTrajectory:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: -0.029999696
-        outSlope: -0.029999696
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
+        outWeight: 0
       - serializedVersion: 3
-        time: 0.9999695
-        value: 0.9700012
-        inSlope: -0.029999696
-        outSlope: -0.029999696
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 34
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     goesToGround: 0
+    groundTouchingSound:
+      clips: []
+      minVolume: 1
+      maxVolume: 1
+      minPitch: 1
+      maxPitch: 1
     straight: 1
     projectileSprite: {fileID: 21300000, guid: 6c86789ab442d1b47b5d27ae233ffd91, type: 3}
     spriteObjectScale: {x: 0.3, y: 0.3}
@@ -105,6 +111,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     goesToGround: 0
+    groundTouchingSound:
+      clips: []
+      minVolume: 1
+      maxVolume: 1
+      minPitch: 1
+      maxPitch: 1
     straight: 1
     projectileSprite: {fileID: 21300000, guid: 1ab939fa81adf7c46b8777f93f483a78, type: 3}
     spriteObjectScale: {x: 0.3, y: 0.3}

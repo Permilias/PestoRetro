@@ -1241,7 +1241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2101935004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,13 +1254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83e9d1513960524d9ca41982ebf5137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pastaTexts:
-  - {fileID: 1316762489}
-  - {fileID: 444011826}
+  playerLife: 0
   munitionsText: {fileID: 12737408}
-  munitionsImage: {fileID: 1931296472}
+  munitionsImage:
+  - {fileID: 0}
   cookingBar: {fileID: 57926800}
   reloadImage: {fileID: 1025787338}
+  lives: []
 --- !u!4 &2101935005
 Transform:
   m_ObjectHideFlags: 0

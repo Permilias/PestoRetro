@@ -22,13 +22,6 @@ public class PastaManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        foreach (PastaCollectible collectible in FindObjectsOfType<PastaCollectible>())
-        {
-            collectible.Initialize();
-        }
-    }
 
 
     public PastaConfig[] configs;
@@ -61,8 +54,10 @@ public class PastaManager : MonoBehaviour
 
     public PastaProjectile CreateProjectileAtPosition(PastaShotConfig shotConfig, Vector2 _position, string shooter, Pasta pasta)
     {
-        if(projectilePool.Count < 1)
+
+        if (projectilePool.Count < 1)
         {
+
             FillProjectilePool();
         }
         PastaProjectile createdProjectile = projectilePool.Dequeue();
