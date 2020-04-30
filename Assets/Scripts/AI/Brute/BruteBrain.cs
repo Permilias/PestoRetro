@@ -46,7 +46,7 @@ public class BruteBrain : MonoBehaviour
         timeBetweenTwoCac = 1;
 
         chargePower = 2;
-        timeToStopAfterCharge = 1;
+        timeToStopAfterCharge = 3;
         hitForCharge = 4;
         
         timeSpaghettiCookedStopIA = 4;
@@ -68,6 +68,40 @@ public class BruteBrain : MonoBehaviour
 
     private void Update()
     {
+        if (timerCharge >= 0)
+        {
+            timerCharge -= Time.deltaTime;
+        }
+        else if (timerImmobile >= 0)
+        {
+            timerImmobile -= Time.deltaTime;
+        }
+        else
+        {
+            Look();
+
+            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
+            {
+                bruteAnimator.SetBool("HasImpact", true);
+                bruteAnimator.SetBool("IsCharging", false);
+                StartCoroutine("ImpactCharge");
+
+                raycaster.collisions.Reset();
+                raycaster.objectCollisionHorizontal = null;
+
+                timerCharge = timeToStopAfterCharge;
+            }
+            else
+            {
+                bruteAnimator.SetBool("IsCharging", true);
+                Charge();
+            }
+        }
+    }
+
+    /*
+    private void OldUpdate()
+    {
         if (timerAttack >= 0)
         {
             timerAttack -= Time.deltaTime;
@@ -84,7 +118,7 @@ public class BruteBrain : MonoBehaviour
         else
         {
             Look();
-            
+
             if (brute.HitRemaningForCharge <= 0)
             {
                 if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
@@ -104,6 +138,7 @@ public class BruteBrain : MonoBehaviour
             }
         }
     }
+    */
 
     private void Look()
     {
@@ -192,7 +227,6 @@ public class BruteBrain : MonoBehaviour
             brute.HitRemaningForCharge = brute.HitForCharge;
             chargeTo = ChargeTo.None;
             timerCharge = timeToStopAfterCharge;
-
             bruteAnimator.SetBool("IsCharging", false);
         }
         else
@@ -209,6 +243,7 @@ public class BruteBrain : MonoBehaviour
         GameManager._instance.healthSystem.Damage(brute.ChargePower);
         brute.HitRemaningForCharge = brute.HitForCharge;
         timerAttack = timeBetweenTwoCac;
+        chargeTo = ChargeTo.None;
 
         bruteAnimator.SetBool("HasImpact", false);
     }
