@@ -47,10 +47,14 @@ public class GameManager : MonoBehaviour
     {
         spriteLifes[spriteLifes.Length - 1].SetActive(false);
         
+        
+        
         for (int i = 0; i < healthSystem.healthMax; i++)
         {
             if (i >= healthSystem.GetHealth())
             {
+                PlayerController._instance.animator.SetBool("IsHit", true);
+                StartCoroutine("EndHit");
                 spriteLifes[i].SetActive(false);
             }
             else
@@ -61,9 +65,17 @@ public class GameManager : MonoBehaviour
 
         if (healthSystem.GetHealth() == 0) {
            // AnimatorBehaviour.DeadAnimations();
+
             StartCoroutine("RespawnPlayer");
+            PlayerController._instance.animator.SetBool("IsDead", true);
             animatorGameOver.SetBool("gameOver", true);
         }
+    }
+
+    IEnumerator EndHit()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PlayerController._instance.animator.SetBool("IsHit", false);
     }
 
     IEnumerator RespawnPlayer()
