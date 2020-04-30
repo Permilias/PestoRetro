@@ -170,6 +170,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pactol
       objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398517, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 512e50d4f061b5c488a01ec6eaeed627,
+        type: 3}
     - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -224,6 +250,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: add299f0e3b386742b8db7561bfdc06d, type: 3}
@@ -433,6 +474,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1464346782, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1464346782, guid: bf834a39465ad8a48ad3a61a3492d559, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6031934218395396026, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: pickUpText
