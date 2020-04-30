@@ -85,8 +85,6 @@ public class BruteBrain : MonoBehaviour
                 bruteAnimator.SetBool("HasImpact", true);
                 bruteAnimator.SetBool("IsCharging", false);
 
-                SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBrutePunch);
-
                 StartCoroutine("ImpactCharge");
 
                 raycaster.collisions.Reset();
@@ -97,8 +95,6 @@ public class BruteBrain : MonoBehaviour
             else
             {
                 bruteAnimator.SetBool("IsCharging", true);
-
-                SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteCharge);
 
                 Charge();
             }
@@ -277,9 +273,7 @@ public class BruteBrain : MonoBehaviour
                     if (brute.Life <= 0 && !bruteAnimator.GetBool("IsDead"))
                     {
                         bruteAnimator.SetBool("IsDead", true);
-
-                        SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteDies);
-
+                    
                         StartCoroutine("Dead");
                     }
                 }
