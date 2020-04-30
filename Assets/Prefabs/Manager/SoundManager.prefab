@@ -201,4 +201,46 @@ MonoBehaviour:
     maxVolume: 1
     minPitch: 1
     maxPitch: 1
+  gnocchiCookedExplosion:
+    clips:
+    - {fileID: 8300000, guid: 6ed62f964bbf7154ba185fbd136d84c4, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  gnocchiCookedShot:
+    clips:
+    - {fileID: 8300000, guid: 5e49ca657cdc2544e9ac3ddc5e41dfe2, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  gnocchiRawShoot:
+    clips:
+    - {fileID: 8300000, guid: 7ea6122a06900d74b90eaf6e0186ac70, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  spaghettiCookedShot:
+    clips:
+    - {fileID: 8300000, guid: 91eea56d004a9b74c9489b3660a13f6d, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  spaghettiRawShot:
+    clips:
+    - {fileID: 8300000, guid: 05f97bec5965f8746b88b689e2238123, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+  enemySimpleShot:
+    clips:
+    - {fileID: 8300000, guid: 67948a73571aa4e479a32cc13031ab4b, type: 3}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
   sfxVolume: 1
