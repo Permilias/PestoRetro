@@ -12,4 +12,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void DebugButton ()
+    {
+        Debug.Log("salope");
+    }
 }
