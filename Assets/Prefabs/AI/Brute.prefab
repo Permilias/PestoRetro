@@ -53,15 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c7a79fed86d1a46a888185d921d58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 15
+  life: 21
   walkSpeed: 2
   chargeSpeed: 4
   cacPower: 1
   timeBetweenTwoCac: 1
   chargePower: 2
   timeToStopAfterCharge: 3
-  hitForCharge: 3
-  timeSpaghettiCookedStopIA: 0
+  hitForCharge: 4
+  timeSpaghettiCookedStopIA: 4
   bruteAnimator: {fileID: 3349664716336393999}
 --- !u!114 &1773693347199341209
 MonoBehaviour:
