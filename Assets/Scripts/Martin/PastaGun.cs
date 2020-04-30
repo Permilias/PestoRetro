@@ -90,8 +90,12 @@ public class PastaGun : MonoBehaviour
             {
                 if (Input.GetMouseButtonUp(0))
                 {
+                    AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
+                    AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
                     Shoot();
+                    StartCoroutine("EndAnimations");
                 }
+                
             }
 
         }
@@ -130,7 +134,7 @@ public class PastaGun : MonoBehaviour
         for (int i = 0; i < shotConfig.missileAmount; i++)
         {
             PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(shotConfig, (Vector2)transform.position +
-                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition));
+                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition), "Player", shotPasta);
 
             projectile.transform.position += PlayerController._instance.transform.position;
 
@@ -150,6 +154,14 @@ public class PastaGun : MonoBehaviour
             projectile.shotByPlayer = true;
             projectile.SetDirection(shootingLeft);
             projectile.Shoot();
+           
         }       
+    }
+
+    IEnumerator EndAnimations()
+    {
+        yield return new WaitForSeconds(0.05f);
+        AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
+        AnimatorBehaviour.StopShootingAnimations(PlayerController._instance.movementVector);    
     }
 }

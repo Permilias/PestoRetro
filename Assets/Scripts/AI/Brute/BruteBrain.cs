@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 enum ChargeTo { None, Left, Right }
 
@@ -7,7 +6,6 @@ public class BruteBrain : MonoBehaviour
 {
     // ############### VARIABLES ###############
     public int life;
-    public int lootedPasta;
 
     public float walkSpeed;
     public float chargeSpeed;
@@ -19,6 +17,8 @@ public class BruteBrain : MonoBehaviour
     public float timeToStopAfterCharge;
     public int hitForCharge;
 
+    public int timeSpaghettiCookedStopIA;
+
 
     private float timerCharge;
     private float timerImmobile;
@@ -29,13 +29,13 @@ public class BruteBrain : MonoBehaviour
     private AICharacter brute;
     private CharacterRaycaster raycaster;
     private SpriteRenderer spriteRenderer;
+    private PastaCollectible[] pastaLoot;
 
 
     // ############### FUNCTIONS ###############
     private void Reset()
     {
-        life = 15;
-        lootedPasta = 0;
+        life = 21;
 
         walkSpeed = 2;
         chargeSpeed = 4;
@@ -45,7 +45,9 @@ public class BruteBrain : MonoBehaviour
 
         chargePower = 2;
         timeToStopAfterCharge = 1;
-        hitForCharge = 3;
+        hitForCharge = 4;
+        
+        timeSpaghettiCookedStopIA = 4;
     }
 
     private void Start()
@@ -55,9 +57,10 @@ public class BruteBrain : MonoBehaviour
         timerImmobile = -1;
         timerAttack = -1;
 
-        brute = new AICharacter(life, lootedPasta, cacPower, chargePower, hitForCharge, hitForCharge, walkSpeed, chargeSpeed);
+        brute = new AICharacter(life, cacPower, chargePower, hitForCharge, hitForCharge, walkSpeed, chargeSpeed);
         raycaster = GetComponent<CharacterRaycaster>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        pastaLoot = GetComponentsInChildren<PastaCollectible>(true);
     }
 
     private void Update()
@@ -204,11 +207,11 @@ public class BruteBrain : MonoBehaviour
                 {
                     if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti"))
                     {
-                        timerImmobile = 2;
+                        timerImmobile = timeSpaghettiCookedStopIA;
                     }
 
-                    brute.Life -= pastaProjectile.pasta.degats;
-                    brute.HitRemaningForCharge -= pastaProjectile.pasta.degats;
+                    brute.Life -= pastaProjectile.shotConfig.damage;
+                    brute.HitRemaningForCharge -= pastaProjectile.shotConfig.damage;
 
                     PastaManager.Instance.Repool(pastaProjectile);
 
@@ -223,22 +226,19 @@ public class BruteBrain : MonoBehaviour
 
     private void Dead()
     {
-        Debug.Log("Loot de Pasta Soldado");
+        Debug.Log("Loot de Pasta Brute");
 
-        for (int i = -2; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 2; j++)
             {
-                PastaCollectible pastaCollectible = new PastaCollectible();
-                pastaCollectible.pastaIndex = lootedPasta;
-                pastaCollectible.Initialize();
-
-                Vector3 position = new Vector3(this.transform.position.x + i, this.transform.position.y + j);
-
-                Instantiate(pastaCollectible, position, Quaternion.identity);
+                pastaLoot[i + (j * 3)].gameObject.SetActive(true);
+                pastaLoot[i + (j * 3)].gameObject.transform.parent = null;
+                pastaLoot[i + (j * 3)].gameObject.transform.position = new Vector3(this.transform.position.x + (i - 1), this.transform.position.y + (j<<1));
+                pastaLoot[i + (j * 3)].Initialize();
             }
         }
-        
-        Destroy(this);
+
+        Destroy(gameObject);
     }
 }

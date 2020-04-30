@@ -133,6 +133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1512452186583209294}
+  - {fileID: 8722098704257615449}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -148,9 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82278ae7b9be02a45a8fb8d0ef7195e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 20
+  life: 3
   cooldown: 5
   shotOffset: {x: 0, y: 0}
+  timeSpaghettiCookedStopIA: 0
   shotPasta: 1
   lootedPasta: 1
 --- !u!114 &1512452187724227024
@@ -222,3 +224,88 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &4181967894070935600
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1512452187724227027}
+    m_Modifications:
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651566, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: pastaIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651567, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_Name
+      value: PastaCollectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828504402157651567, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18e3db0d7fad8ed47aa10dffc11fedc0, type: 3}
+--- !u!4 &8722098704257615449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4828504402157651561, guid: 18e3db0d7fad8ed47aa10dffc11fedc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4181967894070935600}
+  m_PrefabAsset: {fileID: 0}
