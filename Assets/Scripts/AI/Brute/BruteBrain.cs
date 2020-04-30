@@ -46,7 +46,7 @@ public class BruteBrain : MonoBehaviour
         timeBetweenTwoCac = 1;
 
         chargePower = 2;
-        timeToStopAfterCharge = 1;
+        timeToStopAfterCharge = 3;
         hitForCharge = 4;
         
         timeSpaghettiCookedStopIA = 4;
@@ -68,6 +68,46 @@ public class BruteBrain : MonoBehaviour
 
     private void Update()
     {
+        if (timerCharge >= 0)
+        {
+            timerCharge -= Time.deltaTime;
+        }
+        else if (timerImmobile >= 0)
+        {
+            timerImmobile -= Time.deltaTime;
+        }
+        else
+        {
+            Look();
+
+            if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
+            {
+                bruteAnimator.SetBool("HasImpact", true);
+                bruteAnimator.SetBool("IsCharging", false);
+
+                SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBrutePunch);
+
+                StartCoroutine("ImpactCharge");
+
+                raycaster.collisions.Reset();
+                raycaster.objectCollisionHorizontal = null;
+
+                timerCharge = timeToStopAfterCharge;
+            }
+            else
+            {
+                bruteAnimator.SetBool("IsCharging", true);
+
+                SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteCharge);
+
+                Charge();
+            }
+        }
+    }
+
+    /*
+    private void OldUpdate()
+    {
         if (timerAttack >= 0)
         {
             timerAttack -= Time.deltaTime;
@@ -84,7 +124,7 @@ public class BruteBrain : MonoBehaviour
         else
         {
             Look();
-            
+
             if (brute.HitRemaningForCharge <= 0)
             {
                 if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
@@ -104,6 +144,7 @@ public class BruteBrain : MonoBehaviour
             }
         }
     }
+    */
 
     private void Look()
     {
@@ -192,7 +233,6 @@ public class BruteBrain : MonoBehaviour
             brute.HitRemaningForCharge = brute.HitForCharge;
             chargeTo = ChargeTo.None;
             timerCharge = timeToStopAfterCharge;
-
             bruteAnimator.SetBool("IsCharging", false);
         }
         else
@@ -209,6 +249,7 @@ public class BruteBrain : MonoBehaviour
         GameManager._instance.healthSystem.Damage(brute.ChargePower);
         brute.HitRemaningForCharge = brute.HitForCharge;
         timerAttack = timeBetweenTwoCac;
+        chargeTo = ChargeTo.None;
 
         bruteAnimator.SetBool("HasImpact", false);
     }
@@ -217,28 +258,32 @@ public class BruteBrain : MonoBehaviour
     {
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
-            if (brute.HitRemaningForCharge > 0)
-            {
+            //if (brute.HitRemaningForCharge > 0)
+            //{
                 PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-                if (pastaProjectile.shooter.Equals("Player"))
+                if (pastaProjectile.shotByPlayer)
                 {
                     if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti"))
                     {
                         timerImmobile = timeSpaghettiCookedStopIA;
                     }
 
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteHit);
                     brute.Life -= pastaProjectile.shotConfig.damage;
                     brute.HitRemaningForCharge -= pastaProjectile.shotConfig.damage;
 
                     PastaManager.Instance.Repool(pastaProjectile);
 
-                    if (brute.Life <= 0)
+                    if (brute.Life <= 0 && !bruteAnimator.GetBool("IsDead"))
                     {
                         bruteAnimator.SetBool("IsDead", true);
+
+                        SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteDies);
+
                         StartCoroutine("Dead");
                     }
                 }
-            }
+            //}
         }
     }
 

@@ -8,6 +8,8 @@ public class PastaShotConfig
     public bool cooked;
     public int damage;
 
+    public Sound firingSound;
+
     [Header("Firing")]
     public float reloadSpeed;
 
@@ -19,6 +21,7 @@ public class PastaShotConfig
     public float travelDuration;
     public AnimationCurve yTrajectory;
     public bool goesToGround;
+    public Sound groundTouchingSound;
     public bool straight;
 
     [Header("Projectile")]

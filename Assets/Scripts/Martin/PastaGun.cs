@@ -9,7 +9,7 @@ public class PastaGun : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
+        //AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
     }
 
     public Vector2 shotLocalPosition;
@@ -93,10 +93,12 @@ public class PastaGun : MonoBehaviour
                 {
                     if(PlayerController._instance.movementVector.x != 0)
                     {
+                        Shoot();
                         AnimatorBehaviour.MovingAndShootingAnimations(PlayerController._instance.movementVector);
                     }
                     else
                     {
+                        Shoot();
                         AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
                     }
                     
@@ -130,11 +132,14 @@ public class PastaGun : MonoBehaviour
 
     public void Shoot()
     {
+
         PastaManager.Instance.pastaAmounts[currentSelectedPasta] -= 1;
         Pasta shotPasta = PastaManager.Instance.pastas[currentSelectedPasta];
         PastaShotConfig shotConfig = cookedReady ? shotPasta.config.cookedShot : shotPasta.config.crudeShot;
         reloadSpeed = shotConfig.reloadSpeed;
         reloadCount = reloadSpeed;
+
+        SoundManager.Instance.PlaySound(shotConfig.firingSound);
 
         if (cookedReady) cookedReady = false;
         cooking = false;
@@ -170,7 +175,6 @@ public class PastaGun : MonoBehaviour
     IEnumerator EndAnimations()
     {
         yield return new WaitForSeconds(0.06f);
-        Shoot();
         AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
         AnimatorBehaviour.StopShootingAnimations(PlayerController._instance.movementVector);    
     }

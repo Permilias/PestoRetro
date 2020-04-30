@@ -6,6 +6,7 @@ public class PickUpAndDropPactol : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pickUpText;
     [SerializeField] private Transform targetPoint;
 
+    [HideInInspector]
     public GameObject pactol;
 
     private bool pickUpAllowed;
@@ -21,6 +22,8 @@ public class PickUpAndDropPactol : MonoBehaviour
 
     private void Start()
     {
+        pactol = FindObjectOfType<GravityPactol>().gameObject;
+
         pickUpText.gameObject.SetActive(false);
         pickUpAllowed = false;
 
