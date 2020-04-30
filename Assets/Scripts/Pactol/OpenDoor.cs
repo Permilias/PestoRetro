@@ -20,6 +20,7 @@ public class OpenDoor : MonoBehaviour
     }
     #endregion
 
+    public bool start;
     public List<string> tags;
     public List<string> doors;
 }
