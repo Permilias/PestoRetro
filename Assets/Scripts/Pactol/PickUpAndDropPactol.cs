@@ -101,6 +101,8 @@ public class PickUpAndDropPactol : MonoBehaviour
         }
 
         pactolTransform.position = targetPoint.transform.position;
+        Debug.Log(0.15f * Mathf.Sign(PlayerController._instance.graphicsTransform.localScale.x));
+        pactolTransform.localScale = new Vector3(0.15f * Mathf.Sign(PlayerController._instance.graphicsTransform.localScale.x), 0.15f, 0.15f);
         pactolTransform.parent = targetPoint.transform;
 
         pactolGravity.enabled = false;
