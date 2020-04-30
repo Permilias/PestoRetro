@@ -88,13 +88,13 @@ public class BruteBrain : MonoBehaviour
             {
                 if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
                 {
-                    bruteAnimator.SetBool("", true);
-                    ImpactCharge();
+                    bruteAnimator.SetBool("HasImpact", true);
+                    StartCoroutine("ImpactCharge");
                 }
                 else
                 {
-                    bruteAnimator.SetBool("", true);
-                    Charge();
+                    bruteAnimator.SetBool("IsCharging", true);
+                    StartCoroutine("Charge");
                 }
             }
             else
@@ -120,14 +120,14 @@ public class BruteBrain : MonoBehaviour
     {
         if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
         {
-            bruteAnimator.SetBool("", true);
-            Attack();
+            bruteAnimator.SetBool("IsPunching", true);
+            StartCoroutine("Attack");
+
             raycaster.collisions.Reset();
             raycaster.objectCollisionHorizontal = null;
         }
         else
         {
-            bruteAnimator.SetBool("", true);
             Vector3 movement;
             if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
             {
@@ -148,7 +148,6 @@ public class BruteBrain : MonoBehaviour
 
         GameManager._instance.healthSystem.Damage(cacPower);
         timerAttack = timeBetweenTwoCac;
-        Debug.Log("Attack Cac");
     }
 
     private void Charge()
@@ -199,7 +198,6 @@ public class BruteBrain : MonoBehaviour
         GameManager._instance.healthSystem.Damage(brute.ChargePower);
         brute.HitRemaningForCharge = brute.HitForCharge;
         timerAttack = timeBetweenTwoCac;
-        Debug.Log("Impact Charge");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -223,8 +221,8 @@ public class BruteBrain : MonoBehaviour
 
                     if (brute.Life <= 0)
                     {
-                        bruteAnimator.SetBool("", true);
-                        Dead();
+                        bruteAnimator.SetBool("IsDead", true);
+                        StartCoroutine("Dead");
                     }
                 }
             }
@@ -233,8 +231,6 @@ public class BruteBrain : MonoBehaviour
 
     private void Dead()
     {
-        Debug.Log("Loot de Pasta Brute");
-
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 2; j++)

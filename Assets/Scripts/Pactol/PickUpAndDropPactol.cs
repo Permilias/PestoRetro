@@ -88,7 +88,7 @@ public class PickUpAndDropPactol : MonoBehaviour
         {
             if (OpenDoor._instance.tags.Contains(savePassPasta))
             {
-                OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)].SetActive(true);
+                GameObject.Find(OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)]).SetActive(true);
             }
 
             savePassPasta = null;
@@ -111,7 +111,7 @@ public class PickUpAndDropPactol : MonoBehaviour
 
             if (OpenDoor._instance.tags.Contains(savePassPasta))
             {
-                OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)].SetActive(false);
+                GameObject.Find(OpenDoor._instance.doors[OpenDoor._instance.tags.IndexOf(savePassPasta)]).SetActive(false);
             }
         }
 
