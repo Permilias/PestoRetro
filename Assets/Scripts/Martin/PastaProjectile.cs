@@ -107,7 +107,11 @@ public class PastaProjectile : MonoBehaviour
             {
                 if(shotConfig.groundTouchingSound != null)
                 {
-                    SoundManager.Instance.PlaySound(shotConfig.groundTouchingSound);
+                    if(SoundManager.Instance)
+                    {
+                        SoundManager.Instance.PlaySound(shotConfig.groundTouchingSound);
+                    }
+
                 }
             }
             Repool();
@@ -117,6 +121,7 @@ public class PastaProjectile : MonoBehaviour
 
     void Repool()
     {
+        print("repooling");
         PastaManager.Instance.Repool(this);
     }
 }
