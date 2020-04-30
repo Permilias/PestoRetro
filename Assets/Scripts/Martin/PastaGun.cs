@@ -19,7 +19,7 @@ public class PastaGun : MonoBehaviour
 
     public void RollPastaSelection(bool next)
     {
-
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiButtonPlastic);
 
         cookingCount = 0f;
         cookedReady = false;
@@ -92,7 +92,7 @@ public class PastaGun : MonoBehaviour
                 {
                     AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
                     AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
-                    Shoot();
+                    
                     StartCoroutine("EndAnimations");
                 }
                 
@@ -161,6 +161,7 @@ public class PastaGun : MonoBehaviour
     IEnumerator EndAnimations()
     {
         yield return new WaitForSeconds(0.05f);
+        Shoot();
         AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
         AnimatorBehaviour.StopShootingAnimations(PlayerController._instance.movementVector);    
     }

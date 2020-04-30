@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7929337337706015319}
   - component: {fileID: 5807657773564953754}
   - component: {fileID: 8376992014757067565}
-  - component: {fileID: 3714385638314374364}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -27,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779648120383141268}
-  m_LocalRotation: {x: -0.03141073, y: -0, z: -0, w: 0.9995066}
+  m_LocalRotation: {x: -0.03141073, y: 0, z: 0, w: 0.9995066}
   m_LocalPosition: {x: 29.25291, y: 1.492, z: 15.672}
-  m_LocalScale: {x: 4.29179, y: 3.818842, z: 2.5048945}
+  m_LocalScale: {x: 5.007099, y: 3.8, z: 2.5048945}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -92,9 +91,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000009536743, y: 0.45306498}
+  m_Offset: {x: -0.0008954406, y: 0.44852114}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -105,24 +104,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.07042432}
+  m_Size: {x: 1.0017928, y: 0.061336637}
   m_EdgeRadius: 0
---- !u!251 &3714385638314374364
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779648120383141268}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 1
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1

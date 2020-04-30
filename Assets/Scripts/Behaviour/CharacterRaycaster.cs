@@ -26,6 +26,8 @@ public class CharacterRaycaster : MonoBehaviour
 
     bool inTrigger;
 
+    float maxClimbAngle = 80;
+
     void Start()
     {
         collider = GetComponent<BoxCollider2D>();
@@ -66,23 +68,35 @@ public class CharacterRaycaster : MonoBehaviour
             
             if (hit)
             {
+                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
                 objectCollisionHorizontal = hit.collider.gameObject;
-                velocity.x = (hit.distance - skinWidth) * directionX;
-                rayLength = hit.distance;
-
-                collisions.left = directionX == -1;
-                collisions.right = directionX == 1;
-            }
-
-            if (hitTrigger)
-            {
-                CollisionReceiver cr = hitTrigger.collider.GetComponent<CollisionReceiver>();
-
-                if(cr != null)
+                if (i == 0 && slopeAngle <= maxClimbAngle)
                 {
-                    inTrigger = true;
-                    cr.OnTriggerEnter?.Invoke();
+                    float distanceToSlopeStart = 0;
+                    if(slopeAngle != collisions.slopeAngleOld)
+                    {
+                        distanceToSlopeStart = hit.distance - skinWidth;
+                        velocity.x -= distanceToSlopeStart * directionX;
+                    }
+                    ClimbSlope(ref velocity, slopeAngle);
+                    velocity.x += distanceToSlopeStart * directionX;
                 }
+
+                if(!collisions.climbingSlope || slopeAngle > maxClimbAngle)
+                {
+                    velocity.x = (hit.distance - skinWidth) * directionX;
+                    rayLength = hit.distance;
+
+                    if (collisions.climbingSlope)
+                    {
+                        velocity.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(velocity.x);
+                    }
+
+                    collisions.left = directionX == -1;
+                    collisions.right = directionX == 1;
+                }
+                
+                
             }
         }
     }
@@ -107,6 +121,11 @@ public class CharacterRaycaster : MonoBehaviour
                 velocity.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
+                if (collisions.climbingSlope)
+                {
+                    velocity.x = velocity.y / Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Sign(velocity.x);
+                }
+
                 collisions.below = directionY == -1;
                 collisions.above = directionY == 1;               
             }
@@ -123,6 +142,21 @@ public class CharacterRaycaster : MonoBehaviour
             }
 
 
+        }
+    }
+
+    void ClimbSlope(ref Vector3 velocity, float slopeAngle)
+    {
+        float moveDistance = Mathf.Abs(velocity.x);
+        float climbVelocityY = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
+
+        if (velocity.y <= climbVelocityY)
+        {
+            velocity.y = climbVelocityY;
+            velocity.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * moveDistance * Mathf.Sign(velocity.x);
+            collisions.below = true;
+            collisions.climbingSlope = true;
+            collisions.slopeAngle = slopeAngle;
         }
     }
 
@@ -161,10 +195,17 @@ public class CharacterRaycaster : MonoBehaviour
         public bool above, below;
         public bool left, right;
 
+        public bool climbingSlope;
+        public float slopeAngle, slopeAngleOld;
+
         public void Reset()
         {
             above = below = false;
             left = right = false;
+            climbingSlope = false;
+
+            slopeAngleOld = slopeAngle;
+            slopeAngle = 0;
         }
 
         public bool HaveCollision()
