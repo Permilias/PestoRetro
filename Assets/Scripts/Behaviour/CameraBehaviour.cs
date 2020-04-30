@@ -1,35 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraBehaviour : MonoBehaviour
 {
-    public Transform self;
+
     public static Transform PlayerTransform   { get {   return PlayerController._instance.self; }   }
     public float cameraSpeed = 0.3f;
     public float cameraBackSpeed = 0.3f;
     public float maxDelta = 1;
-    float targetPosition;
+    Vector3 targetPosition;
     float leftDelta;
+    public float tweenSpeed;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         leftDelta = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (PlayerController._instance.movementVector.x > 0)
-            leftDelta += Mathf.Abs(PlayerController._instance.movementVector.x) * cameraSpeed;
-        else if (PlayerController._instance.movementVector.x < 0) leftDelta -= Time.deltaTime * cameraBackSpeed;
+        {
+            leftDelta = -maxDelta;
+        }
 
-        leftDelta = Mathf.Clamp(leftDelta, 0, maxDelta);
+        else if (PlayerController._instance.movementVector.x < 0)
+        {
+            leftDelta = maxDelta;
+        }
 
-        targetPosition = PlayerTransform.position.x + leftDelta;
 
-        self.position = new Vector3(targetPosition, self.position.y, self.position.z);
+        targetPosition = PlayerTransform.position + new Vector3(leftDelta, 0, 0);
+        targetPosition.y = transform.position.y;
+        targetPosition.z = 0;
+
+        transform.DOMove(targetPosition, tweenSpeed);
     }
 }
