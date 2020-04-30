@@ -21,6 +21,7 @@ public class PastaShotConfig
     public float travelDuration;
     public AnimationCurve yTrajectory;
     public bool goesToGround;
+    public Sound groundTouchingSound;
     public bool straight;
 
     [Header("Projectile")]

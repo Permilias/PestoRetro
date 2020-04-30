@@ -103,6 +103,13 @@ public class PastaProjectile : MonoBehaviour
         travelCount += Time.deltaTime;
         if(travelCount >= travelDuration)
         {
+            if(shotConfig.goesToGround)
+            {
+                if(shotConfig.groundTouchingSound != null)
+                {
+                    SoundManager.Instance.PlaySound(shotConfig.groundTouchingSound);
+                }
+            }
             Repool();
             travelling = false;
         }
