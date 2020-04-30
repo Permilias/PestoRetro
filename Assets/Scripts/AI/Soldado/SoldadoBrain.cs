@@ -111,7 +111,7 @@ public class SoldadoBrain : MonoBehaviour
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
             PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-            if (pastaProjectile.shooter.Equals("Player"))
+            if (pastaProjectile.shotByPlayer)
             {
                 if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti")) //spag cuite
                 {

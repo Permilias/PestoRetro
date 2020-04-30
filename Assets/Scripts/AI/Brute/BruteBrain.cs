@@ -261,7 +261,7 @@ public class BruteBrain : MonoBehaviour
             //if (brute.HitRemaningForCharge > 0)
             //{
                 PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-                if (pastaProjectile.shooter.Equals("Player"))
+                if (pastaProjectile.shotByPlayer)
                 {
                     if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti"))
                     {
