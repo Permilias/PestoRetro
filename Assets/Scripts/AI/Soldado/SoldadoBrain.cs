@@ -97,8 +97,10 @@ public class SoldadoBrain : MonoBehaviour
         Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
 
         PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
-                                                                                    (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
+                                                                                    (Vector2)transform.position + offset, PastaManager.Instance.pastas[shotPasta]);
         projectile.SetDirection(facingLeft);
+        projectile.transform.eulerAngles = Vector3.zero;
+        projectile.shotByPlayer = false;
         projectile.Shoot();
 
         soldadoAnimator.SetBool("IsShooting", false);
