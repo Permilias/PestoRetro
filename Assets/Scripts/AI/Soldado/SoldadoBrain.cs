@@ -116,7 +116,7 @@ public class SoldadoBrain : MonoBehaviour
                     timerImmobile = timeSpaghettiCookedStopIA;
                 }
 
-                //SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);  
+                SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);  
                 soldado.Life -= pastaProjectile.shotConfig.damage;
 
                 PastaManager.Instance.Repool(pastaProjectile);

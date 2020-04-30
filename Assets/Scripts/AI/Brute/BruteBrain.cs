@@ -264,7 +264,7 @@ public class BruteBrain : MonoBehaviour
                         timerImmobile = timeSpaghettiCookedStopIA;
                     }
 
-                    //SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteHit);
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteHit);
                     brute.Life -= pastaProjectile.shotConfig.damage;
                     brute.HitRemaningForCharge -= pastaProjectile.shotConfig.damage;
 
