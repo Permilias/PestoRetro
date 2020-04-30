@@ -183,12 +183,17 @@ PrefabInstance:
     - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.77
+      value: 4.16
       objectReference: {fileID: 0}
     - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
       propertyPath: m_Size.y
-      value: 4.3
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539963938775398507, guid: add299f0e3b386742b8db7561bfdc06d,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: 1539963938775398517, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
@@ -410,6 +415,11 @@ PrefabInstance:
       propertyPath: spriteLifes.Array.data[4]
       value: 
       objectReference: {fileID: 370010047}
+    - target: {fileID: 6057396293705827473, guid: 4b0436dde0ead854485fae5929181da7,
+        type: 3}
+      propertyPath: animatorGameOver
+      value: 
+      objectReference: {fileID: 1224473319}
     - target: {fileID: 6057396293705827478, guid: 4b0436dde0ead854485fae5929181da7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,6 +650,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20382306c5ebf0447b6e131eda380a28, type: 3}
+--- !u!95 &1224473319 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6873101321189445705, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1930696520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247256238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,10 +1137,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5902426577713001386, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5902426578417027681, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5902426578793217384, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
         type: 3}
