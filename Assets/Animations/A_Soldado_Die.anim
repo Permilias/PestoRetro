@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 5788a13ef5da7e0499f1765409b2477e, type: 3}
+      value: {fileID: 21300000, guid: f72abb90071fa46428be2b9e101e2be8, type: 3}
     - time: 0.016666668
-      value: {fileID: 21300000, guid: 881c69f567f704344b48d0bf918e1594, type: 3}
+      value: {fileID: 21300000, guid: ba373e09a4044cc4586ce400a348d805, type: 3}
     - time: 0.033333335
-      value: {fileID: 21300000, guid: d7f439e5a728fc64793c88c84f31f1b8, type: 3}
+      value: {fileID: 21300000, guid: 682ce0fb63ed7ba49b4509e700ecb729, type: 3}
     - time: 0.05
-      value: {fileID: 21300000, guid: dd94cec010bb78a49b96a5de9e6e3739, type: 3}
+      value: {fileID: 21300000, guid: aa66d71ff2c7dd043998576611a33f75, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 5788a13ef5da7e0499f1765409b2477e, type: 3}
-    - {fileID: 21300000, guid: 881c69f567f704344b48d0bf918e1594, type: 3}
-    - {fileID: 21300000, guid: d7f439e5a728fc64793c88c84f31f1b8, type: 3}
-    - {fileID: 21300000, guid: dd94cec010bb78a49b96a5de9e6e3739, type: 3}
+    - {fileID: 21300000, guid: f72abb90071fa46428be2b9e101e2be8, type: 3}
+    - {fileID: 21300000, guid: ba373e09a4044cc4586ce400a348d805, type: 3}
+    - {fileID: 21300000, guid: 682ce0fb63ed7ba49b4509e700ecb729, type: 3}
+    - {fileID: 21300000, guid: aa66d71ff2c7dd043998576611a33f75, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -74,4 +74,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlaySoldadoDie
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

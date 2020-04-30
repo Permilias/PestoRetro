@@ -154,7 +154,7 @@ MonoBehaviour:
   shotOffset: {x: 0, y: 0}
   timeSpaghettiCookedStopIA: 0
   shotPasta: 1
-  lootedPasta: 1
+  soldadoGraphics: {fileID: 1512452186583209295}
 --- !u!114 &1512452187724227024
 MonoBehaviour:
   m_ObjectHideFlags: 0

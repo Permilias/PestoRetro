@@ -9,6 +9,7 @@ public class SoldadoBrain : MonoBehaviour
 
     public int timeSpaghettiCookedStopIA;
     public int shotPasta;
+    public GameObject soldadoGraphics;
 
 
     private bool facingLeft;
