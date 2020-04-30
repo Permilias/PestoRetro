@@ -84,6 +84,6 @@ public static class AnimatorBehaviour
 
     public static void DeadAnimations()
     {
-        currentAnimator.SetBool("IsDead", true);
+       // currentAnimator.SetBool("IsDead", true);
     }
 }

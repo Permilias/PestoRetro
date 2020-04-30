@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AnimatorBehaviour.GetAnimator(PlayerController._instance.GetComponent<Animator>());
         healthSystem = new HealthSystem(5);
 
         for (int i = 0; i < healthSystem.GetHealth(); i++)
@@ -64,9 +63,4 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator RespawnPlayer()
-    {
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(1);
-    }
 }
