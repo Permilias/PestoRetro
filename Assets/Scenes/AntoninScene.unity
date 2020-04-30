@@ -840,12 +840,12 @@ PrefabInstance:
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: tags.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: doors.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
@@ -860,6 +860,11 @@ PrefabInstance:
     - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
       propertyPath: doors.Array.data[0]
+      value: Door1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[1]
       value: Door2
       objectReference: {fileID: 0}
     - target: {fileID: 7776982320005607036, guid: 3754acdaacab0d24d934a6c57e45ed5b,
