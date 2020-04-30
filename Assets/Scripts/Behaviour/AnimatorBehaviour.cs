@@ -24,6 +24,7 @@ public static class AnimatorBehaviour
                 {
                     currentAnimator.speed = 0.8f;
                 }
+                
             }
             else
             {
@@ -63,6 +64,7 @@ public static class AnimatorBehaviour
 
     public static void StopShootingAnimations(Vector3 movement)
     {
+        shooting = false;
 
         if (PlayerController._instance.rightKey || PlayerController._instance.leftKey)
         {
@@ -73,7 +75,7 @@ public static class AnimatorBehaviour
             currentAnimator.SetBool("IsShooting", false);
         }
 
-       shooting = false;
+       
     }
 
 
