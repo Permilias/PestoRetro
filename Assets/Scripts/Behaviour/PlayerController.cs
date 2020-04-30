@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
+            AnimatorBehaviour.CancelJumpAnimations();
             isJumping = false;
             jumpsAllowedLeft = maxJumpsAllowed;
         }
@@ -242,8 +243,10 @@ public class PlayerController : MonoBehaviour
             PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
             if (pastaProjectile.shooter.Equals("IA"))
             {
-                GameManager._instance.healthSystem.Damage(pastaProjectile.shotConfig.damage);
+                GameManager._instance.healthSystem.Damage(1); //pastaProjectile.shotConfig.damage
             }
+
+            PastaManager.Instance.Repool(pastaProjectile);
         }
     }
 }
