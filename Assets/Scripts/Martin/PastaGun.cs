@@ -19,7 +19,7 @@ public class PastaGun : MonoBehaviour
 
     public void RollPastaSelection(bool next)
     {
-
+        SoundManager.Instance.PlaySound(SoundManager.Instance.uiButtonPlastic);
 
         cookingCount = 0f;
         cookedReady = false;
