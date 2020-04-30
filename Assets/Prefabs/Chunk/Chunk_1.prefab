@@ -788,6 +788,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Herse_A
       objectReference: {fileID: 0}
+    - target: {fileID: 6293413179647489509, guid: 7b3b183d630e04745b3c8da4f070e48e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door2
+      objectReference: {fileID: 0}
     - target: {fileID: 6628299611236263658, guid: 7b3b183d630e04745b3c8da4f070e48e,
         type: 3}
       propertyPath: m_LocalPosition.x
