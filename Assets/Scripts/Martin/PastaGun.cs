@@ -9,6 +9,7 @@ public class PastaGun : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
     }
 
     public Vector2 shotLocalPosition;
@@ -90,8 +91,16 @@ public class PastaGun : MonoBehaviour
             {
                 if (Input.GetMouseButtonUp(0))
                 {
-                    AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
-                    AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
+                    if(PlayerController._instance.movementVector.x != 0)
+                    {
+                        AnimatorBehaviour.MovingAndShootingAnimations(PlayerController._instance.movementVector);
+                    }
+                    else
+                    {
+                        AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
+                    }
+                    
+
                     
                     StartCoroutine("EndAnimations");
                 }
@@ -160,7 +169,7 @@ public class PastaGun : MonoBehaviour
 
     IEnumerator EndAnimations()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.06f);
         Shoot();
         AnimatorBehaviour.GetAnimator(PlayerController._instance.animator);
         AnimatorBehaviour.StopShootingAnimations(PlayerController._instance.movementVector);    

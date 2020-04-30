@@ -281,10 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b80360eeafa2c4d9566614a6a1d2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 276
-  right: 275
-  jump: 273
-  actionKey: 304
+  left: 113
+  right: 100
+  jump: 122
+  actionKey: 101
   controller: {fileID: 9074726314816971577}
 --- !u!1 &9074726314972214546
 GameObject:

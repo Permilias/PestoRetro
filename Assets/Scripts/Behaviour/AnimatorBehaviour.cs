@@ -15,7 +15,7 @@ public static class AnimatorBehaviour
 
    public static void MovementAnimations(Vector3 movement)
     {
-        if (!PlayerController._instance.jumpKey)
+        if (!PlayerController._instance.jumpKey && shooting == false)
         {
             if (PlayerController._instance.rightKey || PlayerController._instance.leftKey || movement.x != 0f)
             {
@@ -54,9 +54,22 @@ public static class AnimatorBehaviour
         currentAnimator.SetBool("IsShooting", true);
     }
 
+    public static void MovingAndShootingAnimations(Vector3 movement)
+    {
+        shooting = true;
+        currentAnimator.SetBool("IsShootingAndMoving", true);
+    }
+
     public static void StopShootingAnimations(Vector3 movement)
     {
+        shooting = false;
+        currentAnimator.SetBool("IsShootingAndMoving", false);
         currentAnimator.SetBool("IsShooting", false);
+    }
+
+    public static void StopMovingAndShootingAnimations(Vector3 movement)
+    {
+        currentAnimator.SetBool("IsShootingAndMoving", false);
     }
 
     public static void JumpAnimations(Vector3 movement)
