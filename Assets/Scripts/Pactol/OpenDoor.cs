@@ -21,5 +21,5 @@ public class OpenDoor : MonoBehaviour
     #endregion
 
     public List<string> tags;
-    public List<GameObject> doors;
+    public List<string> doors;
 }
