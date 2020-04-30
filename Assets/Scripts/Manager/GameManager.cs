@@ -61,15 +61,16 @@ public class GameManager : MonoBehaviour
 
         if (healthSystem.GetHealth() == 0) {
            // AnimatorBehaviour.DeadAnimations();
-            StartCoroutine("RespawnPlayer");           
+            StartCoroutine("RespawnPlayer");
+            animatorGameOver.SetBool("gameOver", true);
         }
     }
 
     IEnumerator RespawnPlayer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.6f);
 
+        Time.timeScale = 0;
         endGame = true;
-        animatorGameOver.SetBool("gameOver", true);
     }
 }

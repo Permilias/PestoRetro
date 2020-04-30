@@ -288,8 +288,8 @@ public class BruteBrain : MonoBehaviour
 
     private IEnumerator Dead()
     {
-        timerImmobile = 3;
-        yield return new WaitForSeconds(2);
+        timerImmobile = 5;
+        yield return new WaitForSeconds(4);
 
         for (int i = 0; i < 3; i++)
         {
