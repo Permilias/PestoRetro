@@ -22,12 +22,19 @@ MonoBehaviour:
   cookingSpeed: 0.9
   crudeShot:
     cooked: 0
-    damage: 1
+    damage: 2
+    firingSound:
+      clips:
+      - {fileID: 8300000, guid: 7ea6122a06900d74b90eaf6e0186ac70, type: 3}
+      minVolume: 0.4
+      maxVolume: 0.4
+      minPitch: 1
+      maxPitch: 1
     reloadSpeed: 0.4
     missileAmount: 4
     missileSpreadAngle: 50
-    range: 4.5
-    travelDuration: 0.3
+    range: 3
+    travelDuration: 0.2
     yTrajectory:
       serializedVersion: 2
       m_Curve:
@@ -53,6 +60,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     goesToGround: 0
+    groundTouchingSound:
+      clips: []
+      minVolume: 1
+      maxVolume: 1
+      minPitch: 1
+      maxPitch: 1
     straight: 0
     projectileSprite: {fileID: 21300000, guid: 8dc046edfe57e894ebf7fc7d35238176, type: 3}
     spriteObjectScale: {x: 0.15, y: 0.15}
@@ -61,45 +74,59 @@ MonoBehaviour:
   cookedShot:
     cooked: 1
     damage: 5
+    firingSound:
+      clips:
+      - {fileID: 8300000, guid: 5e49ca657cdc2544e9ac3ddc5e41dfe2, type: 3}
+      minVolume: 0.4
+      maxVolume: 0.4
+      minPitch: 1
+      maxPitch: 1
     reloadSpeed: 0.8
     missileAmount: 1
     missileSpreadAngle: 0
-    range: 10
-    travelDuration: 1
+    range: 6
+    travelDuration: 0.6
     yTrajectory:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.16
-        inSlope: 13.156914
-        outSlope: 13.156914
-        tangentMode: 34
+        value: 1
+        inSlope: 11.5946045
+        outSlope: 11.5946045
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.33333334
+        outWeight: 0.055963397
       - serializedVersion: 3
-        time: 0.21440583
-        value: 3.980919
-        inSlope: 0.03890909
-        outSlope: 0.03890909
+        time: 0.6956926
+        value: 4.083076
+        inSlope: -1.2374158
+        outSlope: -1.2374158
         tangentMode: 0
         weightedMode: 0
-        inWeight: 1
-        outWeight: 0.3276585
+        inWeight: 0.11431839
+        outWeight: 0.21467325
       - serializedVersion: 3
-        time: 0.38966018
-        value: 1.2431217
-        inSlope: -10.096706
-        outSlope: -10.096706
+        time: 0.9984131
+        value: 1
+        inSlope: -16.390753
+        outSlope: -16.390753
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.30715284
+        inWeight: 0.05703372
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     goesToGround: 1
+    groundTouchingSound:
+      clips:
+      - {fileID: 8300000, guid: 6ed62f964bbf7154ba185fbd136d84c4, type: 3}
+      minVolume: 0.4
+      maxVolume: 0.4
+      minPitch: 1
+      maxPitch: 1
     straight: 0
     projectileSprite: {fileID: 21300000, guid: 5c826b85b8166c94584c6f08d52a2941, type: 3}
     spriteObjectScale: {x: 0.7, y: 0.7}

@@ -20,7 +20,11 @@ public class PastaGun : MonoBehaviour
 
     public void RollPastaSelection(bool next)
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.uiButtonPlastic);
+        if(SoundManager.Instance)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.uiButtonPlastic);
+        }
+
 
         cookingCount = 0f;
         cookedReady = false;
@@ -53,10 +57,19 @@ public class PastaGun : MonoBehaviour
     public bool cookedReady;
     private void Update()
     {
-        if (Mathf.Abs(PlayerController._instance.movementVector.x) > 0f)
+        if(Input.GetKeyUp(KeyCode.U))
         {
-            shootingLeft = PlayerController._instance.movementVector.x < 0f ? true : false;
+            Time.timeScale = 1f;
         }
+
+        if(PlayerController._instance)
+        {
+            if (Mathf.Abs(PlayerController._instance.movementVector.x) > 0f)
+            {
+                shootingLeft = PlayerController._instance.movementVector.x < 0f ? true : false;
+            }
+        }
+
 
 
         if (Input.GetMouseButtonDown(1))
@@ -91,16 +104,24 @@ public class PastaGun : MonoBehaviour
             {
                 if (Input.GetMouseButtonUp(0))
                 {
-                    if(PlayerController._instance.movementVector.x != 0)
+                    if(PlayerController._instance)
                     {
-                        Shoot();
-                        AnimatorBehaviour.MovingAndShootingAnimations(PlayerController._instance.movementVector);
+                        if (PlayerController._instance.movementVector.x != 0)
+                        {
+                            Shoot();
+                            AnimatorBehaviour.MovingAndShootingAnimations(PlayerController._instance.movementVector);
+                        }
+                        else
+                        {
+                            Shoot();
+                            AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
+                        }
                     }
                     else
                     {
                         Shoot();
-                        AnimatorBehaviour.ShootingAnimations(PlayerController._instance.movementVector);
                     }
+
                     
 
                     
@@ -132,11 +153,18 @@ public class PastaGun : MonoBehaviour
 
     public void Shoot()
     {
+
         PastaManager.Instance.pastaAmounts[currentSelectedPasta] -= 1;
         Pasta shotPasta = PastaManager.Instance.pastas[currentSelectedPasta];
         PastaShotConfig shotConfig = cookedReady ? shotPasta.config.cookedShot : shotPasta.config.crudeShot;
         reloadSpeed = shotConfig.reloadSpeed;
         reloadCount = reloadSpeed;
+
+        if(SoundManager.Instance)
+        {
+            SoundManager.Instance.PlaySound(shotConfig.firingSound);
+        }
+
 
         if (cookedReady) cookedReady = false;
         cooking = false;
@@ -144,13 +172,20 @@ public class PastaGun : MonoBehaviour
 
         for (int i = 0; i < shotConfig.missileAmount; i++)
         {
+
             PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(shotConfig, (Vector2)transform.position +
-                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition), "Player", shotPasta);
+                (shootingLeft ? new Vector2(-shotLocalPosition.x, shotLocalPosition.y) : shotLocalPosition), shotPasta);
 
-            projectile.transform.position += PlayerController._instance.transform.position;
-
-            if(shotConfig.missileAmount > 1)
+            if(PlayerController._instance)
             {
+                projectile.transform.position += PlayerController._instance.transform.position;
+            }
+
+            FXPlayer.Instance.PlayFX("Shot", projectile.transform.position);
+
+            if (shotConfig.missileAmount > 1)
+            {
+
                 int addedAngle = shootingLeft ? 0 : 0;
                 float angleIncrement = shotConfig.missileSpreadAngle / (shotConfig.missileAmount - 1);
                 float maxPositiveAngle = addedAngle + (shotConfig.missileSpreadAngle / 2f);
@@ -159,7 +194,10 @@ public class PastaGun : MonoBehaviour
             }
             else
             {
+
                 projectile.transform.eulerAngles = Vector3.zero;
+
+
             }
 
             projectile.shotByPlayer = true;

@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1539963938775398518, guid: add299f0e3b386742b8db7561bfdc06d,
         type: 3}
@@ -259,13 +259,13 @@ PrefabInstance:
         type: 3}
       propertyPath: chuncks.Array.data[1]
       value: 
-      objectReference: {fileID: 2495451903282304711, guid: e6dc71cd07878f24992ddb4232e197fa,
+      objectReference: {fileID: 2495451903282304711, guid: b9ebee190952e2b4fa014a63bdc8659d,
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: chuncks.Array.data[2]
       value: 
-      objectReference: {fileID: 2495451903282304711, guid: 5d4966465da391c41b8c9c5681a8126e,
+      objectReference: {fileID: 2495451903282304711, guid: 9f416063fbe55014787f1588cca6cde6,
         type: 3}
     - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
@@ -447,6 +447,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2495451903282304711, guid: cde3157382450e84dbf4ca086a0a7d39,
         type: 3}
+    - target: {fileID: 4501873451213393482, guid: ce15e5c09a432b049b0efaeead030b43,
+        type: 3}
+      propertyPath: nbChunkToDisplay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4501873451213393483, guid: ce15e5c09a432b049b0efaeead030b43,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -749,6 +754,11 @@ PrefabInstance:
     - target: {fileID: 3239047836516020975, guid: 20382306c5ebf0447b6e131eda380a28,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075110340090116593, guid: 20382306c5ebf0447b6e131eda380a28,
+        type: 3}
+      propertyPath: fxPools.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7301357100238017521, guid: 20382306c5ebf0447b6e131eda380a28,
@@ -1059,7 +1069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1804874334
 PrefabInstance:
@@ -1072,6 +1082,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[0]
+      value: PassPasta2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[0]
+      value: Door1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[1]
+      value: PassPasta3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[1]
+      value: Door2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: tags.Array.data[2]
+      value: PassPasta4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202824540090052961, guid: 3754acdaacab0d24d934a6c57e45ed5b,
+        type: 3}
+      propertyPath: doors.Array.data[2]
+      value: Door3
       objectReference: {fileID: 0}
     - target: {fileID: 7776982320005607036, guid: 3754acdaacab0d24d934a6c57e45ed5b,
         type: 3}
@@ -1539,6 +1589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PastaGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742184124519911607, guid: 5af5b3896aeeb584ab9c29815a86174a,
+        type: 3}
+      propertyPath: groundLevel
+      value: -0.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af5b3896aeeb584ab9c29815a86174a, type: 3}

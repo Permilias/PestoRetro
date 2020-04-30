@@ -10,6 +10,9 @@ TagManager:
   - Door1
   - Door2
   - Door3
+  - PassPasta4
+  - PassPasta5
+  - Door4
   layers:
   - Default
   - TransparentFX

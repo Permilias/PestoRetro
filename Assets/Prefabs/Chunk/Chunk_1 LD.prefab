@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4873909109745568887}
   m_Layer: 0
-  m_Name: Chunk_1
+  m_Name: Chunk_1 LD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1616,7 +1616,7 @@ PrefabInstance:
     - target: {fileID: 2808087695735082668, guid: 44dc88960826aea4c95187915898c205,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.589023
+      value: -5.71
       objectReference: {fileID: 0}
     - target: {fileID: 2808087695735082668, guid: 44dc88960826aea4c95187915898c205,
         type: 3}
@@ -3925,7 +3925,7 @@ PrefabInstance:
     - target: {fileID: 8519599338085571321, guid: a6c466b887726864482b79e9e2b7a36f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.079
+      value: 30.629
       objectReference: {fileID: 0}
     - target: {fileID: 8519599338085571321, guid: a6c466b887726864482b79e9e2b7a36f,
         type: 3}
@@ -3976,6 +3976,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519599338085571321, guid: a6c466b887726864482b79e9e2b7a36f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.1065254
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519599338085571321, guid: a6c466b887726864482b79e9e2b7a36f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c466b887726864482b79e9e2b7a36f, type: 3}

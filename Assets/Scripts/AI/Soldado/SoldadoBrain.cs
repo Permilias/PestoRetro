@@ -67,7 +67,7 @@ public class SoldadoBrain : MonoBehaviour
                 if (Mathf.Abs(PlayerUtils.PlayerTransform.position.x - this.transform.position.x) <= (PastaManager.Instance.pastas[shotPasta].config.crudeShot.range))
                 {
                     soldadoAnimator.SetBool("IsShooting", true);
-
+                    
                     StartCoroutine("Shoot");
                     timerReload = soldado.Cooldown;
                 }
@@ -97,8 +97,10 @@ public class SoldadoBrain : MonoBehaviour
         Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
 
         PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
-                                                                                    (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
+                                                                                    (Vector2)transform.position + offset, PastaManager.Instance.pastas[shotPasta]);
         projectile.SetDirection(facingLeft);
+        projectile.transform.eulerAngles = Vector3.zero;
+        projectile.shotByPlayer = false;
         projectile.Shoot();
 
         soldadoAnimator.SetBool("IsShooting", false);
@@ -109,21 +111,22 @@ public class SoldadoBrain : MonoBehaviour
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
             PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-            if (pastaProjectile.shooter.Equals("Player"))
+            if (pastaProjectile.shotByPlayer)
             {
                 if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti")) //spag cuite
                 {
                     timerImmobile = timeSpaghettiCookedStopIA;
                 }
 
+                SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);  
                 soldado.Life -= pastaProjectile.shotConfig.damage;
 
                 PastaManager.Instance.Repool(pastaProjectile);
 
-                if (soldado.Life <= 0)
+                if (soldado.Life <= 0 && !soldadoAnimator.GetBool("IsDead"))
                 {
                     soldadoAnimator.SetBool("IsDead", true);
-
+                    
                     StartCoroutine("Dead");
                 }
             }

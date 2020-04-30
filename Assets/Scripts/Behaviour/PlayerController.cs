@@ -239,14 +239,14 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
-        {
+        {  
             PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-            if (pastaProjectile.shooter.Equals("IA"))
+            if(!pastaProjectile.shotByPlayer)
             {
                 GameManager._instance.healthSystem.Damage(1); //pastaProjectile.shotConfig.damage
+                PastaManager.Instance.Repool(pastaProjectile);
             }
 
-            PastaManager.Instance.Repool(pastaProjectile);
         }
     }
 }

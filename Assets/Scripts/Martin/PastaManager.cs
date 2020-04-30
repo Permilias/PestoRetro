@@ -22,13 +22,6 @@ public class PastaManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        foreach (PastaCollectible collectible in FindObjectsOfType<PastaCollectible>())
-        {
-            collectible.Initialize();
-        }
-    }
 
 
     public PastaConfig[] configs;
@@ -59,14 +52,15 @@ public class PastaManager : MonoBehaviour
         }
     }
 
-    public PastaProjectile CreateProjectileAtPosition(PastaShotConfig shotConfig, Vector2 _position, string shooter, Pasta pasta)
+    public PastaProjectile CreateProjectileAtPosition(PastaShotConfig shotConfig, Vector2 _position, Pasta pasta)
     {
-        if(projectilePool.Count < 1)
+
+        if (projectilePool.Count < 1)
         {
+
             FillProjectilePool();
         }
         PastaProjectile createdProjectile = projectilePool.Dequeue();
-        createdProjectile.shooter = shooter;
         createdProjectile.gameObject.SetActive(true);
         createdProjectile.transform.position = new Vector3(_position.x, _position.y, 0f);
         createdProjectile.Initialize(shotConfig);

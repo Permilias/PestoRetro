@@ -84,6 +84,7 @@ public class BruteBrain : MonoBehaviour
             {
                 bruteAnimator.SetBool("HasImpact", true);
                 bruteAnimator.SetBool("IsCharging", false);
+
                 StartCoroutine("ImpactCharge");
 
                 raycaster.collisions.Reset();
@@ -94,6 +95,7 @@ public class BruteBrain : MonoBehaviour
             else
             {
                 bruteAnimator.SetBool("IsCharging", true);
+
                 Charge();
             }
         }
@@ -252,28 +254,30 @@ public class BruteBrain : MonoBehaviour
     {
         if (collision.gameObject.layer.Equals(LayerMask.NameToLayer("Projectiles")))
         {
-            if (brute.HitRemaningForCharge > 0)
-            {
+            //if (brute.HitRemaningForCharge > 0)
+            //{
                 PastaProjectile pastaProjectile = collision.gameObject.GetComponent<PastaProjectile>();
-                if (pastaProjectile.shooter.Equals("Player"))
+                if (pastaProjectile.shotByPlayer)
                 {
                     if (pastaProjectile.shotConfig.cooked && pastaProjectile.pasta.config.pastaName.Equals("Spaghetti"))
                     {
                         timerImmobile = timeSpaghettiCookedStopIA;
                     }
 
+                    SoundManager.Instance.PlaySound(SoundManager.Instance.enemyBruteHit);
                     brute.Life -= pastaProjectile.shotConfig.damage;
                     brute.HitRemaningForCharge -= pastaProjectile.shotConfig.damage;
 
                     PastaManager.Instance.Repool(pastaProjectile);
 
-                    if (brute.Life <= 0)
+                    if (brute.Life <= 0 && !bruteAnimator.GetBool("IsDead"))
                     {
                         bruteAnimator.SetBool("IsDead", true);
+                    
                         StartCoroutine("Dead");
                     }
                 }
-            }
+            //}
         }
     }
 

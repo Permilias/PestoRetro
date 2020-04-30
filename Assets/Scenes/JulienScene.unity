@@ -143,7 +143,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickUpText
       value: 
-      objectReference: {fileID: 1395797108}
+      objectReference: {fileID: 0}
     - target: {fileID: 9074726314816971575, guid: bf834a39465ad8a48ad3a61a3492d559,
         type: 3}
       propertyPath: m_Name
@@ -544,18 +544,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce15e5c09a432b049b0efaeead030b43, type: 3}
---- !u!114 &1395797108 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8434714400362712525, guid: 6b5357b33cac2d94a8c9e9a485d799f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 377484630}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1580464756
 PrefabInstance:
   m_ObjectHideFlags: 0
