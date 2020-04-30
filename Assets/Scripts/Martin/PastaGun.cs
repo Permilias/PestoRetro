@@ -181,9 +181,9 @@ public class PastaGun : MonoBehaviour
                 projectile.transform.position += PlayerController._instance.transform.position;
             }
 
+            FXPlayer.Instance.PlayFX("Shot", projectile.transform.position);
 
-
-            if(shotConfig.missileAmount > 1)
+            if (shotConfig.missileAmount > 1)
             {
 
                 int addedAngle = shootingLeft ? 0 : 0;
