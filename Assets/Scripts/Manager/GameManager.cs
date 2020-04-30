@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        healthSystem = new HealthSystem(3);
+        healthSystem = new HealthSystem(5);
 
         for (int i = 0; i < healthSystem.GetHealth(); i++)
         {
