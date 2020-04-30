@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fxs:
   - fxName: Boom
-    fx: {fileID: 8263020954681646869, guid: b168ca80fb85a8b4baa20c4e703e4155, type: 3}
+    fx: {fileID: 3943135966220919670, guid: 1ae0b9d1e793248deb9e062a1f492cbc, type: 3}
     poolingAmount: 5
     duration: 3
     randomizeSize: 1
