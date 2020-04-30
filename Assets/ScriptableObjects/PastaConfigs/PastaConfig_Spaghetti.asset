@@ -26,7 +26,7 @@ MonoBehaviour:
     reloadSpeed: 0.3
     missileAmount: 1
     missileSpreadAngle: 0
-    range: 15
+    range: 8
     travelDuration: 0.5
     yTrajectory:
       serializedVersion: 2

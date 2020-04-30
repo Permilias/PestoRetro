@@ -18,6 +18,7 @@ public class BruteBrain : MonoBehaviour
     public int hitForCharge;
 
     public int timeSpaghettiCookedStopIA;
+    public Animator bruteAnimator;
 
 
     private float timerCharge;
@@ -48,6 +49,7 @@ public class BruteBrain : MonoBehaviour
         hitForCharge = 4;
         
         timeSpaghettiCookedStopIA = 4;
+        bruteAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -86,10 +88,12 @@ public class BruteBrain : MonoBehaviour
             {
                 if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
                 {
+                    bruteAnimator.SetBool("", true);
                     ImpactCharge();
                 }
                 else
                 {
+                    bruteAnimator.SetBool("", true);
                     Charge();
                 }
             }
@@ -116,12 +120,14 @@ public class BruteBrain : MonoBehaviour
     {
         if (raycaster.collisions.HaveHorizontalCollision() && raycaster.objectCollisionHorizontal.layer.Equals(LayerMask.NameToLayer("Player")))
         {
+            bruteAnimator.SetBool("", true);
             Attack();
             raycaster.collisions.Reset();
             raycaster.objectCollisionHorizontal = null;
         }
         else
         {
+            bruteAnimator.SetBool("", true);
             Vector3 movement;
             if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
             {
@@ -217,6 +223,7 @@ public class BruteBrain : MonoBehaviour
 
                     if (brute.Life <= 0)
                     {
+                        bruteAnimator.SetBool("", true);
                         Dead();
                     }
                 }

@@ -62,6 +62,7 @@ MonoBehaviour:
   timeToStopAfterCharge: 1
   hitForCharge: 3
   timeSpaghettiCookedStopIA: 0
+  bruteAnimator: {fileID: 3349664716336393999}
 --- !u!114 &1773693347199341209
 MonoBehaviour:
   m_ObjectHideFlags: 0
