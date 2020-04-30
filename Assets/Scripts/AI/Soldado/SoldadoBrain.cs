@@ -69,12 +69,12 @@ public class SoldadoBrain : MonoBehaviour
     {
         if (PlayerUtils.PlayerTransform.position.x < this.transform.position.x)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
             facingLeft = true;
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
             facingLeft = false;
         }
     }
@@ -82,13 +82,15 @@ public class SoldadoBrain : MonoBehaviour
 
     private void Shoot()
     {
-        Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
+        if (Mathf.Abs(PlayerUtils.PlayerTransform.position.x - this.transform.position.x) <= (PastaManager.Instance.pastas[shotPasta].config.crudeShot.range))
+        {
+            Vector2 offset = facingLeft ? new Vector2(-shotOffset.x, shotOffset.y) : shotOffset;
 
-        PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
-                                                                                    (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
-        projectile.SetDirection(facingLeft);
-        projectile.Shoot();
-
+            PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
+                                                                                        (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
+            projectile.SetDirection(facingLeft);
+            projectile.Shoot();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -112,7 +114,6 @@ public class SoldadoBrain : MonoBehaviour
                     Dead();
                 }
             }
-
         }
     }
 
