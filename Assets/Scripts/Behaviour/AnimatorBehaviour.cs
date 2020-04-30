@@ -81,4 +81,9 @@ public static class AnimatorBehaviour
     {
         currentAnimator.SetBool("isJumping", false);
     }
+
+    public static void DeadAnimations()
+    {
+        currentAnimator.SetBool("IsDead", true);
+    }
 }
