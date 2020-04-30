@@ -132,11 +132,14 @@ public class PastaGun : MonoBehaviour
 
     public void Shoot()
     {
+
         PastaManager.Instance.pastaAmounts[currentSelectedPasta] -= 1;
         Pasta shotPasta = PastaManager.Instance.pastas[currentSelectedPasta];
         PastaShotConfig shotConfig = cookedReady ? shotPasta.config.cookedShot : shotPasta.config.crudeShot;
         reloadSpeed = shotConfig.reloadSpeed;
         reloadCount = reloadSpeed;
+
+        SoundManager.Instance.PlaySound(shotConfig.firingSound);
 
         if (cookedReady) cookedReady = false;
         cooking = false;
