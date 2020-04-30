@@ -301,6 +301,9 @@ public class BruteBrain : MonoBehaviour
             }
         }
 
+        FinDuGameScript._instance.FinDuGame();
+
         Destroy(gameObject);
+
     }
 }

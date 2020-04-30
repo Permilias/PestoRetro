@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public Animator animatorGameOver;
 
     [System.NonSerialized] public HealthSystem healthSystem;
-    bool endGame;
+    [System.NonSerialized] public bool endGame;
 
 
     private void Start()
@@ -61,17 +61,15 @@ public class GameManager : MonoBehaviour
 
         if (healthSystem.GetHealth() == 0) {
            // AnimatorBehaviour.DeadAnimations();
-            StartCoroutine("RespawnPlayer");
-            animatorGameOver.SetBool("gameOver", true);
-            
+            StartCoroutine("RespawnPlayer");           
         }
     }
-
 
     IEnumerator RespawnPlayer()
     {
         yield return new WaitForSeconds(0.5f);
 
         endGame = true;
+        animatorGameOver.SetBool("gameOver", true);
     }
 }
