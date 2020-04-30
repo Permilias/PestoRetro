@@ -116,14 +116,14 @@ public class SoldadoBrain : MonoBehaviour
                     timerImmobile = timeSpaghettiCookedStopIA;
                 }
 
+                SoundManager.Instance.PlaySound(SoundManager.Instance.enemySimpleHit);
                 soldado.Life -= pastaProjectile.shotConfig.damage;
 
                 PastaManager.Instance.Repool(pastaProjectile);
 
-                if (soldado.Life <= 0)
+                if (soldado.Life <= 0 && !soldadoAnimator.GetBool("IsDead"))
                 {
                     soldadoAnimator.SetBool("IsDead", true);
-
                     StartCoroutine("Dead");
                 }
             }
