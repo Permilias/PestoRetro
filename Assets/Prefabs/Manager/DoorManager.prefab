@@ -43,5 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d8eae321a09bd4d83145fbebad428d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: []
-  doors: []
+  tags:
+  - PassPasta2
+  - PassPasta3
+  - PassPasta4
+  - PassPasta5
+  doors:
+  - Door2
+  - Door3
+  - Door4
+  - Door5

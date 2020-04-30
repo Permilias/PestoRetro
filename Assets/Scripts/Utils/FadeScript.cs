@@ -14,7 +14,7 @@ public class FadeScript : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene("sceneName");
+        SceneManager.LoadScene(sceneName);
     }
 
     public void FadeIn()
