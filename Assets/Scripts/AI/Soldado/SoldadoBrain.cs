@@ -99,6 +99,7 @@ public class SoldadoBrain : MonoBehaviour
         PastaProjectile projectile = PastaManager.Instance.CreateProjectileAtPosition(PastaManager.Instance.pastas[shotPasta].config.crudeShot,
                                                                                     (Vector2)transform.position + offset, "IA", PastaManager.Instance.pastas[shotPasta]);
         projectile.SetDirection(facingLeft);
+        projectile.transform.eulerAngles = Vector3.zero;
         projectile.shotByPlayer = false;
         projectile.Shoot();
 
