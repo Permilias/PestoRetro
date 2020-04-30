@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         healthSystem = new HealthSystem(5);
 
         for (int i = 0; i < healthSystem.GetHealth(); i++)
@@ -61,15 +62,16 @@ public class GameManager : MonoBehaviour
 
         if (healthSystem.GetHealth() == 0) {
            // AnimatorBehaviour.DeadAnimations();
-            StartCoroutine("RespawnPlayer");           
+            StartCoroutine("RespawnPlayer");
+            animatorGameOver.SetBool("gameOver", true);
         }
     }
 
     IEnumerator RespawnPlayer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.3f);
 
+        Time.timeScale = 0;
         endGame = true;
-        animatorGameOver.SetBool("gameOver", true);
     }
 }
